@@ -37,9 +37,9 @@ description: > # this means to ignore newlines until next tag
 # append these lines to _config_yml for local testing with 'jekyll serve'
 baseurl: "/engs50" # the subpath of your site, e.g. /blog
 url: "https://thayer.github.io/engs50/" # the base hostname & protocol for your site
-labs: https://thayer.github.io/engs50/Labs/
-notes: https://thayer.github.io/engs50/Notes/
-reading: https://thayer.github.io/engs50/Reading/
-resources: https://thayer.github.io/engs50/Resources/
+labs: https://thayer.github.io/engs50/labs/
+notes: https://thayer.github.io/engs50/notes/
+reading: https://thayer.github.io/engs50/reading/
+resources: https://thayer.github.io/engs50/resources/
 examples: https://thayer.github.io/engs50/examples.html
 
