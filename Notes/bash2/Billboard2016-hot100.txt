@@ -1,0 +1,100 @@
+1:LOVE YOURSELF:Justin Bieber
+2:SORRY:Justin Bieber
+3:ONE DANCE:Drake Featuring WizKid & Kyla
+4:WORK:Rihanna Featuring Drake
+5:STRESSED OUT:twenty one pilots
+6:PANDA:Desiigner
+7:HELLO:Adele
+8:DON'T LET ME DOWN:The Chainsmokers Featuring Daya
+9:CAN'T STOP THE FEELING!:Justin Timberlake
+10:CLOSER:The Chainsmokers Featuring Halsey
+11:CHEAP THRILLS:Sia Featuring Sean Paul
+12:7 YEARS:Lukas Graham
+13:NEEDED ME:Rihanna
+14:MY HOUSE:Flo Rida
+15:I TOOK A PILL IN IBIZA:Mike Posner
+16:WORK FROM HOME:Fifth Harmony Featuring Ty Dolla $ign
+17:THIS IS WHAT YOU CAME FOR:Calvin Harris Featuring Rihanna
+18:CAKE BY THE OCEAN:DNCE
+19:ME, MYSELF & I:G-Eazy x Bebe Rexha
+20:RIDE:twenty one pilots
+21:HEATHENS:twenty one pilots
+22:PILLOWTALK:Zayn
+23:STITCHES:Shawn Mendes
+24:HOTLINE BLING:Drake
+25:COLD WATER:Major Lazer Featuring Justin Bieber & MO
+26:SEND MY LOVE (TO YOUR NEW LOVER):Adele
+27:ROSES:The Chainsmokers Featuring Rozes
+28:TREAT YOU BETTER:Shawn Mendes
+29:TOO GOOD:Drake Featuring Rihanna
+30:LOW LIFE:Future Featuring The Weeknd
+31:WHAT DO YOU MEAN?:Justin Bieber
+32:THE HILLS:The Weeknd
+33:JUST LIKE FIRE:P!nk
+34:BROCCOLI:D.R.A.M. Featuring Lil Yachty
+35:DON'T:Bryson Tiller
+36:DANGEROUS WOMAN:Ariana Grande
+37:JUMPMAN:Drake & Future
+38:I HATE U I LOVE U:gnash Featuring Olivia O'Brien
+39:HERE:Alessia Cara
+40:SAME OLD LOVE:Selena Gomez
+41:CONTROLLA:Drake
+42:LIKE I'M GONNA LOSE YOU:Meghan Trainor Featuring John Legend
+43:ONE CALL AWAY:Charlie Puth
+44:LET IT GO:James Bay
+45:NO:Meghan Trainor
+46:NEVER FORGET YOU:Zara Larsson & MNEK
+47:LET ME LOVE YOU:DJ Snake Featuring Justin Bieber
+48:DON'T MIND:Kent Jones
+49:H.O.L.Y.:Florida Georgia Line
+50:WE DON'T TALK ANYMORE:Charlie Puth Featuring Selena Gomez
+51:INTO YOU:Ariana Grande
+52:GOLD:Kiiara
+53:EXCHANGE:Bryson Tiller
+54:679:Fetty Wap Featuring Remy Boyz
+55:OUI:Jeremih
+56:HANDS TO MYSELF:Selena Gomez
+57:2 PHONES:Kevin Gates
+58:STARBOY:The Weeknd Featuring Daft Punk
+59:FOR FREE:DJ Khaled Featuring Drake
+60:NEVER BE LIKE YOU:Flume Featuring Kai
+61:IN THE NIGHT:The Weeknd
+62:ME TOO:Meghan Trainor
+63:EX'S & OH'S:Elle King
+64:DIE A HAPPY MAN:Thomas Rhett
+65:WHITE IVERSON:Post Malone
+66:CLOSE:Nick Jonas Featuring Tove Lo
+67:UNSTEADY:X Ambassadors
+68:SUCKER FOR PAIN:Lil Wayne, Wi
+69:DOWN IN THE DM:Yo Gotti Featuring Nicki Minaj
+70:LUV:Tory Lanez
+71:SORRY:Beyonce
+72:CAN'T FEEL MY FACE:The Weeknd
+73:HYMN FOR THE WEEKEND:Coldplay
+74:SAY IT:Tory Lanez
+75:ANTIDOTE:Travis Scott
+76:LOST BOY:Ruth B
+77:SIDE TO SIDE:Ariana Grande Featuring Nicki Minaj
+78:SIT STILL, LOOK PRETTY:Daya
+79:WILDEST DREAMS:Taylor Swift
+80:MIDDLE:DJ Snake Featuring Bipolar Sunshine
+81:ON MY MIND:Ellie Goulding
+82:POP STYLE:Drake Featuring The Throne
+83:WHEN WE WERE YOUNG:Adele
+84:HIDE AWAY:Daya
+85:LEAN ON:Major Lazer & DJ Snake Featuring MO
+86:I KNOW WHAT YOU DID LAST SUMMER:Shawn Mendes & Camila Cabello
+87:ALL THE WAY UP:Fat Joe, Rem
+88:WATCH ME:Silento
+89:BACK TO SLEEP:Chris Brown
+90:NO LIMIT:Usher Featuring Young Thug
+91:CUT IT:O.T. Genasis Featuring Young Dolph
+92:REALLY REALLY:Kevin Gates
+93:ALL IN MY HEAD (FLEX):Fifth Harmony Featuring Fetty Wap
+94:STARVING:Hailee Steinfeld & Grey Featuring Zedd
+95:ADVENTURE OF A LIFETIME:Coldplay
+96:HUMBLE AND KIND:Tim McGraw
+97:WICKED:Future
+98:TIIMMY TURNER:Desiigner
+99:SEE YOU AGAIN:Wiz Khalifa Featuring Charlie Puth
+100:PERFECT:One Direction

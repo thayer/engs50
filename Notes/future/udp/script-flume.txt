@@ -1,0 +1,276 @@
+Last login: Wed May 10 12:01:01 2017 from 68.238.49.157
+[cs50@flume ~]$ cd demo/client-server-http-fo
+-bash: cd: demo/client-server-http-fo: No such file or directory
+[cs50@flume ~]$ cd demo/client-server-http-fork/
+[cs50@flume ~/demo/client-server-http-fork]$ clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[cs50@flume ~/demo/client-server-http-fork]$ cd ../client-server-http
+[cs50@flume ~/demo/client-server-http]$ ls
+file.c	file.h	file.o	httpclient*  httpclient.c  httpclient.o  httpserver*  httpserver.c  httpserver.o  Makefile  README.md
+[cs50@flume ~/demo/client-server-http]$ emacs httpserver.c
+[cs50@flume ~/demo/client-server-http]$ cd ../client-server-http-fork/
+[cs50@flume ~/demo/client-server-http-fork]$ emacs httpserver.c
+[cs50@flume ~/demo/client-server-http-fork]$ make
+make: Nothing to be done for 'all'.
+[cs50@flume ~/demo/client-server-http-fork]$ ls
+file.c	file.h	file.o	httpclient*  httpclient.c  httpclient.o  httpserver*  httpserver.c  httpserver.o  Makefile  README.md
+[cs50@flume ~/demo/client-server-http-fork]$ ./httpserver 
+Listening at port 57037
+To find your MacOS IP address, ifconfig | grep 'inet '
+Connection started
+Copying file: Makefile
+Connection ended
+Connection started
+Copying file: Makefile
+Connection ended
+Connection started
+Copying file: Makefile
+Connection started
+Connection ended
+Connection started
+Copying file: Makefile
+Connection ended
+Copying file: Makefile
+Connection ended
+Connection started
+Connection started
+Copying file: Makefile
+Connection ended
+Connection started
+Copying file: Makefile
+Connection started
+Connection ended
+Connection started
+Copying file: Makefile
+Connection ended
+Copying file: Makefile
+Copying file: Makefile
+Connection ended
+Connection ended
+^C 
+[cs50@flume ~/demo/client-server-http-fork]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo/client-server-http-fork]$ 
+[cs50@flume ~/demo/client-server-http-fork]$ 
+[cs50@flume ~/demo/client-server-http-fork]$ ls
+file.c	file.o	     httpclient.c  httpserver*	 httpserver.o  README.md
+file.h	httpclient*  httpclient.o  httpserver.c  Makefile
+[cs50@flume ~/demo/client-server-http-fork]$ emacs  httpserver.c
+[cs50@flume ~/demo/client-server-http-fork]$ cd ../client-server-udp
+[cs50@flume ~/demo/client-server-udp]$ ls
+file.c	file.h	Makefile  udpclient.c  udpserver.c
+[cs50@flume ~/demo/client-server-udp]$ emacs udpclient.c 
+[cs50@flume ~/demo/client-server-udp]$ make
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o udpclient.o udpclient.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o file.o file.c
+gcc -Wall -pedantic -std=c11 -ggdb  udpclient.o file.o  -o udpclient
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o udpserver.o udpserver.c
+gcc -Wall -pedantic -std=c11 -ggdb  udpserver.o  -o udpserver
+[cs50@flume ~/demo/client-server-udp]$ ./udpserver 
+Ready at port 50138
+To find your MacOS IP address, ifconfig | grep 'inet '
+From 10.31.216.56, port 58466: 'hello class'
+From 10.31.216.56, port 58466: 'what's up'
+From 10.31.216.56, port 58466: 'this is cool'
+
+
+From 10.31.216.56, port 55931: 'back!'
+^Z
+[1]+  Stopped                 ./udpserver
+[cs50@flume ~/demo/client-server-udp]$ pwd
+/net/class/cs50/demo/client-server-udp
+[cs50@flume ~/demo/client-server-udp]$ fg
+./udpserver
+From 10.31.216.56, port 55931: 'somebody please try...'
+From 129.170.214.160, port 58875: 'hi'
+From 129.170.213.77, port 41141: 'SUP?'
+From 129.170.213.207, port 39889: 'hello'
+From 129.170.213.77, port 41141: 'How do I write my querier?'
+From 129.170.213.207, port 35057: 'whoa'
+From 129.170.214.160, port 53868: ':)'
+From 129.170.213.207, port 35057: 'Ders you look cute'
+From 129.170.212.20, port 43572: 'thanks ;)'
+From 129.170.212.20, port 43572: 'u do too'
+lfjsl
+lfgdlg
+From 129.170.213.207, port 35057: 'TKim <3'
+
+From 129.170.212.20, port 43572: 'shh boo'
+^C
+[cs50@flume ~/demo/client-server-udp]$ emacs udpserver,c
+[cs50@flume ~/demo/client-server-udp]$ emacs udpserver.c
+[cs50@flume ~/demo/client-server-udp]$ make
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o udpserver.o udpserver.c
+udpserver.c: In function ‘main’:
+udpserver.c:79:20: warning: implicit declaration of function ‘readlinep’ [-Wimplicit-function-declaration]
+       char *line = readlinep(stdin);
+                    ^~~~~~~~~
+udpserver.c:79:20: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+udpserver.c:82:35: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
+       if (sendto(comm_sock, line, strlen(line), 0,
+                                   ^~~~~~
+udpserver.c:82:35: warning: incompatible implicit declaration of built-in function ‘strlen’
+udpserver.c:82:35: note: include ‘<string.h>’ or provide a declaration of ‘strlen’
+gcc -Wall -pedantic -std=c11 -ggdb  udpserver.o  -o udpserver
+udpserver.o: In function `main':
+/net/class/cs50/demo/client-server-udp/udpserver.c:79: undefined reference to `readlinep'
+collect2: error: ld returned 1 exit status
+Makefile:26: recipe for target 'udpserver' failed
+make: *** [udpserver] Error 1
+[cs50@flume ~/demo/client-server-udp]$ ls
+file.c	file.o	  udpclient*   udpclient.o  udpserver.c~
+file.h	Makefile  udpclient.c  udpserver.c  udpserver.o
+[cs50@flume ~/demo/client-server-udp]$ emacs udpserver.c 
+[cs50@flume ~/demo/client-server-udp]$ ./udpserver 
+Ready at port 50441
+To find your MacOS IP address, ifconfig | grep 'inet '
+From 129.170.214.115, port 52050: 'I've hacked the mainframels - John'
+oh no!!
+From 129.170.213.77, port 48125: 'Please, I need help on this lab :('
+sorry.
+From 129.170.214.115, port 38553: 'Sending...'
+
+From 129.170.214.160, port 35578: 'hi!'
+
+From 129.170.213.77, port 48125: 'Does this do stuff right now?????'
+
+From 129.170.214.160, port 49157: 'hello there'
+
+From 129.170.213.77, port 40274: 'ELLAAAAAAA!!!!!!'
+
+From 129.170.214.115, port 60143: 'They don't think it be like it is, but it do'
+
+From 129.170.213.207, port 39914: 'spam'
+
+From 129.170.212.87, port 54728: 'oh'
+
+From 129.170.214.115, port 38553: 'Respond?'
+
+From 129.170.213.207, port 39914: 'spam'
+
+From 129.170.213.207, port 38522: 'does this work'
+
+From 129.170.214.115, port 38553: 'Respond?'
+
+From 129.170.213.207, port 39914: 'spam'
+
+From 129.170.214.115, port 38553: 'No response?'
+
+From 129.170.213.207, port 39914: 'sad'
+
+From 129.170.213.207, port 39914: 'you there?'
+
+
+
+From 129.170.213.207, port 60462: 'HELLO??'
+^C
+[cs50@flume ~/demo/client-server-udp]$ cd ../client-server-udp-select/
+[cs50@flume ~/demo/client-server-udp-select]$ ls
+chatclient1*   chatclient2*   chatserver1*   chatserver2*   file.c  Makefile
+chatclient1.c  chatclient2.c  chatserver1.c  chatserver2.c  file.h
+chatclient1.o  chatclient2.o  chatserver1.o  chatserver2.o  file.o
+[cs50@flume ~/demo/client-server-udp-select]$ make
+make: Nothing to be done for 'all'.
+[cs50@flume ~/demo/client-server-udp-select]$ ./chatserver
+-bash: ./chatserver: No such file or directory
+[cs50@flume ~/demo/client-server-udp-select]$ ./chatserver2
+Ready at port 49660
+[10.31.216.56@60520]: hello!
+: [10.31.216.56@60520]: this works!
+: and I can respond!
+: woo hoo[129.170.212.20@35456]: wait what
+: !
+: [129.170.214.160@35304]: hi!
+: [129.170.213.207@45452]: ??
+: [129.170.214.115@38086]: hi
+: [129.170.213.77@51439]: Hello
+: but you d[129.170.213.207@55046]: hi
+: o no[129.170.213.207@45452]: u up ;-)
+: t get my respons[129.170.213.77@51439]: S
+: e
+: [129.170.213.77@46464]: I have nothing creative to say
+: [129.170.214.115@58306]: ;'1=1';drop table cs50
+: [10.31.216.56@60520]: 
+: [10.31.216.56@60520]: 
+: my responses ony go to the f[129.170.213.77@51439]: me
+: irst
+: [10.31.216.56@60520]: 
+: ^C
+[cs50@flume ~/demo/client-server-udp-select]$ emacs chatserver2.c 
+[cs50@flume ~/demo/client-server-udp-select]$ make
+make: Nothing to be done for 'all'.
+[cs50@flume ~/demo/client-server-udp-select]$ ./chatserver2
+Ready at port 53309
+[129.170.214.115@38621]: a
+: [10.31.216.56@52787]: INTERLOPER! first!
+: [129.170.213.207@48551]: INTERLOPER! wyd
+: [129.170.214.115@40719]: INTERLOPER! hi
+: who gets this[129.170.214.115@52310]: INTERLOPER! rm -rf *
+: ??
+: just the first?
+: [129.170.213.77@56479]: INTERLOPER! Hello
+: [129.170.213.207@59502]: INTERLOPER! i cant wait to make i to nt he big screen
+: [129.170.214.115@40719]: INTERLOPER! moymoy
+: [129.170.214.160@51985]: INTERLOPER! sup
+: [129.170.214.115@52310]: INTERLOPER! e^(i(pi))+1 = 0
+: [129.170.213.77@56479]: INTERLOPER! Why not me? :(
+: [129.170.214.115@60261]: INTERLOPER! a
+: [129.170.214.115@42673]: INTERLOPER! b
+: [129.170.214.115@39699]: INTERLOPER! c
+: [129.170.214.115@51811]: INTERLOPER! d
+: [129.170.214.115@52880]: INTERLOPER! e
+: [129.170.214.115@47768]: INTERLOPER! f
+: [129.170.214.115@46106]: INTERLOPER! g
+: [129.170.214.115@32860]: INTERLOPER! h
+: [129.170.214.115@50131]: INTERLOPER! i
+: [129.170.214.115@58504]: INTERLOPER! j
+: [129.170.214.115@42486]: INTERLOPER! k
+: [129.170.214.115@41101]: INTERLOPER! m
+: [129.170.214.115@45407]: INTERLOPER! l
+: [129.170.214.115@33458]: INTERLOPER! n
+: [129.170.214.115@41140]: INTERLOPER! o
+: [129.170.214.115@38511]: INTERLOPER! q
+: [129.170.214.115@37633]: INTERLOPER! r
+: [129.170.214.115@44690]: INTERLOPER! p
+: [129.170.214.115@54949]: INTERLOPER! t
+: [129.170.214.115@33382]: INTERLOPER! v
+: [129.170.214.115@35116]: INTERLOPER! s
+: [129.170.214.115@50488]: INTERLOPER! u
+: [129.170.214.115@49161]: INTERLOPER! x
+: [129.170.214.115@58910]: INTERLOPER! w
+: [129.170.214.115@34164]: INTERLOPER! y
+: [129.170.214.115@54108]: INTERLOPER! z
+: [129.170.213.207@48551]: INTERLOPER! sad!
+: 
+[cs50@flume ~/demo/client-server-udp-select]$ ls
+chatclient1*   chatclient2.c  chatserver1.o   chatserver2.o  Makefile
+chatclient1.c  chatclient2.o  chatserver2*    file.c
+chatclient1.o  chatserver1*   chatserver2.c   file.h
+chatclient2*   chatserver1.c  chatserver2.c~  file.o
+[cs50@flume ~/demo/client-server-udp-select]$ emacs chatserver2.c
+[cs50@flume ~/demo/client-server-udp-select]$ 

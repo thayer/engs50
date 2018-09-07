@@ -1,0 +1,526 @@
+Last login: Mon Apr  3 10:09:05 2017 from 198.0.135.11
+[cs50@flume ~]$ cd demo
+[cs50@flume ~/demo]$ ls
+[cs50@flume ~/demo]$ ls
+[cs50@flume ~/demo]$ emacs guessprime.c
+[cs50@flume ~/demo]$ cat guessprime.c ; mygcc guessprime.c -o guessprime
+/* 
+ * guessprime - a little game where user must guess a prime number
+ *
+ * David Kotz April 2017
+ */
+
+// one-line comments
+/* longer comments */
+
+int main()
+{
+  const int answer = 31;
+  int guess;
+
+  printf("Enter a prime number (1 to 100): ");
+  scanf("%d", &guess);
+
+  while (guess != answer) {
+    printf("wrong!");
+    printf("Enter a prime number (1 to 100): ");
+    scanf("%d", &guess);
+  }
+
+  return 0;
+}
+guessprime.c: In function ‘main’:
+guessprime.c:15:3: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]
+   printf("Enter a prime number (1 to 100): ");
+   ^~~~~~
+guessprime.c:15:3: warning: incompatible implicit declaration of built-in function ‘printf’
+guessprime.c:15:3: note: include ‘<stdio.h>’ or provide a declaration of ‘print’
+guessprime.c:16:3: warning: implicit declaration of function ‘scanf’ [-Wimplicit-function-declaration]
+   scanf("%d", &guess);
+   ^~~~~
+guessprime.c:16:3: warning: incompatible implicit declaration of built-in function ‘scanf’
+guessprime.c:16:3: note: include ‘<stdio.h>’ or provide a declaration of ‘scanf’
+[cs50@flume ~/demo]$ emacs guessprime.c
+[cs50@flume ~/demo]$ cat guessprime.c ; mygcc guessprime.c -o guessprime
+/* 
+ * guessprime - a little game where user must guess a prime number
+ *
+ * David Kotz April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  const int answer = 31;
+  int guess;
+
+  printf("Enter a prime number (1 to 100): ");
+  scanf("%d", &guess);
+
+  while (guess != answer) {
+    printf("wrong!");
+    printf("Enter a prime number (1 to 100): ");
+    scanf("%d", &guess);
+  }
+
+  return 0;
+}
+[cs50@flume ~/demo]$ ls -l
+total 20
+-rwxr-xr-x 1 cs50 cs50 11136 Apr  3 14:26 guessprime*
+-rw-r--r-- 1 cs50 cs50   410 Apr  3 14:25 guessprime.c
+-rw-r--r-- 1 cs50 cs50   414 Apr  3 14:22 guessprime.c~
+[cs50@flume ~/demo]$ ./guessprime 
+Enter a prime number (1 to 100): 7
+wrong!Enter a prime number (1 to 100): 2
+wrong!Enter a prime number (1 to 100): 5
+wrong!Enter a prime number (1 to 100): 31
+[cs50@flume ~/demo]$ !ema
+emacs guessprime.c
+[cs50@flume ~/demo]$ cat guessprime.c ; mygcc guessprime.c -o guessprime
+/* 
+ * guessprime - a little game where user must guess a prime number
+ *
+ * David Kotz April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  const int answer = 31;
+  int guess;
+
+  printf("Enter a prime number (1 to 100): ");
+  scanf("%d", &guess);
+
+  while (guess != answer) {
+    printf("wrong!\n\n");
+    printf("Enter a prime number (1 to 100): ");
+    scanf("%d", &guess);
+  }
+
+  return 0;
+}
+[cs50@flume ~/demo]$ ./guessprime 
+Enter a prime number (1 to 100): 34344
+wrong!
+
+Enter a prime number (1 to 100): 3
+wrong!
+
+Enter a prime number (1 to 100): 31
+[cs50@flume ~/demo]$ emacs guessprime.c
+[cs50@flume ~/demo]$ cat guessprime.c ; mygcc guessprime.c -o guessprime
+/* 
+ * guessprime - a little game where user must guess a prime number
+ *
+ * David Kotz April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int readGuess()
+{
+  int guess;
+  
+  printf("Enter a prime number (1 to 100): ");
+  scanf("%d", &guess);
+
+  return guess;
+}
+
+int main()
+{
+  const int answer = 31;
+  int guess;
+
+  guess = readGuess();
+  
+  while (guess != answer) {
+    printf("wrong!\n\n");
+    guess = readGuess();
+  }
+
+  return 0;
+}
+[cs50@flume ~/demo]$ ./guessprime 
+Enter a prime number (1 to 100): 3
+wrong!
+
+Enter a prime number (1 to 100): 4
+wrong!
+
+Enter a prime number (1 to 100): 31
+[cs50@flume ~/demo]$ emacs guessprime.c
+[cs50@flume ~/demo]$ cat guessprime.c ; mygcc guessprime.c -o guessprime
+/* 
+ * guessprime - a little game where user must guess a prime number
+ *
+ * David Kotz April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  const int answer = 31;
+  int guess;
+
+  guess = readGuess();
+  
+  while (guess != answer) {
+    printf("wrong!\n\n");
+    guess = readGuess();
+  }
+
+  return 0;
+}
+
+int readGuess()
+{
+  int guess;
+  
+  printf("Enter a prime number (1 to 100): ");
+  scanf("%d", &guess);
+
+  return guess;
+}
+
+guessprime.c: In function ‘main’:
+guessprime.c:15:11: warning: implicit declaration of function ‘readGuess’ [-Wimplicit-function-declaration]
+   guess = readGuess();
+           ^~~~~~~~~
+[cs50@flume ~/demo]$ !em
+emacs guessprime.c
+[cs50@flume ~/demo]$ cat guessprime.c ; mygcc guessprime.c -o guessprime
+/* 
+ * guessprime - a little game where user must guess a prime number
+ *
+ * David Kotz April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+/* function prototype */
+int readGuess();
+
+/* main */
+int main()
+{
+  const int answer = 31;
+  int guess;
+
+  guess = readGuess();
+  
+  while (guess != answer) {
+    printf("wrong!\n\n");
+    guess = readGuess();
+  }
+
+  return 0;
+}
+
+/* readGuess */
+/* function definition */
+int readGuess()
+{
+  int guess;
+  
+  printf("Enter a prime number (1 to 100): ");
+  scanf("%d", &guess);
+
+  return guess;
+}
+
+[cs50@flume ~/demo]$ ./guessprime 
+Enter a prime number (1 to 100): 3
+wrong!
+
+Enter a prime number (1 to 100): 2
+wrong!
+
+Enter a prime number (1 to 100): 31
+[cs50@flume ~/demo]$ !em
+emacs guessprime.c
+[cs50@flume ~/demo]$ cat guessprime.c ; mygcc guessprime.c -o guessprime
+/* 
+ * guessprime - a little game where user must guess a prime number
+ *
+ * David Kotz April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+/* function prototype */
+int readGuess();
+bool isPrime(const int n);
+
+/* main */
+int main()
+{
+  const int answer = 31;
+  int guess;
+
+  guess = readGuess();
+  
+  while (guess != answer) {
+    printf("wrong!\n\n");
+    guess = readGuess();
+
+    if (guess < 0 || guess > 100) {
+      printf("guess %d is out of range!\n", guess);
+    }
+
+    if (!isPrime(guess)) {
+      printf("guess %d is not even prime!\n", guess);
+    }
+  }
+
+  return 0;
+}
+
+/* readGuess */
+/* function definition */
+int readGuess()
+{
+  int guess;
+  
+  printf("Enter a prime number (1 to 100): ");
+  scanf("%d", &guess);
+
+  return guess;
+}
+
+/* isPrime */
+bool isPrime(const int n)
+{
+  if (n < 2) return false;
+  if (n > 2 && n%2 == 0) return false;
+  if (n > 3 && n%3 == 0) return false;
+  if (n > 5 && n%5 == 0) return false;
+  if (n > 7 && n%7 == 0) return false;
+  return true;
+}
+[cs50@flume ~/demo]$ ./guessprime 
+Enter a prime number (1 to 100): 3
+wrong!
+
+Enter a prime number (1 to 100): 4
+guess 4 is not even prime!
+wrong!
+
+Enter a prime number (1 to 100): 0
+guess 0 is not even prime!
+wrong!
+
+Enter a prime number (1 to 100): -1
+guess -1 is out of range!
+guess -1 is not even prime!
+wrong!
+
+Enter a prime number (1 to 100): 9999
+guess 9999 is out of range!
+guess 9999 is not even prime!
+wrong!
+
+Enter a prime number (1 to 100): 100
+guess 100 is not even prime!
+wrong!
+
+Enter a prime number (1 to 100): 31
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ !em
+emacs guessprime.c
+[cs50@flume ~/demo]$ cat guessprime.c ; mygcc guessprime.c -o guessprime
+/* 
+ * guessprime - a little game where user must guess a prime number
+ *
+ * David Kotz April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+/* function prototype */
+int readGuess();
+bool isPrime(const int n);
+
+/* main */
+int main()
+{
+  const int answer = 31;
+  int guess;
+
+  guess = readGuess();
+  
+  while (guess != answer) {
+    printf("wrong!\n\n");
+    guess = readGuess();
+  }
+
+  return 0;
+}
+
+/* readGuess */
+/* function definition */
+int readGuess()
+{
+  int guess;
+  
+  printf("Enter a prime number (1 to 100): ");
+  scanf("%d", &guess);
+
+  if (guess < 0 || guess > 100) {
+    printf("guess %d is out of range!\n", guess);
+  }
+  
+  if (!isPrime(guess)) {
+    printf("guess %d is not even prime!\n", guess);
+  }
+  
+  return guess;
+}
+
+/* isPrime */
+bool isPrime(const int n)
+{
+  if (n < 2) return false;
+  if (n > 2 && n%2 == 0) return false;
+  if (n > 3 && n%3 == 0) return false;
+  if (n > 5 && n%5 == 0) return false;
+  if (n > 7 && n%7 == 0) return false;
+  return true;
+}
+[cs50@flume ~/demo]$ ./guessprime 
+Enter a prime number (1 to 100): 4
+guess 4 is not even prime!
+wrong!
+
+Enter a prime number (1 to 100): 31
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ !em
+emacs guessprime.c
+[cs50@flume ~/demo]$ cat guessprime.c ; mygcc guessprime.c -o guessprime
+/* 
+ * guessprime - a little game where user must guess a prime number
+ *
+ * David Kotz April 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+/* function prototype */
+int readGuess();
+bool isPrime(const int n);
+int pickPrime(const int max);
+
+/* main */
+int main()
+{
+  const int answer = pickPrime(100);
+  int guess;
+
+  guess = readGuess();
+  
+  while (guess != answer) {
+    printf("wrong!\n\n");
+    guess = readGuess();
+  }
+
+  return 0;
+}
+
+/* readGuess */
+/* function definition */
+int readGuess()
+{
+  int guess;
+  
+  printf("Enter a prime number (1 to 100): ");
+  scanf("%d", &guess);
+
+  if (guess < 0 || guess > 100) {
+    printf("guess %d is out of range!\n", guess);
+  }
+  
+  if (!isPrime(guess)) {
+    printf("guess %d is not even prime!\n", guess);
+  }
+  
+  return guess;
+}
+
+/* isPrime */
+bool isPrime(const int n)
+{
+  if (n < 2) return false;
+  if (n > 2 && n%2 == 0) return false;
+  if (n > 3 && n%3 == 0) return false;
+  if (n > 5 && n%5 == 0) return false;
+  if (n > 7 && n%7 == 0) return false;
+  return true;
+}
+
+int pickPrime(const int max)
+{
+  int p;
+
+  for (p = 0; !isPrime(p); p = (rand() % max + 1)) {
+    ; // keep looking!
+  }
+
+  return p;
+}
+
+[cs50@flume ~/demo]$ ./guessprime 
+Enter a prime number (1 to 100): 31
+wrong!
+
+Enter a prime number (1 to 100): 7
+wrong!
+
+Enter a prime number (1 to 100): 3
+wrong!
+
+Enter a prime number (1 to 100): 5
+wrong!
+
+Enter a prime number (1 to 100): 2
+wrong!
+
+Enter a prime number (1 to 100): 27
+guess 27 is not even prime!
+wrong!
+
+Enter a prime number (1 to 100): 24
+guess 24 is not even prime!
+wrong!
+
+Enter a prime number (1 to 100): 23
+wrong!
+
+Enter a prime number (1 to 100): 0
+guess 0 is not even prime!
+wrong!
+
+Enter a prime number (1 to 100): ^C
+[cs50@flume ~/demo]$ packet_write_wait: Connection to 129.170.214.115 port 22: Broken pipe
+
+[Process completed]
+

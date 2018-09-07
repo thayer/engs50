@@ -1,0 +1,809 @@
+Last login: Tue Apr 11 17:11:44 2017 from 10.31.122.154
+[cs50@flume ~]$ cd demo
+[cs50@flume ~/demo]$ ls
+names0.c  names2.c  names4.c  names6.c	readlinep.c@  students.txt
+names1.c  names3.c  names5.c  names7.c	readlinep.h@
+[cs50@flume ~/demo]$ cat names2.c 
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names [filename]
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "freadline.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  const int maxLength = 50;  // maximum length of a name (minus 2)
+  char names[maxNames][maxLength];
+  FILE *fp;		      // input file
+  int n = 0;		      // number of names read
+
+  // validate arguments and open input file
+  if (argc == 1) {
+    fp = stdin;
+  } else if (argc == 2) {
+    fp = fopen(argv[1], "r");
+    if (fp == NULL) {
+      fprintf(stderr, "%s cannot open file '%s'\n", argv[0], argv[1]);
+      exit (2);
+    } 
+  } else {
+    fprintf(stderr, "usage: %s [filename]\n", argv[0]);
+    exit (1);
+  }
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(fp); ) {
+    if (freadLine(fp, names[n], maxLength)) {
+      n++; // only increment if no error
+    }
+  }
+
+  fclose(fp);
+
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+[cs50@flume ~/demo]$ cp names2.c names.c
+[cs50@flume ~/demo]$ emacs !$
+emacs names.c
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readline.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  const int maxLength = 50;  // maximum length of a name (minus 2)
+  char names[maxNames][maxLength];
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(fp); ) {
+    if (readLine(names[n], maxLength)) {
+      n++; // only increment if no error
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+names.c:15:22: fatal error: readline.h: No such file or directory
+ #include "readline.h"
+                      ^
+compilation terminated.
+[cs50@flume ~/demo]$ cp ~cs50/examples/readline.h .
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readline.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  const int maxLength = 50;  // maximum length of a name (minus 2)
+  char names[maxNames][maxLength];
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(fp); ) {
+    if (readLine(names[n], maxLength)) {
+      n++; // only increment if no error
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+names.c: In function ‘main’:
+names.c:25:37: error: ‘fp’ undeclared (first use in this function)
+   for (n = 0; n < maxNames && !feof(fp); ) {
+                                     ^~
+names.c:25:37: note: each undeclared identifier is reported only once for each function it appears in
+[cs50@flume ~/demo]$ emacs names.c
+
+[1]+  Stopped                 emacs names.c
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readline.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  const int maxLength = 50;  // maximum length of a name (minus 2)
+  char names[maxNames][maxLength];
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(stdin); ) {
+    if (readLine(names[n], maxLength)) {
+      n++; // only increment if no error
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+/tmp/cccMVbnF.o: In function `main':
+/net/class/cs50/demo/names.c:26: undefined reference to `readLine'
+collect2: error: ld returned 1 exit status
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c readline.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readline.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  const int maxLength = 50;  // maximum length of a name (minus 2)
+  char names[maxNames][maxLength];
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(stdin); ) {
+    if (readLine(names[n], maxLength)) {
+      n++; // only increment if no error
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+gcc: error: readline.c: No such file or directory
+[cs50@flume ~/demo]$ cp ~cs50/examples/readline.c .
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c readline.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readline.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  const int maxLength = 50;  // maximum length of a name (minus 2)
+  char names[maxNames][maxLength];
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(stdin); ) {
+    if (readLine(names[n], maxLength)) {
+      n++; // only increment if no error
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+[cs50@flume ~/demo]$ ./names 
+david
+mary
+joe
+ellen
+4 names
+0: david
+1: mary
+2: joe
+3: ellen
+[cs50@flume ~/demo]$ fg
+emacs names.c
+[cs50@flume ~/demo]$ cp ~cs50/examples/readlinep.c .
+cp: '/net/class/cs50/examples/readlinep.c' and './readlinep.c' are the same file
+[cs50@flume ~/demo]$ cp ~cs50/examples/readlinep.h .
+cp: '/net/class/cs50/examples/readlinep.h' and './readlinep.h' are the same file
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c readline.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readline.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  char *names[maxNames];     // array of pointers to names
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(stdin); ) {
+    names[n] = readlinep();
+    if (names[n] != NULL) {
+      n++; // only increment if no error
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+names.c: In function ‘main’:
+names.c:25:16: warning: implicit declaration of function ‘readlinep’ [-Wimplicit-function-declaration]
+     names[n] = readlinep();
+                ^~~~~~~~~
+names.c:25:14: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+     names[n] = readlinep();
+              ^
+/tmp/ccayU8m7.o: In function `main':
+/net/class/cs50/demo/names.c:25: undefined reference to `readlinep'
+collect2: error: ld returned 1 exit status
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c readlinep.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readline.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  char *names[maxNames];     // array of pointers to names
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(stdin); ) {
+    names[n] = readlinep();
+    if (names[n] != NULL) {
+      n++; // only increment if no error
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+names.c: In function ‘main’:
+names.c:25:16: warning: implicit declaration of function ‘readlinep’ [-Wimplicit-function-declaration]
+     names[n] = readlinep();
+                ^~~~~~~~~
+names.c:25:14: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+     names[n] = readlinep();
+              ^
+/tmp/cczE5wDq.o: In function `main':
+/net/class/cs50/demo/names.c:25: undefined reference to `readlinep'
+collect2: error: ld returned 1 exit status
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ emacs names.c
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c readlinep.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readlinep.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  char *names[maxNames];     // array of pointers to names
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(stdin); ) {
+    names[n] = readlinep();
+    if (names[n] != NULL) {
+      n++; // only increment if no error
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+[cs50@flume ~/demo]$ ./names 
+mary
+joseph
+fred
+billie
+4 names
+0: mary1: joseph2: fred3: billie[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ emacs names.c
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c readlinep.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readlinep.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  char *names[maxNames];     // array of pointers to names
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(stdin); ) {
+    names[n] = readlinep();
+    if (names[n] != NULL) {
+      n++; // only increment if no error
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s\n", i, names[i]);
+  }
+}
+[cs50@flume ~/demo]$ ./naes
+-bash: ./naes: No such file or directory
+[cs50@flume ~/demo]$ ./names
+mary
+joe
+fred
+mary
+4 names
+0: mary
+1: joe
+2: fred
+3: mary
+[cs50@flume ~/demo]$ emacs names.c
+
+[1]+  Stopped                 emacs names.c
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c readlinep.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readlinep.h"
+
+struct listnode {
+  char *name;
+  struct listnode *next;
+};
+
+struct listnode *listnode_new(char *name);
+bool list_insert(struct listnode *head, char *name);
+
+int main(const int argc, char *argv[])
+{
+  struct listnode head = {NULL, NULL};
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  while ( !feof(stdin) ) {
+    char *name = readlinep();
+    if (name != NULL) {
+      if (list_insert(&head, name)) {
+	  n++; // only increment if no error
+      }
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (struct listnode *node = head->next; node != NULL; node = node->next) {
+    printf("%s\n", node->name);
+  }
+}
+
+bool list_insert(struct listnode *head, char *name)
+{
+  struct listnode *node = listnode_new(name);
+
+  if (head == NULL || node == NULL) {
+    return false;
+  } else {
+    node->next = head->next;
+    head->next = node;
+  }
+}
+
+struct listnode *listnode_new(char *name)
+{
+  struct listnode *node = malloc(sizeof(struct listnode));
+  if (node == NULL) {
+    return NULL;
+  } else {
+    node->name = name;
+    node->next = NULL;
+    return node;
+  }
+}
+
+names.c:22:1: error: unknown type name ‘bool’
+ bool list_insert(struct listnode *head, char *name);
+ ^~~~
+names.c: In function ‘main’:
+names.c:40:36: error: invalid type argument of ‘->’ (have ‘struct listnode’)
+   for (struct listnode *node = head->next; node != NULL; node = node->next) {
+                                    ^~
+names.c: At top level:
+names.c:45:1: error: unknown type name ‘bool’
+ bool list_insert(struct listnode *head, char *name)
+ ^~~~
+names.c: In function ‘list_insert’:
+names.c:50:12: error: ‘false’ undeclared (first use in this function)
+     return false;
+            ^~~~~
+names.c:50:12: note: each undeclared identifier is reported only once for each function it appears in
+names.c:55:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+[cs50@flume ~/demo]$ fg
+emacs names.c
+
+[1]+  Stopped                 emacs names.c
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c readlinep.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include "readlinep.h"
+
+struct listnode {
+  char *name;
+  struct listnode *next;
+};
+
+struct listnode *listnode_new(char *name);
+bool list_insert(struct listnode *head, char *name);
+
+int main(const int argc, char *argv[])
+{
+  struct listnode head = {NULL, NULL};
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  while ( !feof(stdin) ) {
+    char *name = readlinep();
+    if (name != NULL) {
+      if (list_insert(&head, name)) {
+	  n++; // only increment if no error
+      }
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (struct listnode *node = head->next; node != NULL; node = node->next) {
+    printf("%s\n", node->name);
+  }
+}
+
+bool list_insert(struct listnode *head, char *name)
+{
+  struct listnode *node = listnode_new(name);
+
+  if (head == NULL || node == NULL) {
+    return false;
+  } else {
+    node->next = head->next;
+    head->next = node;
+  }
+}
+
+struct listnode *listnode_new(char *name)
+{
+  struct listnode *node = malloc(sizeof(struct listnode));
+  if (node == NULL) {
+    return NULL;
+  } else {
+    node->name = name;
+    node->next = NULL;
+    return node;
+  }
+}
+
+names.c: In function ‘main’:
+names.c:41:36: error: invalid type argument of ‘->’ (have ‘struct listnode’)
+   for (struct listnode *node = head->next; node != NULL; node = node->next) {
+                                    ^~
+names.c: In function ‘list_insert’:
+names.c:56:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+[cs50@flume ~/demo]$ fg
+emacs names.c
+
+[1]+  Stopped                 emacs names.c
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c readlinep.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include "readlinep.h"
+
+struct listnode {
+  char *name;
+  struct listnode *next;
+};
+
+struct listnode *listnode_new(char *name);
+bool list_insert(struct listnode *head, char *name);
+
+int main(const int argc, char *argv[])
+{
+  struct listnode head = {NULL, NULL};
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  while ( !feof(stdin) ) {
+    char *name = readlinep();
+    if (name != NULL) {
+      if (list_insert(&head, name)) {
+	  n++; // only increment if no error
+      }
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (struct listnode *node = head.next; node != NULL; node = node->next) {
+    printf("%s\n", node->name);
+  }
+}
+
+bool list_insert(struct listnode *head, char *name)
+{
+  struct listnode *node = listnode_new(name);
+
+  if (head == NULL || node == NULL) {
+    return false;
+  } else {
+    node->next = head->next;
+    head->next = node;
+  }
+}
+
+struct listnode *listnode_new(char *name)
+{
+  struct listnode *node = malloc(sizeof(struct listnode));
+  if (node == NULL) {
+    return NULL;
+  } else {
+    node->name = name;
+    node->next = NULL;
+    return node;
+  }
+}
+
+names.c: In function ‘list_insert’:
+names.c:56:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+[cs50@flume ~/demo]$ fg
+emacs names.c
+[cs50@flume ~/demo]$ cat names.c ; mygcc names.c readlinep.c -o names
+/* 
+ * names2.c - read in a list of names from stdin
+ *
+ * usage: names <filename
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include "readlinep.h"
+
+struct listnode {
+  char *name;
+  struct listnode *next;
+};
+
+struct listnode *listnode_new(char *name);
+bool list_insert(struct listnode *head, char *name);
+
+int main(const int argc, char *argv[])
+{
+  struct listnode head = {NULL, NULL};
+  int n = 0;		      // number of names read
+
+  // read the list of names
+  while ( !feof(stdin) ) {
+    char *name = readlinep();
+    if (name != NULL) {
+      if (list_insert(&head, name)) {
+	  n++; // only increment if no error
+      }
+    }
+  }
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (struct listnode *node = head.next; node != NULL; node = node->next) {
+    printf("%s\n", node->name);
+  }
+}
+
+bool list_insert(struct listnode *head, char *name)
+{
+  struct listnode *node = listnode_new(name);
+
+  if (head == NULL || node == NULL) {
+    return false;
+  } else {
+    node->next = head->next;
+    head->next = node;
+    return true;
+  }
+}
+
+struct listnode *listnode_new(char *name)
+{
+  struct listnode *node = malloc(sizeof(struct listnode));
+  if (node == NULL) {
+    return NULL;
+  } else {
+    node->name = name;
+    node->next = NULL;
+    return node;
+  }
+}
+
+[cs50@flume ~/demo]$ ./names
+mary
+jospeh
+dave
+mom
+dad
+billy
+sally
+rama
+8 names
+rama
+sally
+billy
+dad
+mom
+dave
+jospeh
+mary
+[cs50@flume ~/demo]$ emacs names5.
+[cs50@flume ~/demo]$ emacs names5.c
+[cs50@flume ~/demo]$ 

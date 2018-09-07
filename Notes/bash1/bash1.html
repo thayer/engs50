@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Introduction to Bash</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Introduction to Bash</h1>
+</header>
+<p>Don’t forget this week’s <a href="%7B%7Bsite.baseurl%7D%7D/Reading/#week-1">reading</a>.</p>
+<p>In this lecture, we discuss the Unix shell and its commands. The ‘shell’ is a <em>command-line interpreter</em> and invokes kernel-level commands. It also can be used as a <em>programming language</em> to design your own commands. We’ll come to shell programming in a future lecture.</p>
+<p>We do not recommend that you buy a book about Unix or the shell; there are some very good references and free-access online books – see the <a href="%7B%7Bsite.resources%7D%7D">resources page</a> – and we have selected some interesting and useful <a href="%7B%7Bsite.baseurl%7D%7D/Reading">readings</a>.</p>
+<p>If you need help on the meaning or syntax of any Unix shell command you can use the manual (man) pages on a Unix system (see below) or the <a href="http://www.computerhope.com/unix.htm#04">web unix commands</a>. Just keep in mind that some commands’ syntax varies a bit across Unix flavors, so when in doubt, check the man page on the system you’re using.</p>
+<h2 id="unix-philosophy">Unix Philosophy</h2>
+<p>In their book <em>Program Design in the Unix Environment</em> (1984), Rob Pike and Brian Kernighan put it this way:</p>
+<blockquote>
+<p>``Much of the power of the Unix operating system comes from a style of program design that makes programs easy to use and, more important, easy to combine with other programs. This style has been called the use of software tools, and depends more on how the programs fit into the programming environment and how they can be used with other programs than on how they are designed internally. […] This style was based on the use of tools: using programs separately or in combination to get a job done, rather than doing it by hand, by monolithic self-sufficient subsystems, or by special-purpose, one-time programs.’’</p>
+</blockquote>
+<h3 id="historical-note---unix">Historical note - Unix</h3>
+<p><a href="https://en.wikipedia.org/wiki/Unix">Unix</a> was developed at Bell Labs in the 1970s by a group led by <a href="https://en.wikipedia.org/wiki/Douglas_McIlroy">Doug McIlroy</a>, now an Adjunct Professor at Dartmouth (visit him in Sudikoff!).</p>
+<blockquote>
+<p>``This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface.’’ — Doug McIlroy</p>
+</blockquote>
+<h2 id="goals">Goals</h2>
+<p>We plan to cover the following topics in today’s lecture:</p>
+<ul>
+<li>The shell</li>
+<li>The file system</li>
+</ul>
+<p>We’ll do this activity in today’s class:</p>
+<ul>
+<li>Sit with your group, and get to know your group mates.</li>
+<li>Get to know your Learning Fellow.</li>
+<li>Choose a group name.</li>
+</ul>
+<p>Terminal <a href="script.txt">script</a> from today’s class.</p>
+<h2 id="the-shell">The shell</h2>
+<h3 id="commands-switches-arguments">Commands, switches, arguments</h3>
+<p>The shell is the Unix command-line interpreter. It provides an interface between the user and the kernel and executes programs called ‘commands’. For example, if a user enters <code>ls</code>then the shell executes the <code>ls</code> command, which actually executes a program stored in the file <code>/bin/ls</code>. The shell can also execute other programs including scripts (text files interpreted by a program like python or bash) and compiled programs (e.g., written in C). Even your own programs – once marked ‘executable’ – become commands you can run from the shell!</p>
+<p>You will get by in the course by becoming familiar with a subset of the Unix commands; don’t let yourself be overwhelmed by the presence of hundreds of commands. You will probably be regularly using 2-3 dozen of them by the end of the term.</p>
+<p>Unix has often been criticized for being very terse (it’s rumored that its designers were bad typists). Many commands have short, cryptic names and vowels are a rarity:</p>
+<pre><code>awk, cat, cp, cd, chmod, echo, find, grep, ls, mv, rm, tr, sed, comm</code></pre>
+<p>We will learn to use all of these commands and more.</p>
+<p>Unix command output is also very terse - the default action on success is silence. Only errors are reported, and error messages are often terse. Unix commands are often termed ‘tools’ or ‘utilities’, because they are meant to be simple tools that you can combine in novel ways.</p>
+<p>Instructions entered in response to the shell prompt are interpreted first by the shell - expanding any variable references, filename wildcards, or special syntax. Thus, the shell can rewrite the command line; then, it expects the command line to have the following syntax:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1">    <span class="bu">command</span> [arg1]...</a></code></pre></div>
+<p>The brackets <code>[ ]</code> indicate that the arguments are optional, and the notation above means that there are zero or more arguments. Arguments are separated by white space. Many commands can be executed with or without arguments. Others require arguments, or a certain number of arguments, (e.g., <code>cp sort.c anothersort.c</code>) to work correctly. If none are supplied, they will provide some error message in return. Another part of the Unix philosophy is to avoid an explosion in the number of commands by having most commands support various <em>options</em> (sometimes called <em>flags</em> or <em>switches</em>), which modify the actions of the commands.</p>
+<p>For example, let’s use the <code>ls</code> command and the <code>-l</code> option switch to list in long format the file <code>filename.c</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1">    <span class="fu">ls</span> -l filename.c</a></code></pre></div>
+<p>Switches are often single characters preceded by a hyphen (e.g., <code>-l</code>). Most commands accept switches in any order, though they generally must appear before all the real arguments (usually filenames). In the case of the <code>ls</code> example below, the command arguments represent file or directory names. The options modify the operation of the command and are usually operated on by the program invoked by the shell rather than the shell itself.</p>
+<p>Unix programs always receive a list of arguments, containing at least one argument, which is always the command name itself. So, for <code>ls</code> that first argument would be “<code>ls</code>”. The first argument is referred to as argument 0, “the zero-th argument”. In our <code>ls</code> example, argument 1 is <code>-l</code> and argument 2 is <code>filename.c</code>. Some commands also accept their switches grouped together. For example, the following switches to <code>ls</code> are identical:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1">    <span class="fu">ls</span> -tla foople*</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">    <span class="ex">...</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">    <span class="fu">ls</span> -t -l -a foople*</a></code></pre></div>
+<p>The shell parses the words or tokens (command name and arguments) you type on the command line, and asks the kernel to execute the program corresponding to that command; the interpretation of the arguments (as switches, filenames, or something else) is determined by that program.</p>
+<p>Typically, the shell processes the complete line after a carriage return is entered and then goes off to find the program that the command line specified. If the command is a pathname, whether relative (e.g., <code>./mycommand</code>) or absolute (e.g., <code>/bin/ls</code> or <code>~cs50/mycommand</code>), the shell simply executes the program in that file. If the command is not a pathname, the shell searches through a list of directories in your “path”, which is defined by the shell variable called <code>PATH</code>.</p>
+<h2 id="shells-path">Shell’s ‘Path’</h2>
+<p>Take a look at your <code>PATH</code> by asking the shell to substitute its value (<code>$PATH</code>) and pass it as an argument to the <code>echo</code> command:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ echo <span class="va">$PATH</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="ex">/usr/lib64/qt-3.3</span>/bin:<span class="ex">/usr/lib64</span>/ccache:<span class="ex">/usr/local</span>/bin:<span class="ex">/usr</span>/bin:<span class="ex">/usr/local</span>/sbin:<span class="ex">/usr</span>/sbin:<span class="ex">/net/class/cs50</span>/bin:/bin:<span class="ex">/usr</span>/bin:/sbin:<span class="ex">/usr</span>/sbin:<span class="ex">/usr/java/j2sdk</span>/bin:<span class="ex">/usr/local</span>/bin:<span class="ex">/usr/local/bin</span>/X11:<span class="ex">.</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">[<span class="ex">cs50@flume</span> ~]$ </a></code></pre></div>
+<p>So where does the <code>ls</code> command executed above reside in the Unix directory hierarchy? Let’s use another command to find out.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ which ls</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="fu">ls</span> is aliased to <span class="kw">`</span><span class="fu">ls</span> -F<span class="st">&#39;</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">ls is /usr/bin/ls</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">ls is /bin/ls</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">ls is /usr/bin/ls</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">[cs50@flume ~]$ </span></a></code></pre></div>
+<p>The first line of response says that <code>ls</code> is “aliased”. This is a shell feature; the shell allows us to define “aliases”, which act just like commands but are actually just a textual substitution of a command name (the alias) to some other string (in this case, <code>ls -F</code>). Thus, any time I type <code>ls blah blah</code>, it treats it as if I had typed <code>ls -F blah blah</code>. The <code>-F</code> option tells <code>ls</code> to add a trailing symbol to some names in its output; it adds a <code>/</code> to the names of directories, a <code>@</code> to the names of symbolic links (um, that’s another conversation), and some other even specialized cases.</p>
+<p>Of course, the shell then still needs to resolve <code>ls</code>. It then searches the <code>PATH</code> to find an executable file with that name; in this case, it appears that <code>ls</code> exists in both <code>/usr/bin</code> and in <code>/bin</code>. The shell will execute the first one, because it is found first in the PATH. Below you can see the effect of running <code>ls</code> (the alias) and <code>/bin/ls</code> (the raw command, without the <code>-F</code>).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ ls</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="ex">Archive/</span>  private/  proc-log  public_html/  resources/  web@</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">[<span class="ex">cs50@flume</span> ~]$ /bin/ls</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="ex">Archive</span>  private  proc-log  public_html  resources  web</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">[<span class="ex">cs50@flume</span> ~]$ </a></code></pre></div>
+<h2 id="viewing-files">Viewing files</h2>
+<p>You can see the contents of any file with the <code>cat</code> command, so named because it concatenates all the files listed as arguments, printing one after the other. For very long files, though, the output will quickly scroll off your terminal.</p>
+<p>Less Is More: The <code>less</code> and <code>more</code> commands are handy for quickly looking at files. The syntax is <code>less filename</code> and <code>more filename</code>. Take a look at the <code>man</code> pages to get the details of each. Similarly, <code>head</code> and <code>tail</code> display a number of lines (selectable via switches, of course) at the beginning and end of a file, respectively.</p>
+<p>See what these do: <code>cat /etc/passwd</code>, <code>head /etc/passwd</code>, <code>tail /etc/passwd</code>, <code>more /etc/passwd</code>, and <code>less /etc/passwd</code>. The file <code>/etc/passwd</code> lists all the accounts on the system, and information about each account.</p>
+<h2 id="editing-files">Editing files</h2>
+<p>Long before there were windows and graphical displays, or even screens, there were text editors. Two are in common use on Unix system today: <code>emacs</code> and <code>vi</code>. Actually, there is an expanded/improved version of <code>vi</code> called <code>vim</code>, which is quite popular.</p>
+<p>You should try both and become comfortable with at least one. Yes, it’s tempting to use an external graphical editor (like Sublime), but there are times when you <em>must</em> use a text-only editor and thus you should get used to it.</p>
+<p>See {{site.resources}}/#editors for some resources that can help you learn <code>emacs</code> or <code>vim</code>.</p>
+<h2 id="unix-file-system">Unix file system</h2>
+<p>The Unix file system is a <em>hierarchical file system</em>. The file system consists of a very small number of different file <em>types</em>. The two most common types are <em>files</em> and <em>directories</em>.</p>
+<p>A directory (akin to a folder on a MacOS or Windows computer) contains the names and locations of all files and directories below it. A directory always contains two special files <code>.</code> (dot) and <code>..</code> (dot dot); <code>.</code> represents the directory itself, and <code>..</code> represents the directory’s parent. In the following, I make a new directory, change my current working directory to be that new directory, create a new file in that directory, and use <code>ls</code> to explore the contents of the new directory and its parent.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ mkdir test</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">[<span class="ex">cs50@flume</span> ~]$ cd test</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">[<span class="ex">cs50@flume</span> ~/test]$ echo hello <span class="op">&gt;</span> somefile</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">[<span class="ex">cs50@flume</span> ~/test]$ ls -a</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="ex">./</span>  ../  somefile</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">[<span class="ex">cs50@flume</span> ~/test]$ ls </a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="ex">somefile</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">[<span class="ex">cs50@flume</span> ~/test]$ ls .</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="ex">somefile</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">[<span class="ex">cs50@flume</span> ~/test]$ ls ..</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="ex">Archive/</span>  private/  proc-log  public_html/  resources/  test/  web@</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12">[<span class="ex">cs50@flume</span> ~/test]$ </a></code></pre></div>
+<p>Directory names are separated by a <em>forward</em> slash <code>/</code>, forming pathnames. A <em>pathname</em> is a filename that includes some or all of the directories leading to the file; an <em>absolute pathname</em> is relative to the root (<code>/</code>) directory and begins with a <code>/</code>, in the first example below, whereas a <em>relative pathname</em> is relative to the current working directory, as in the second example below. Notice that a relative pathname can also use <code>.</code> or <code>..</code>, as in the third example below.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ ls /net/class/cs50/public_html/Labs/*</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="ex">/net/class/cs50/public_html/Labs/index.html</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="ex">/net/class/cs50/public_html/Labs/Lab0-Preliminaries.html</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="ex">/net/class/cs50/public_html/Labs/usernames.txt</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">[<span class="ex">cs50@flume</span> ~]$ ls public_html/Resources/*</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="ex">public_html/Resources/DougMcIlroy.pdf</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="ex">public_html/Resources/Homebrew0.png</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="ex">public_html/Resources/Homebrew1.png</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="ex">public_html/Resources/Homebrew.html</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="ex">public_html/Resources/index.html</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="ex">public_html/Resources/RC13972-C-Programming.docx</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="ex">public_html/Resources/RC13972-C-Programming.pdf</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="ex">public_html/Resources/StartingSublime.pdf</span></a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="ex">public_html/Resources/toomey-unix.pdf</span></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15">[<span class="ex">cs50@flume</span> ~]$ ls ../cs10/public_html/</a>
+<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="ex">azul.css</span>    help.html      lab/       oldindex.html  software.html</a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="ex">exams/</span>      indexBAK.html  lectures/  sa/        syllabus.html</a>
+<a class="sourceLine" id="cb9-18" data-line-number="18"><span class="ex">exams.html</span>  index.html     old/       schedule.html</a>
+<a class="sourceLine" id="cb9-19" data-line-number="19">[<span class="ex">cs50@flume</span> ~]$ </a></code></pre></div>
+<p>As implied by the shell prompt, the current working directory is <code>~cs50</code>, which is shorthand for “the home directory of user <code>cs50</code>”, which happens to be the directory at path <code>/net/class/cs50</code>.</p>
+<h3 id="moving-around-the-file-system">Moving around the file system</h3>
+<p>The “change directory” command (<code>cd</code>) allows us to move around the Unix directory hierarchy, that is, to change our “current working directory” from which all relative filenames and pathnames will be resolved. Let’s combine <code>pwd</code>, <code>ls</code>, and <code>cd</code> to move around the local directories that are rooted at <code>/net/class/cs50</code>. Remember that <code>~</code> refers to the home directory and <code>..</code> refers to the parent directory.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ mkdir test</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">[<span class="ex">cs50@flume</span> ~]$ cd test</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">[<span class="ex">cs50@flume</span> ~/test]$ ls</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">[<span class="ex">cs50@flume</span> ~/test]$ cd ..</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">[<span class="ex">cs50@flume</span> ~]$ cd public_html/</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">[<span class="ex">cs50@flume</span> ~/public_html]$ ls</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="ex">css/</span>        Labs/      Logistics/  Reading/    Schedule.pdf</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="ex">index.html</span>  Lectures/  Project/    Resources/  Schedule.xlsx</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">[<span class="ex">cs50@flume</span> ~/public_html]$ cd Resources/</a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">[<span class="ex">cs50@flume</span> ~/public_html/Resources]$ ls</a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="ex">DougMcIlroy.pdf</span>  Homebrew.html           RC13972-C-Programming.pdf</a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="ex">Homebrew0.png</span>    index.html          StartingSublime.pdf</a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="ex">Homebrew1.png</span>    RC13972-C-Programming.docx  toomey-unix.pdf</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">[<span class="ex">cs50@flume</span> ~/public_html/Resources]$ cd ../..</a>
+<a class="sourceLine" id="cb10-15" data-line-number="15">[<span class="ex">cs50@flume</span> ~]$ ls</a>
+<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="ex">Archive/</span>  private/  proc-log  public_html/  resources/  test/  web@</a>
+<a class="sourceLine" id="cb10-17" data-line-number="17">[<span class="ex">cs50@flume</span> ~]$ </a></code></pre></div>
+<p>The shell prompt is helpfully tracking the current working directory as we move.</p>
+<h3 id="listing-and-globbing-files">Listing and globbing files</h3>
+<p>Here are a popular set of switches you can use with <code>ls</code>:</p>
+<pre><code>-l list in long format (as we have been doing)
+-a list all entries (including `dot` files, which are normally hidden)
+-t sort by modification time (latest first)
+-r list in reverse order (alphabetical or time)
+-R list the directory and its subdirectories recursively</code></pre>
+<p>The shell also interprets certain special characters like <code>*</code>, <code>?</code>, and <code>[]</code>; <code>*</code> matches zero or more characters, <code>?</code> matches one character, and <code>[]</code> matches one character from the set (or range) of characters listed within the brackets:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ cd public_html/Resources/</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">[<span class="ex">cs50@flume</span> ~/public_html/Resources]$ ls</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="ex">DougMcIlroy.pdf</span>  Homebrew.html           RC13972-C-Programming.pdf</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="ex">Homebrew0.png</span>    index.html          StartingSublime.pdf</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="ex">Homebrew1.png</span>    RC13972-C-Programming.docx  toomey-unix.pdf</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">[<span class="ex">cs50@flume</span> ~/public_html/Resources]$ ls *.pdf</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="ex">DougMcIlroy.pdf</span>        StartingSublime.pdf</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="ex">RC13972-C-Programming.pdf</span>  toomey-unix.pdf</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">[<span class="ex">cs50@flume</span> ~/public_html/Resources]$ ls H*</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="ex">Homebrew0.png</span>  Homebrew1.png  Homebrew.html</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11">[<span class="ex">cs50@flume</span> ~/public_html/Resources]$ ls *-*</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="ex">RC13972-C-Programming.docx</span>  RC13972-C-Programming.pdf  toomey-unix.pdf</a>
+<a class="sourceLine" id="cb12-13" data-line-number="13">[<span class="ex">cs50@flume</span> ~/public_html/Resources]$ ls Homebrew*.*</a>
+<a class="sourceLine" id="cb12-14" data-line-number="14"><span class="ex">Homebrew0.png</span>  Homebrew1.png  Homebrew.html</a>
+<a class="sourceLine" id="cb12-15" data-line-number="15">[<span class="ex">cs50@flume</span> ~/public_html/Resources]$ ls Homebrew?.*</a>
+<a class="sourceLine" id="cb12-16" data-line-number="16"><span class="ex">Homebrew0.png</span>  Homebrew1.png</a>
+<a class="sourceLine" id="cb12-17" data-line-number="17">[<span class="ex">cs50@flume</span> ~/public_html/Resources]$ ls Homebrew[0-9].png</a>
+<a class="sourceLine" id="cb12-18" data-line-number="18"><span class="ex">Homebrew0.png</span>  Homebrew1.png</a>
+<a class="sourceLine" id="cb12-19" data-line-number="19">[<span class="ex">cs50@flume</span> ~/public_html/Resources]$ </a></code></pre></div>
+<h3 id="hidden-files">Hidden files</h3>
+<p>The <code>ls</code> program normally does not list any files whose filename begins with <code>.</code> There is nothing special about these files, except <code>.</code> and <code>..</code>, as far as Unix is concerned. It’s simply a convention - files whose names begin with <code>.</code> are to be considered ‘hidden’, and thus not listed by <code>ls</code> or matched with by the shell’s <code>*</code> globbing character. Home directories, in particular, include many ‘hidden’ (but important!) files. The <code>-a</code> switch tells <code>ls</code> to list “all” files, including those that begin with a dot (aka, the hidden files).</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ ls</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="ex">Archive/</span>  private/  public_html/  resources/  web@</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">[<span class="ex">cs50@flume</span> ~]$ ls -a</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="ex">./</span>   Archive/       .bash_logout   .bashrc    .environset  private/ public_html/  .ssh/  .viminfo  web@</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="ex">../</span>  .bash_history  .bash_profile  .emacs.d/  .forward     .procmailrc  resources/    .vim/  .vimrc</a></code></pre></div>
+<p>to see just the dot files, let’s get clever with the shell’s glob characters:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ ls -ad .??*</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="ex">.bash_history</span>  .bash_profile  .emacs.d/    .forward .ssh/  .viminfo</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="ex">.bash_logout</span>   .bashrc        .environset  .procmailrc  .vim/  .vimrc</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">[<span class="ex">cs50@flume</span> ~]$ </a></code></pre></div>
+<p>All of these “dot files” (or “dot directories”) are important to one program or another:</p>
+<ul>
+<li><code>.bash_history</code> - used by bash to record a history of the commands you’ve typed</li>
+<li><code>.bash_logout</code> - executed by bash when you log out</li>
+<li><code>.bash_profile</code> - executed by bash when you log in</li>
+<li><code>.bashrc</code> - executed by bash whenever you start a new shell</li>
+<li><code>.emacs.d/</code> - a directory used by emacs text editor</li>
+<li><code>.environset</code> - a Dartmouth-specific thing; read by .bashrc</li>
+<li><code>.forward</code> - tells Mail where to forwad your email</li>
+<li><code>.procmailrc</code> - for handling email with <code>procmail</code></li>
+<li><code>.ssh/</code> - directory used by inbound ssh connections</li>
+<li><code>.vim/</code> - a directory used by vim text editor</li>
+<li><code>.viminfo</code> - used by vim text editor</li>
+<li><code>.vimrc</code> - used by vim text editor</li>
+</ul>
+<h3 id="bash-shell-startup-files">Bash shell startup files</h3>
+<p>The <code>bash</code> shell looks for several files in your home directory:</p>
+<ul>
+<li><code>.bash_profile</code> - executed by bash when you log in</li>
+<li><code>.bashrc</code> - executed by bash whenever you start a new shell</li>
+<li><code>.bash_logout</code> - executed by bash when you log out</li>
+<li><code>.bash_history</code> - used by bash to record a history of the commands you’ve typed</li>
+</ul>
+<p>The <code>.bashrc</code> file is especially important, because <code>bash</code> reads it every time you start a new <code>bash</code> shell, that is, when you log in, when you start a new interactive shell, or when you run a new bash script. (In contrast, <code>.bash_profile</code> is only read when you login.) In each case,<code>bash</code> reads the files and executes the commands therein. Thus, you can configure your <code>bash</code> experience by having it declare some variables, define some aliases, and set up some personal favorites.</p>
+<p>Let’s print something at the beginning of each file, like <code>echo bashrc!</code> at the start of <code>.bashrc</code>, and see what happens.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ emacs .bash_profile .bashrc</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co">#  (above I use the emacs editor to add a command to .bashrc)</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#  (below I start a new instance of bash by typing its name at command line)</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">[<span class="ex">cs50@flume</span> ~]$ bash</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="ex">bashrc</span>!</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">[<span class="ex">cs50@flume</span> ~]$ exit</a></code></pre></div>
+<p>(Don’t forget to remove that silly edit.)</p>
+<p>The default <code>.bashrc</code> file is pretty good, and actually reads a centralized “master” <code>bashrc</code> managed by our sysadmin. For CS50 we strongly recommend the following customizations:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># aliases used for cs50</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="bu">alias</span> mygcc=<span class="st">&#39;gcc -Wall -pedantic -std=c11 -ggdb&#39;</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="bu">alias</span> myvalgrind=<span class="st">&#39;valgrind --leak-check=full --show-leak-kinds=all&#39;</span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co"># safety aliases</span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="bu">alias</span> rm=<span class="st">&#39;rm -i&#39;</span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="bu">alias</span> cp=<span class="st">&#39;cp -i&#39;</span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="bu">alias</span> mv=<span class="st">&#39;mv -i&#39;</span></a>
+<a class="sourceLine" id="cb16-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co"># convenience aliases</span></a>
+<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="bu">alias</span> ls=<span class="st">&#39;ls -F&#39;</span></a>
+<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="bu">alias</span> mkdir=<span class="st">&#39;mkdir -p&#39;</span></a>
+<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="bu">alias</span> which=<span class="st">&#39;type -all&#39;</span></a>
+<a class="sourceLine" id="cb16-15" data-line-number="15"><span class="bu">alias</span> du=<span class="st">&#39;du -kh&#39;</span></a>
+<a class="sourceLine" id="cb16-16" data-line-number="16"><span class="bu">alias</span> df=<span class="st">&#39;df -kTh&#39;</span></a>
+<a class="sourceLine" id="cb16-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb16-18" data-line-number="18"><span class="co"># --------------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb16-19" data-line-number="19"><span class="co"># Set PS1 prompt</span></a>
+<a class="sourceLine" id="cb16-20" data-line-number="20"><span class="co"># \u: userid, \h:hostname, \w: pwd</span></a>
+<a class="sourceLine" id="cb16-21" data-line-number="21"><span class="co">#</span></a>
+<a class="sourceLine" id="cb16-22" data-line-number="22"><span class="bu">export</span> <span class="va">PS1=</span><span class="st">&#39;[\u@\h \w]\$ &#39;</span></a>
+<a class="sourceLine" id="cb16-23" data-line-number="23"><span class="co">#</span></a></code></pre></div>
+<p>The <code>mygcc</code> alias adds some extra options to <code>gcc</code>, which we’ll cover next week.</p>
+<p>The <code>myvalgrind</code> alias adds some extra options to <code>valgrind</code>, which we’ll cover later in the term.</p>
+<p>The “safety” aliases protect you from accidentally deleting or overwriting files.</p>
+<p>The “convenience” aliases give you some handy shortcuts and make the output of some commands more useful.</p>
+<p>Finally, the <code>PS1</code> definition formats the shell prompt the way we’ve been seeing it in our examples.</p>
+<p>To make all these changes in your <code>.bashrc</code>, log into your Unix account and copy the <code>.bashrc</code> from the cs50 account:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" data-line-number="1">[<span class="ex">kotz@flume</span> ~]$ cp ~cs50/.bashrc .bashrc</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="ex">cp</span>: overwrite <span class="kw">`</span><span class="ex">.bashrc</span><span class="st">&#39;? y</span></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="st">[kotz@flume ~]$ </span></a></code></pre></div>
+<p>You can then edit <code>~/.bashrc</code> and <code>~/.bash_profile</code> to your own taste.</p>
+<p>I recommend that you also grab a copy of the CS50 <code>.emacs</code> file, which serves as the startup file for the <code>emacs</code> editor.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" data-line-number="1">[<span class="ex">kotz@flume</span> ~]$ cp ~cs50/.emacs .emacs</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="ex">cp</span>: overwrite <span class="kw">`</span><span class="ex">.emacs</span><span class="st">&#39;? y</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="st">[kotz@flume ~]$ </span></a></code></pre></div>
+<h2 id="locating-files">Locating files</h2>
+<p>Many times you want to find a file but do not know where it is in the directory tree (Unix directory structure is a tree - rooted at the <code>/</code> directory) . The <code>find</code> command can walk a file hierarchy:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ find . -name DougMcIlroy.pdf -print</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="ex">./public_html/Resources/DougMcIlroy.pdf</span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">[<span class="ex">cs50@flume</span> ~]$ find public_html -iname reading -print</a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="ex">public_html/Reading</span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5">[<span class="ex">cs50@flume</span> ~]$ find public_html -type d -print</a>
+<a class="sourceLine" id="cb19-6" data-line-number="6"><span class="ex">public_html</span></a>
+<a class="sourceLine" id="cb19-7" data-line-number="7"><span class="ex">public_html/Logistics</span></a>
+<a class="sourceLine" id="cb19-8" data-line-number="8"><span class="ex">public_html/Resources</span></a>
+<a class="sourceLine" id="cb19-9" data-line-number="9"><span class="ex">public_html/Labs</span></a>
+<a class="sourceLine" id="cb19-10" data-line-number="10"><span class="ex">public_html/Project</span></a>
+<a class="sourceLine" id="cb19-11" data-line-number="11"><span class="ex">public_html/Lectures</span></a>
+<a class="sourceLine" id="cb19-12" data-line-number="12"><span class="ex">public_html/css</span></a>
+<a class="sourceLine" id="cb19-13" data-line-number="13"><span class="ex">public_html/Reading</span></a>
+<a class="sourceLine" id="cb19-14" data-line-number="14">[<span class="ex">cs50@flume</span> ~]$ find public_html -name <span class="dt">\*</span>.html -print</a>
+<a class="sourceLine" id="cb19-15" data-line-number="15"><span class="ex">public_html/Logistics/index.html</span></a>
+<a class="sourceLine" id="cb19-16" data-line-number="16"><span class="ex">public_html/Resources/index.html</span></a>
+<a class="sourceLine" id="cb19-17" data-line-number="17"><span class="ex">public_html/Resources/Homebrew.html</span></a>
+<a class="sourceLine" id="cb19-18" data-line-number="18"><span class="ex">public_html/Labs/index.html</span></a>
+<a class="sourceLine" id="cb19-19" data-line-number="19"><span class="ex">public_html/Labs/Lab0-Preliminaries.html</span></a>
+<a class="sourceLine" id="cb19-20" data-line-number="20"><span class="ex">public_html/Project/index.html</span></a>
+<a class="sourceLine" id="cb19-21" data-line-number="21"><span class="ex">public_html/Lectures/01-gettingstarted.html</span></a>
+<a class="sourceLine" id="cb19-22" data-line-number="22"><span class="ex">public_html/Lectures/index.html</span></a>
+<a class="sourceLine" id="cb19-23" data-line-number="23"><span class="ex">public_html/index.html</span></a>
+<a class="sourceLine" id="cb19-24" data-line-number="24"><span class="ex">public_html/Reading/index.html</span></a>
+<a class="sourceLine" id="cb19-25" data-line-number="25">[<span class="ex">cs50@flume</span> ~]$ find public_html -name <span class="dt">\*</span>.png -mtime -1 -print</a>
+<a class="sourceLine" id="cb19-26" data-line-number="26"><span class="ex">public_html/Resources/Homebrew1.png</span></a>
+<a class="sourceLine" id="cb19-27" data-line-number="27"><span class="ex">public_html/Resources/Homebrew0.png</span></a>
+<a class="sourceLine" id="cb19-28" data-line-number="28">[<span class="ex">cs50@flume</span> ~]$ </a></code></pre></div>
+<p>The first example searches directory <code>.</code> to find a file by a specific name and prints its pathname. The second example used <code>-iname</code> (case insensitive search) instead of <code>-name</code> (which is case sensitive) to search <code>public_html</code> for the “reading” directory. The third example searches <code>public_html</code> for any directories (<code>-type d</code>) and prints their pathnames. The fourth example uses a wildcard <code>*</code> to print pathnames of files whose name matches a pattern; the backslash <code>\</code> is there to prevent the shell from interpreting the <code>*</code>, allowing it to be part of the argument to <code>find</code>, which interprets that character itself. The fifth example combines two factors, to print pathnames of files whose name matches <code>*.png</code> and whose modication time <code>mtime</code> is less than one day <code>-1</code> in the past.</p>
+<h2 id="our-top-commands">Our top commands</h2>
+<p>We’ve explored almost four dozen shell commands, below (those with *asterisk will be introduced later). You’ll often need only about half of them.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" data-line-number="1">    <span class="bu">alias</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">    <span class="fu">cat</span>, cd, chmod, comm, cp, cut</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5">    <span class="fu">date</span></a>
+<a class="sourceLine" id="cb20-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb20-7" data-line-number="7">    <span class="bu">echo</span>, emacs, expr, exit</a>
+<a class="sourceLine" id="cb20-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb20-9" data-line-number="9">    <span class="fu">file</span>, find</a>
+<a class="sourceLine" id="cb20-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb20-11" data-line-number="11">    <span class="fu">gcc</span>, gdb*, git*, grep</a>
+<a class="sourceLine" id="cb20-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb20-13" data-line-number="13">    <span class="fu">head</span></a>
+<a class="sourceLine" id="cb20-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb20-15" data-line-number="15">    <span class="fu">less</span>, logout, lpr, ls</a>
+<a class="sourceLine" id="cb20-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb20-17" data-line-number="17">    <span class="fu">make</span>*, man, mkdir, more, mv</a>
+<a class="sourceLine" id="cb20-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb20-19" data-line-number="19">    <span class="ex">open</span> (MacOS)</a>
+<a class="sourceLine" id="cb20-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb20-21" data-line-number="21">    <span class="ex">pbpaste</span>, pbcopy (MacOS)</a>
+<a class="sourceLine" id="cb20-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb20-23" data-line-number="23">    <span class="bu">pwd</span></a>
+<a class="sourceLine" id="cb20-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb20-25" data-line-number="25">    <span class="fu">rm</span>, rmdir</a>
+<a class="sourceLine" id="cb20-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb20-27" data-line-number="27">    <span class="fu">scp</span>, sed, sort, ssh</a>
+<a class="sourceLine" id="cb20-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb20-29" data-line-number="29">    <span class="fu">tail</span>, tar, touch, tr</a>
+<a class="sourceLine" id="cb20-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb20-31" data-line-number="31">    <span class="fu">uniq</span></a>
+<a class="sourceLine" id="cb20-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb20-33" data-line-number="33">    <span class="fu">whereis</span>, which</a>
+<a class="sourceLine" id="cb20-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb20-35" data-line-number="35">    <span class="ex">vi</span>, vim</a></code></pre></div>
+<h1 id="historical-note">Historical note</h1>
+<p>Recall we mentioned “teletypes” in the first lecture. <strong>It was <em>at Dartmouth</em> that a teletype was actually used to interact with a remote computer</strong> - the first ever long-distance terminal, decades before the Internet. <em>Scavenger hunt! Who can find the plaque below, on the Dartmouth campus? Post to Piazza when you find it!</em></p>
+<figure>
+<img src="history-Stibitz1.jpg" alt="Stibitz plaque" /><figcaption>Stibitz plaque</figcaption>
+</figure>
+<h1 id="other-useful-information">Other useful information</h1>
+<p>We don’t have time in lecture to cover everything you may want to know; read on.</p>
+<h2 id="navigating-within-man-pages">Navigating within man pages</h2>
+<p>You may have found the <code>man</code> system to be a little challenging to navigate. There is a message that is displayed at the very bottom of the screen when you first enter the command that you might have missed (most people do):</p>
+<pre class="man"><code>Manual page xxx(n) line 1 (press h for help or q to quit)</code></pre>
+<p>If you enter ‘<code>h</code>’ to see the help you will find many more commands than you’re likely to ever use when reading <code>man</code> pages. This is because the man-page reader is actually the <code>less</code> command of Unix. I tend to use only a few:</p>
+<ul>
+<li><code>f</code> or <em>space</em> (the spacebar) advances to the next screenful,</li>
+<li><code>b</code> goes back to the previous screenful,</li>
+<li><code>e</code> or down-arrow advances one more line,</li>
+<li><code>y</code> or up-arrow goes back one line,</li>
+<li><code>/</code> allows one to type a search phrase and hit return,</li>
+<li><code>q</code> quits <code>man</code>, and returns to the shell prompt.</li>
+</ul>
+<h2 id="there-are-shells-shells-and-more-shells">There are shells, shells, and more shells</h2>
+<p>There are a number of shells available to a Unix user – so which one do you select? The most common shells are:</p>
+<ul>
+<li><code>sh</code> : the original shell, known as the Bourne Shell,</li>
+<li><code>csh</code>, <code>tcsh</code> : well-known and widely used derivatives of the Bourne shell,</li>
+<li><code>ksh</code> : the Korn shell, and</li>
+<li><code>bash</code> : the Bourne Again SHell, developed by GNU, is the most popular shell used for Linux.</li>
+</ul>
+<p><code>bash</code> is the default shell for new Unix accounts in our department.</p>
+<p>The basic shell operation is as follows. The shell parses the command line; the first word on the line is the command name. If the command is an alias, it substitutes the alias text and again identifies the command. If the command is one built-in to the shell (there are a few, like <code>cd</code>, <code>echo</code>, <code>pwd</code>, and <code>which</code>) it performs that command’s action. Otherwise, the shell looks for the executable file that matches that program name by searching directories listed in the <code>PATH</code> variable. The shell then starts that program as a new process and passes any options and arguments to the program. A <em>process</em> is a running program. You can see a list of your processes with the command <code>ps</code>.</p>
+<h2 id="file-type">File type</h2>
+<p>Unix itself imposes almost no constraints or interpretation on the contents of files - the only common case is that of a compiled, executable program: it has to be in a very specific binary format for the operating system (Unix) to execute it. All other files are used by some program or another, and it’s up to those programs to interpret the contents as they see fit. The great power of Unix, and the common shell commands, is that any file can be read by any program; the most common format are plain-text (ASCII) files that are formatted as a series of “lines” delimited by “newline” characters (\n, known by its ASCII code 012).</p>
+<p>If you are unsure about the contents of a file (text, binary, compressed, Unix executabe, some format specific a certain application, etc.). The <code>file</code> command is useful; it makes an attempt to judge the format of the file.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" data-line-number="1">[<span class="ex">cs50@flume</span> ~]$ file downloaded</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="ex">downloaded</span>: POSIX tar archive</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">[<span class="ex">cs50@flume</span> ~]$ file fig1</a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="ex">fig1</span>: GIF image data, version 87a, 440 x 306</a>
+<a class="sourceLine" id="cb22-5" data-line-number="5">[<span class="ex">cs50@flume</span> ~]$ file trash.tar.gz</a>
+<a class="sourceLine" id="cb22-6" data-line-number="6"><span class="ex">trash.tar.gz</span>: gzip compressed data, from Unix</a>
+<a class="sourceLine" id="cb22-7" data-line-number="7">[<span class="ex">cs50@flume</span> ~]$ file public_html/Schedule.*</a>
+<a class="sourceLine" id="cb22-8" data-line-number="8"><span class="ex">public_html</span>/Schedule.pdf:  <span class="ex">PDF</span> document, version 1.3</a>
+<a class="sourceLine" id="cb22-9" data-line-number="9"><span class="ex">public_html</span>/Schedule.xlsx: <span class="ex">Microsoft</span> Excel 2007+</a>
+<a class="sourceLine" id="cb22-10" data-line-number="10">[<span class="ex">cs50@flume</span> ~]$ file /bin/ls</a>
+<a class="sourceLine" id="cb22-11" data-line-number="11"><span class="ex">/bin</span>/ls: <span class="ex">ELF</span> 64-bit LSB shared object, x86-64, version 1 (SYSV), <span class="ex">dynamically</span> linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=0ac5c509289d650534ce80cdbf5b72744b5c5f3d, stripped</a>
+<a class="sourceLine" id="cb22-12" data-line-number="12">[<span class="ex">cs50@flume</span> ~]$ </a></code></pre></div>
+</body>
+</html>

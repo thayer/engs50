@@ -1,0 +1,32 @@
+# myApp Makefile1
+CC = gcc
+CFLAGS = -Wall -pedantic -std=c11 
+UTILDIR=../util/
+UTILFLAG=-lmylib
+UTILLIB=$(UTILDIR)libmylib.a
+UTILC=$(UTILDIR)file1.c $(UTILDIR)file2.comments $(UTILDIR)file3.c $(UTILDIR)file4.c
+UTILH=$(UTILC:.c=.h)
+
+# luckily, make has comments too!  
+
+myApp:	myApp.o html.o hash.o $(UTILLIB)
+        $(CC) $(CFLAGS) -o myApp myApp.o html.o hash.o $(UTILFLAG)
+
+myApp.o: myApp.c myApp.h html.h hash.h mylib.h  
+        $(CC) $(CFLAGS) -c myApp.c 
+
+html.o: html.c html.h
+        $(CC) $(CFLAGS) -c html.c
+
+hash.o: hash.c hash.h mylib.h
+        $(CC) $(CFLAGS) -c hash.c
+
+$(UTILLIB): $(UTILC) $(UTILH)
+        cd $(UTILDIR); make
+
+clean:
+        rm -f *~
+        rm -f *#
+        rm -f ./myApp
+        rm -f *.o
+        cd $(UTILDIR); make clean 

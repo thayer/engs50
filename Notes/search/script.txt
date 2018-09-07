@@ -1,0 +1,866 @@
+Last login: Wed Apr 19 21:16:59 2017 from 198.55.237.247
+[cs50@flume ~]$ cd demo
+[cs50@flume ~/demo]$ ls
+bag/
+[cs50@flume ~/demo]$ telnet www.cs.dartmouth.edu 80 
+Trying 129.170.213.101...
+Connected to www.cs.dartmouth.edu.
+Escape character is '^]'.
+GET /~cs50/Connection closed by foreign host.
+[cs50@flume ~/demo]$ telnet www.cs.dartmouth.edu 80 
+Trying 129.170.213.101...
+Connected to www.cs.dartmouth.edu.
+Escape character is '^]'.
+GET /~cs50/index.html
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CS50 Overview</title>
+  <meta name="description" content="In Computer Science 50 you will learn how to design & build large,  reliable, maintainable, and understandable software systems.  In the process you will learn to program in C with Unix development tools.
+">
+
+  <link rel="shortcut icon" href="/~cs50/50.png" />
+  <link rel="stylesheet" href="/~cs50/css/main.css">
+  <link rel="canonical" href="http://www.cs.dartmouth.edu/~cs50/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+    <a class="site-title" href="/~cs50/">
+      <img width=48 align=center src="/~cs50/50.png" alt="icon">
+      CS50 Spring 2017
+    </a>
+
+    <nav class="site-nav">
+
+      [<a href="https://canvas.dartmouth.edu/courses/14815">Canvas</a>]
+      [<a href="https://piazza.com/dartmouth/spring2017/cosc050sp17/home">Piazza</a>]
+      [<a href="/~cs50/Schedule.pdf">Schedule</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Logistics/">Logistics</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Lectures/">Lectures</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Reading/">Reading</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/examples/">Examples</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Sections/">Sections</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Labs/">Labs</a>]
+<!--  [<a href="http://www.cs.dartmouth.edu/~cs50/Labs/Project/">Project</a>]  -->
+      [<a href="https://gitlab.cs.dartmouth.edu">Gitlab</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Resources/">Resources</a>]
+
+   </nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <h1 id="overview">Overview</h1>
+
+<p>In Computer Science 50 you will learn how to design &amp; build large,  reliable, maintainable, and understandable software systems.  In the process you will learn to program in C with Unix development tools.</p>
+
+<p>Let’s break that down. The objectives of this course are for you to learn</p>
+
+<ul>
+  <li>software design principles</li>
+  <li>good coding style, and documentation</li>
+  <li>debugging and testing</li>
+  <li>design and coding with a team</li>
+  <li>programming in C</li>
+  <li>programming on Unix</li>
+  <li>use of git for source-code management</li>
+</ul>
+
+<p>The first few weeks of this course are a crash course in Unix and C.  After that, you’ll build your very own Search Engine application.  Finally, you’ll join a team of other students to design, build, document, and test a large software project.</p>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">CS50 Spring 2017 -- Dartmouth College</h2>
+
+    <p> <font size=-1> 
+    	This version of the course is based upon those designed by 
+    	Professors Palmer, Zhou, Campbell, and Balkcom. 
+	I am deeply indebted to these outstanding educators.
+    -- <a href="/~dfk/">David Kotz</a>
+       </font> 
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
+Connection closed by foreign host.
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ curl
+curl: try 'curl --help' or 'curl --manual' for more information
+[cs50@flume ~/demo]$ curl http://www.cs.dartmouth.edu/~cs50/index.html
+^C
+[cs50@flume ~/demo]$ curl -s http://www.cs.dartmouth.edu/~cs50/index.html
+^C
+[cs50@flume ~/demo]$ curl -s http://www.cs.dartmouth.edu/
+^P^C
+[cs50@flume ~/demo]$ curl http://www.dartmouth.edu/
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>302 Found</title>
+</head><body>
+<h1>Found</h1>
+<p>The document has moved <a href="http://dartmouth.edu/">here</a>.</p>
+<hr>
+<address>Apache/2.4.6 (Red Hat Enterprise Linux) PHP/5.6.30 mod_python/3.5.0- Python/2.7.5 mod_perl/2.0.10 Perl/v5.16.3 Server at www.dartmouth.edu Port 80</address>
+</body></html>
+[cs50@flume ~/demo]$ curl http://dartmouth.edu/
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" version="XHTML+RDFa 1.0" dir="ltr" class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="shortcut icon" href="http://dartmouth.edu/sites/all/themes/dartmouth_master/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="shortlink" href="http://dartmouth.edu/" />
+<link rel="canonical" href="http://dartmouth.edu/" />
+<meta name="google-site-verification" content="Cx38CmZtXqURkDIHlnZG4ZRiH4YqF1fCwTLlBpy-8FE" />
+<meta name="description" content="Founded in 1769, Dartmouth is a member of the Ivy League and consistently ranks among the world’s greatest academic institutions. Dartmouth has forged a singular identity for combining its deep commitment to outstanding undergraduate liberal arts and graduate education with distinguished research and scholarship in the Arts &amp; Sciences and its three leading graduate schools—the Geisel School of Medicine, Thayer School of Engineering, and the Tuck School of Business." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">  
+  <title>Dartmouth College</title>
+  <link type="text/css" rel="stylesheet" href="http://dartmouth.edu/sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://dartmouth.edu/sites/default/files/css/css_hTLrwzbU9bZhjvzx-j5entbJFEHkjJyd6RgHEla8FhA.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://dartmouth.edu/sites/default/files/css/css_MYVigZEaoCTisHe3pPleiAIdgxnG5Nc305QATZnPXhE.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://dartmouth.edu/sites/default/files/css/css_yDQkxHfeYUYaOiX7JB4YEHRu0WhfGMo3xsQ3DM850Kc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://dartmouth.edu/sites/default/files/css/css__fXqErplVccOLa9-BqKrbobiWP4c4Tnu_uQbew0wNc0.css" media="all" />
+
+<!--[if lt IE 10]>
+<link type="text/css" rel="stylesheet" href="http://dartmouth.edu/sites/default/themes/dartmouth_homesite/css/ie.css?oopvwp" media="all" />
+<![endif]-->
+  <script src="/sites/all/themes/dartmouth_master/js/vendor/modernizr-2.6.1.js"></script>
+  <script src="/sites/all/themes/dartmouth_master/js/vendor/respond.min.js"></script>
+	
+</head>
+<body class="html front not-logged-in no-sidebars page-front-page" >
+
+<!--[if lt IE 8]>
+<p class="chromeframe">You are viewing this site in <a href="http://windows.microsoft.com/en-us/internet-explorer/use-compatibility-view#ie=ie-9">compatibility view</a>, or an Internet Explorer version lower than 8. Please either upgrade your browser, or take your browser out of compatibility view to better experience this site.</p>
+<![endif]-->
+    
+  <div id="skip-refine"><a class="offscreen" href="#main-content">Skip Top Navigation</a></div>
+    <div class="row emergency">
+    <script type="text/javascript" src="http://www.dartmouth.edu/emergency/banner/embed-emergency.php" ></script>
+  </div>
+  
+	<div class="wrapper-main home">
+
+		<div class="container">
+			<div class="row">
+				<div id="nav-dartmouth" aria-hidden="true" role="navigation" tabindex="-1">
+					<ul class="nav-dartmouth-table" role="list">
+						<li class="three column" role="listitem" aria-labelledby="nav-label-education">
+							<h3 id="nav-label-education"><a href="#">Education<span class="arrow"></span></a></h3>
+							<ul class="group" role="menu" aria-labelledby="nav-label-education">
+								<li role="menuitem"><a href="/education/degrees">Degree Finder</a></li>
+								<li role="menuitem"><a href="/education/departments-programs—arts-sciences">Departments & Programs</a></li>
+								<li role="menuitem"><a href="https://global.dartmouth.edu/global-learning">Global Learning</a></li>
+								<li role="menuitem"><a href="/education/graduate-schools">Graduate Schools</a></li>
+								<li role="menuitem"><a href="/education/libraries">Libraries</a></li>
+								<li role="menuitem"><a href="/education/lifelong-learning-0">Lifelong Learning</a></li>
+								<li role="menuitem"><a href="/education/summer-dartmouth">Summer at Dartmouth</a></li>
+								<li role="menuitem"><a href="/education/undergraduate-experience">The Undergraduate Experience</a></li>
+							</ul>
+						</li>
+						<li class="three column" role="listitem" aria-labelledby="nav-label-research">
+							<h3 id="nav-label-research"><a href="#">Research<span></span></a></h3>
+							<ul class="group" role="menu" aria-labelledby="nav-label-research">
+								<li role="menuitem"><a href="/research/news">News</a></li>
+								<li role="menuitem"><a href="/research/faculty-experts">Faculty Experts</a></li>
+								<li role="menuitem"><a href="/research/research-centers">Research Centers</a></li>
+								<li role="menuitem"><a href="/research/schools-departments">Schools & Departments</a></li>
+								<li role="menuitem"><a href="/research/publications-and-grants">Publications & Grants</a></li>
+								<li role="menuitem"><a href="/research/events">Conferences & Seminars</a></li>
+								<li role="menuitem"><a href="/research/resources">Research Support</a></li>
+							</ul>
+						</li>
+						<li class="three column" role="listitem" aria-labelledby="nav-label-life">
+							<h3 id="nav-label-life"><a href="#">Life &amp; Community<span></span></a></h3>
+							<ul class="group" role="menu" aria-labelledby="nav-label-life">
+								<li role="menuitem"><a href="/life-community/explore-green">Explore the Green</a></li>
+								<li role="menuitem"><a href="/life-community/arts-across-campus">Arts Across Campus</a></li>
+								<li role="menuitem"><a href="/life-community/athletics-recreation">Athletics & Recreation</a></li>
+								<li role="menuitem"><a href="/life-community/diversity">Diversity</a></li>
+								<li role="menuitem"><a href="/life-community/health-wellness">Health & Wellness</a></li>
+								<li role="menuitem"><a href="/life-community/outdoors">Outdoors</a></li>
+								<li role="menuitem"><a href="/life-community/residential-life">Residential Life</a></li>
+								<li role="menuitem"><a href="/life-community/service ">Service</a></li>
+								<li role="menuitem"><a href="/life-community/student-groups-activities">Student Groups & Activities</a></li>
+								<li role="menuitem"><a href="/life-community/sustainability">Sustainability</a></li>
+							</ul>
+						</li>
+						<li class="three column" role="listitem" aria-labelledby="nav-label-more">
+							<h3 id="nav-label-more" aria-hidden="true"><a href="#">More<span></span></a></h3>
+							<ul class="group" role="menu" aria-labelledby="nav-label-more">
+								<li role="menuitem"><a href="/admissions">Admissions</a></li>
+								<li role="menuitem"><a href="/education/graduate-schools">Schools</a></li>
+								<li role="menuitem"><a href="/centers-institutes">Centers</a></li>
+								<li role="menuitem"><a href="https://global.dartmouth.edu/">Global</a></li>
+								<li role="menuitem"><a href="https://www.dartmouth.edu/arts">Arts</a></li>
+								<li role="menuitem"><a href="http://www.dartmouthsports.com">Athletics</a></li>
+								<li role="menuitem"><a href="/giving-dartmouth">Giving</a></li>
+							</ul>
+
+							<div id="search-dartmouth" role="search">
+								<form class="gss" action="/" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-rGEAEKeapzluOXyQguMIImQoQuiU9aFaoAV1642_J5g" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<div role="banner" class="container">
+			<header class="row header-main universal">
+				<div class="twelve column">
+					<a href="/" class="logo">Dartmouth College</a>
+						<nav id="btn-nav-dartmouth">
+							<a href="#" aria-haspopup="true"><span class="icn"></span><span class="btn-txt">Explore Dartmouth</span></a>
+						</nav>
+					<nav id="nav-secondary" class="group" role="navigation">
+						<ul class="group" role="list">
+							<li role="listitem">
+								<ul role="menu">
+									<li role="menuitem"><a href="/admissions" >Admissions</a></li>
+									<li role="menuitem"><a href="/education/graduate-schools">Schools</a></li>
+									<li role="menuitem"><a href="/centers-institutes">Centers</a></li>
+								</ul>
+							</li>
+							<li role="listitem">
+								<ul role="menu">
+									<li role="menuitem"><a href="https://global.dartmouth.edu/">Global</a></li>
+									<li role="menuitem"><a href="http://arts.dartmouth.edu">Arts</a></li>
+								</ul>
+							</li>
+							<li role="listitem">
+								<ul role="menu">
+									<li role="menuitem"><a href="http://www.dartmouthsports.com">Athletics</a></li>
+									<li role="menuitem"><a href="/giving-dartmouth">Giving</a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+					<nav id="nav-primary" class="group" role="navigation">
+						<ul class="group" role="list">
+							<li class="education" role="listitem"><a href="/education/">Education<span></span></a>
+								<ul class="education" role="menu">
+									<li role="menuitem"><a href="/education/degrees">Degree Finder</a></li>
+									<li role="menuitem"><a href="/education/departments-programs—arts-sciences">Departments & Programs</a></li>
+									<li role="menuitem"><a href="https://global.dartmouth.edu/global-learning">Global Learning</a></li>
+									<li role="menuitem"><a href="/education/graduate-schools">Graduate Schools</a></li>
+									<li role="menuitem"><a href="/education/libraries">Libraries</a></li>
+									<li role="menuitem"><a href="/education/lifelong-learning">Lifelong Learning</a></li>
+									<li role="menuitem"><a href="/education/summer-dartmouth">Summer at Dartmouth</a></li>
+									<li role="menuitem"><a href="/education/undergraduate-experience">The Undergraduate Experience</a></li>
+								</ul>
+							</li>
+							<li class="research" role="listitem"><a href="/research">Research<span></span></a>
+								<ul class="research" role="menu">
+									<li role="menuitem"><a href="/research/news">News</a></li>
+									<li role="menuitem"><a href="/research/faculty-experts">Faculty Experts</a></li>
+									<li role="menuitem"><a href="/research/research-centers">Research Centers</a></li>
+									<li role="menuitem"><a href="/research/schools-departments">Schools & Departments</a></li>
+									<li role="menuitem"><a href="/research/publications-and-grants">Publications & Grants</a></li>
+									<li role="menuitem"><a href="/research/events">Conferences & Seminars</a></li>
+									<li role="menuitem"><a href="/research/resources">Research Support</a></li>
+								</ul>
+							</li>
+							<li class="life-community" role="listitem"><a href="/life-community">Life &amp; Community<span></span></a>
+								<ul class="life-community" role="menu">
+									<li role="menuitem"><a href="/life-community/explore-green">Explore the Green</a></li>
+									<li role="menuitem"><a href="/life-community/arts-across-campus">Arts Across Campus</a></li>
+									<li role="menuitem"><a href="/life-community/athletics-recreation">Athletics & Recreation</a></li>
+									<li role="menuitem"><a href="/life-community/diversity">Diversity</a></li>
+									<li role="menuitem"><a href="/life-community/health-wellness">Health & Wellness</a></li>
+									<li role="menuitem"><a href="/life-community/outdoors">Outdoors</a></li>
+									<li role="menuitem"><a href="/life-community/residential-life">Residential Life</a></li>
+									<li role="menuitem"><a href="/life-community/service ">Service</a></li>
+									<li role="menuitem"><a href="/life-community/student-groups-activities">Student Groups & Activities</a></li>
+									<li role="menuitem"><a href="/life-community/sustainability">Sustainability</a></li>
+								</ul>
+							</li>
+							<li class="primary-more" role="listitem"><a href="#">More<span></span></a>
+								<ul class="more" role="menu">
+									<li role="menuitem"><a href="/admissions">Admissions</a></li>
+									<li role="menuitem"><a href="/education/graduate-schools">Schools</a></li>
+									<li role="menuitem"><a href="/centers-institutes">Centers</a></li>
+									<li role="menuitem"><a href="https://global.dartmouth.edu/">Global</a></li>
+									<li role="menuitem"><a href="http://arts.dartmouth.edu">Arts</a></li>
+									<li role="menuitem"><a href="http://www.dartmouthsports.com">Athletics</a></li>
+									<li role="menuitem"><a href="/giving-dartmouth">Giving</a></li>
+								</ul>
+							</li>
+							<li class="primary-search" role="listitem"><a href="#"><span class="hide-txt">Search</span></a></li>
+						</ul>
+					</nav>
+					<div class="primary-search-container group">
+					<form class="gss" action="/" method="post" id="search-block-form--2" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--4">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--4" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input type="submit" id="edit-submit--2" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-qLWGdYXLhRwVfUW66IsO1r47khSPiEVMlTxGU--mBBQ" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>					</div>
+				</div>
+			</header>
+		</div>
+
+		<!--// START BANNER IMAGE //-->
+				<!--// END BANNER IMAGE //-->
+
+		<!--// START HORIZONTAL NAV //-->
+		<section class="nav-main container" role="navigation">
+		  <div class="row">
+		    <nav>
+			  <div>
+			    <div class="nav-row">
+		          				</div>
+			  </div>
+			</nav>
+		  </div>
+		</section>
+		<!--// END HORIZONTAL NAV //-->
+
+		<div id="main-content" class="container" role="main">
+
+<h1 style="position:absolute;left:-999em;width:1em;overflow:hidden;"></h1>
+
+			<div class="row">
+			  				<div class="twelve column">
+
+				  				  
+        		          		          		  
+				  <div class="tabs"></div>       	 		          		          		  
+        		      <div class="view view-front-page view-id-front_page view-display-id-page view-dom-id-1c33857fdefad7d1b741f4beb02ac545">
+        
+  
+  
+      <div class="view-content">
+        <div>
+    
+<h1 style="position:absolute;left:-999em;width:1em;overflow:hidden;">Homepage April 20-21, 2017</h1>
+
+
+
+<div class="container homepage">
+
+
+<div class="row container">
+
+
+  <div class="eight column">
+    <div class="homepage-carousel">
+	  <ul role="list">
+
+      	    <li role="listitem">
+		  <a href="https://news.dartmouth.edu/news/2017/04/studying-northern-lights-rocket?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel1"><div class="field field-name-field-slideshow-image-1 field-type-image field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><img typeof="foaf:Image" src="http://dartmouth.edu/sites/default/files/styles/front_page_slide_image/public/kristina-_lynch_rocket-bb.jpg?itok=OA3GkkuC" width="741" height="565" alt="Studying the Northern Lights by Rocket  |  The northern lights, are best viewed in the far north, where Professor Kristina Lynch does most of her work. Recently she launched a NASA rocket into the dark Alaskan sky." title="kristina-_lynch_rocket-bb.jpg" /></div>
+      </div>
+</div></a>		  <div class="caption" aria-hidden="true">
+		    <h3>
+		      <a href="https://news.dartmouth.edu/news/2017/04/studying-northern-lights-rocket?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel1">Studying the Northern Lights by Rocket</a>			</h3>
+		    <p>
+		      <a href="https://news.dartmouth.edu/news/2017/04/studying-northern-lights-rocket?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel1">The northern lights, are best viewed in the far north, where Professor Kristina Lynch does most of her work. Recently she launched a NASA rocket into the dark Alaskan sky.</a>			</p>
+		  </div>
+	    </li>
+	  	    <li role="listitem">
+		  <a href="https://news.dartmouth.edu/news/2017/04/professor-reflects-his-27-year-antarctic-research-project?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel2"><div class="field field-name-field-slideshow-image-2 field-type-image field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><img typeof="foaf:Image" src="http://dartmouth.edu/sites/default/files/styles/front_page_slide_image/public/ross_virginia_bb.jpg?itok=mFT2pH3s" width="741" height="565" alt="Professor Reflects on His 27-Year Antarctic Research Project  |   Just back from his final trip to Antarctica as an investigator for the Long Term Ecological Research Program, Professor Ross Virginia talks about his research and his many trips to the froz" title="ross_virginia_bb.jpg" /></div>
+      </div>
+</div></a>		  <div class="caption" aria-hidden="true">
+		    <h3>
+		      <a href="https://news.dartmouth.edu/news/2017/04/professor-reflects-his-27-year-antarctic-research-project?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel2">27 Years of Research in Antarctica</a>			</h3>
+		    <p>
+		      <a href="https://news.dartmouth.edu/news/2017/04/professor-reflects-his-27-year-antarctic-research-project?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel2">Professor Ross Virginia and Dartmouth’s Institute of Arctic Studies have produced significant research on the ecology of the coldest, driest place on Earth.</a>			</p>
+		  </div>
+	    </li>
+	  	    <li role="listitem">
+		  <a href="http://news.dartmouth.edu/photos/galleries/views-green-april-17-2017?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel3#node-97521"><div class="field field-name-field-slideshow-image-3 field-type-image field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><img typeof="foaf:Image" src="http://dartmouth.edu/sites/default/files/styles/front_page_slide_image/public/organic_farm_vbb.jpg?itok=pCRXk_KL" width="741" height="565" alt="Views From the Green | Take a look at what’s happening on campus this week." title="organic_farm_vbb.jpg" /></div>
+      </div>
+</div></a>		  <div class="caption" aria-hidden="true">
+		    <h3>
+		      <a href="http://news.dartmouth.edu/photos/galleries/views-green-april-17-2017?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel3#node-97521">Views From the Green</a>			</h3>
+		    <p>
+		      <a href="http://news.dartmouth.edu/photos/galleries/views-green-april-17-2017?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel3#node-97521">Take a look at what’s happening on campus this week.</a>			</p>
+		  </div>
+	    </li>
+	  	    <li role="listitem">
+		  <a href="https://news.dartmouth.edu/news/2017/04/student-scientists-win-goldwater-scholarships?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel4"><div class="field field-name-field-slideshow-image-4 field-type-image field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><img typeof="foaf:Image" src="http://dartmouth.edu/sites/default/files/styles/front_page_slide_image/public/goldwater-scholars-bb.jpg?itok=m-6eC_1k" width="741" height="565" alt="Three Goldwater scholars" title="goldwater-scholars-bb.jpg" /></div>
+      </div>
+</div></a>		  <div class="caption" aria-hidden="true">
+		    <h3>
+		      <a href="https://news.dartmouth.edu/news/2017/04/student-scientists-win-goldwater-scholarships?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel4">Student Scientists Win Goldwater Scholarships</a>			</h3>
+		    <p>
+		      <a href="https://news.dartmouth.edu/news/2017/04/student-scientists-win-goldwater-scholarships?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_carousel4">They are among 240 students chosen nationwide to receive the honor, which supports undergraduates who intend to pursue careers in mathematics, engineering, and the sciences.</a>			</p>
+		  </div>
+	    </li>
+	  
+      </ul>
+	  <div class="carousel-text">
+	    <div class="img-caption" aria-hidden="true"></div>
+		<div class="homepage-carousel-pager" aria-hidden="true"></div>
+	  </div>
+	</div>
+  </div>
+
+  <div class="four column">
+    <div class="container">
+	  <div class="row">
+	    <div class="six column">
+	      <div class="field field-name-field-hover-feature-1 field-type-entityreference field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">
+
+
+<div id="node-13876" class="node node-hover-feature clearfix" about="/content/global-learning-0" typeof="sioc:Item foaf:Document">
+
+    <span property="dc:title" content="Global Learning" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  <div class="home-promo home-module">
+  <a href="http://global.dartmouth.edu/global-learning/study-around-world/?utm_source=dhome&amp;utm_medium=web&amp;utm_campaign=dhome_promo2&amp;utm_content=global_learning">
+      <article>
+	    <header>
+		  <hgroup>
+			<h3>Going Places</h3>
+			<h4>Global Learning</h4>
+		  </hgroup>
+		</header>
+		<div class="image"><div class="field field-name-field-hover-feature-image field-type-image field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><img typeof="foaf:Image" src="http://dartmouth.edu/sites/default/files/styles/hover_feature/public/global-classroom_promo.jpg?itok=pAP1XgHW" width="376" height="286" alt="Global students" title="global-classroom_promo.jpg" /></div>
+      </div>
+</div></div>
+		<div class="description">
+		  <h3>Global Learning</h3><div class="field field-name-field-hover-feature-blurb field-type-text-long field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><p class="p1">Dartmouth has dozens of distinctive options for becoming immersed in other cultures and languages—and the highest rate of study abroad participation in the Ivy League.</p></div>
+      </div>
+</div></div>
+		<span class="close"><em></em></span>
+	  </article>
+	  </a>  </div><!-- /.promo module --> 
+
+  </div>
+</div>
+      </div>
+</div>		</div>
+		<div class="six column">
+	      <div class="field field-name-field-in-the-news-2 field-type-entityreference field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">
+
+
+<div id="node-20341" class="node node-front-page-in-the-news clearfix" about="/content/news-april-19-2017" typeof="sioc:Item foaf:Document">
+
+    <span property="dc:title" content="In the News April 19, 2017" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  <div class="home-news home-module">
+    <article>
+      <h2><a href="http://news.dartmouth.edu/in-the-news">Dartmouth in the News</a></h2>
+	  <ul role="list">
+
+	  
+	    <li role="listitem">
+		  <article>
+		    <div class="field field-name-field-in-the-news-title-1 field-type-link-field field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="http://www.gq.com/story/jake-tapper-cnn-profile">CNN’s Jake Tapper ’91 Is the Realest Man in ‘Fake News’</a></div>
+      </div>
+</div>			<h4><em>GQ</em></h4>
+			<p>“He’s probably the best interviewer TV has these days, as unshakable as that diamondback that chases you in your dreams. His reporting seems to come from the heart,” says Politico’s Jack Shafer in a <em>GQ &nbsp;</em> profile of the alumnus.</p>
+		  </article>
+		</li>
+
+	  
+	    <li role="listitem">
+		  <article>
+		    <div class="field field-name-field-in-the-news-title-2 field-type-link-field field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="http://blog.lareviewofbooks.org/essays/friendship-civic-democratic-practice/">Friendship as Civic Democratic Practice</a></div>
+      </div>
+</div>			<h4><em>Los Angeles Review of Books</em></h4>
+			<p>In an opinion piece, Professor Ivy Schweitzer asks whether it’s possible to “reconceive equality not as likeness but as a utopian horizon, an evolving parity or equity that rests fluidly or contingently on the embrace of differences?”</p>
+		  </article>
+		</li>
+
+	  
+	    <li role="listitem">
+		  <article>
+		    <div class="field field-name-field-in-the-news-title-3 field-type-link-field field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="https://www.bostonglobe.com/lifestyle/travel/2017/04/13/spring-hanover-ivy-league-its-own/tNEzqtJ49mpXEIYP4i3BdJ/story.html">Spring in Hanover Is in an (Ivy) League of Its Own</a></div>
+      </div>
+</div>			<h4><em>The Boston Globe</em></h4>
+			<p>“Behind all those ivy-covered brick buildings are free museums, public art displays, and gorgeous libraries,” writes the <i>Globe</i> in a travel story about the College’s hometown. “Why not take a spring break in Hanover?” asks the writer.</p>
+		  </article>
+		</li>
+
+	  
+	    <li role="listitem">
+		  <article>
+		    <div class="field field-name-field-in-the-news-title-4 field-type-link-field field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="https://www.usnews.com/news/best-states/new-york/articles/2017-04-13/phones-and-social-media-turn-consumers-into-whistleblowers">With Smartphones, Customers Are Corporate Whistleblowers</a></div>
+      </div>
+</div>			<h4><em>U.S. News and World Report</em></h4>
+			<p>Many companies don’t understand the way smartphones have shifted power to consumers, says Tuck professor Paul Argenti. “Companies still operate as if they can hide things and make believe something didn’t happen,” he says.</p>
+		  </article>
+		</li>
+
+	  
+
+	  </ul>
+	</article>
+	<div class="slideshow-pager" aria-hidden="true"></div>
+	<a href="http://news.dartmouth.edu/in-the-news" class="btn-sm">All Headlines</a>
+	<div class="home-spacer"><img src="/sites/default/themes/dartmouth_homesite/img/spacer-homepage.png" alt="" role="presentation"></div>
+  </div><!-- /.home-news module -->
+
+  </div>
+</div>
+      </div>
+</div>		</div>
+	  </div>
+	</div>
+  </div>
+
+
+</div><!-- /row -->
+
+<div class="row">
+  <div class="eight column">
+    <div class="container">
+      <div class="row">
+        <div class="four column">
+		  <div class="container">
+		    <div class="row">
+			  <div class="six column">
+			    <div class="events-module home-module">
+				  <article>
+					<h2><a href="http://news.dartmouth.edu/events">Events</a></h2>
+					<ul>
+
+										  <li>
+      				    <div class="field field-name-field-event-date-1 field-type-datetime field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2017-04-20T00:00:00-04:00">April 20</span></div>
+      </div>
+</div>      				    <div class="field field-name-field-event-1 field-type-link-field field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="http://news.dartmouth.edu/events/event?event=43607&amp;listing=1#.WPeBPU0kuNY">Artist Talk: Luis Delgado-Qualtrough, creator of “Carbon Conundrums”</a></div>
+      </div>
+</div>      				  </li>
+										  <li>
+      				    <div class="field field-name-field-event-date-2 field-type-datetime field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2017-04-20T00:00:00-04:00">April 20</span></div>
+      </div>
+</div>      				    <div class="field field-name-field-event-2 field-type-link-field field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="http://news.dartmouth.edu/events/event?event=44490&amp;listing=1#.WPeAgk0kuNY">Lecture: “Russia’s Game: From the End of the Cold War through the Election of 2016,” Daniel Fried, former coordinator for sanctions policy and special envoy for closure of Guantanamo Detainee Facility for the State Department</a></div>
+      </div>
+</div>      				  </li>
+										  <li>
+      				    <div class="field field-name-field-event-date-3 field-type-datetime field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2017-04-20T00:00:00-04:00">April 20</span></div>
+      </div>
+</div>      				    <div class="field field-name-field-event-3 field-type-link-field field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="http://news.dartmouth.edu/events/event?event=44494&amp;listing=1#.WPeASk0kuNY">Lecture: “The FARC’s Final March and the Making of Contemporary Colombia,” Robert Karl ’03, Princeton University</a></div>
+      </div>
+</div>      				  </li>
+										  <li>
+      				    <div class="field field-name-field-event-date-4 field-type-datetime field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2017-04-20T00:00:00-04:00">April 20</span></div>
+      </div>
+</div>      				    <div class="field field-name-field-event-4 field-type-link-field field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="http://news.dartmouth.edu/events/event?event=44742&amp;listing=1#.WPeABk0kuNY">Discussion: “Living with Autism: The Meaning of Neurodiversity,” Sara Chaney, Dartmouth</a></div>
+      </div>
+</div>      				  </li>
+					
+					</ul>
+					<a href="http://news.dartmouth.edu/events" class="btn-sm">All Events</a>
+				  </article>
+				  <div class="home-spacer">
+				    <img src="/sites/default/themes/dartmouth_homesite/img/spacer-homepage2x.png" alt="" role="presentation">
+				  </div>
+				</div>
+			  </div><!-- /six -->
+			</div>
+		  </div>
+		</div><!-- /four -->
+		<div class="four column">
+		  <div class="container">
+		    <div class="row">
+			  <div class="six column">
+	            <div class="field field-name-field-hover-feature-3 field-type-entityreference field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">
+
+
+<div id="node-18366" class="node node-hover-feature clearfix" about="/content/college-hill" typeof="sioc:Item foaf:Document">
+
+    <span property="dc:title" content="College on the Hill" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  <div class="home-promo home-module">
+  <a href="https://news.dartmouth.edu/videos?dcbn=88191&amp;utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_promo2">
+      <article>
+	    <header>
+		  <hgroup>
+			<h3>The View From Above</h3>
+			<h4>College on the Hill</h4>
+		  </hgroup>
+		</header>
+		<div class="image"><div class="field field-name-field-hover-feature-image field-type-image field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><img typeof="foaf:Image" src="http://dartmouth.edu/sites/default/files/styles/hover_feature/public/college-on-the-hill-promo.jpg?itok=X8_73KzW" width="376" height="286" alt="The View From Above | College on the Hill" title="college-on-the-hill-promo.jpg" /></div>
+      </div>
+</div></div>
+		<div class="description">
+		  <h3>College on the Hill</h3><div class="field field-name-field-hover-feature-blurb field-type-text-long field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><p>See a four-season, 60-second tour of one of the most beautiful campuses in the country.</p></div>
+      </div>
+</div></div>
+		<span class="close"><em></em></span>
+	  </article>
+	  </a>  </div><!-- /.promo module --> 
+
+  </div>
+</div>
+      </div>
+</div>
+				<div class="home-twitter home-module">
+				  <h2 role="menu">
+				    <span class="icn-twitter"></span>
+					<a class="tw-title" href="#tw-picker" role="menuitem">@DARTMOUTH</a>
+					<a class="hide-txt tw-dropdown" href="#tw-picker" role="menuitem">Choose Twitter account</a>
+				  </h2>
+				  <ul class="twitter-feeds">
+				    <li id="tw-picker" class="tw-picker">
+					  <nav class="tw-tabs" role="menu">
+												  					<a href="#tw-dartmouth" role="menuitem">@dartmouth</a>
+						  											  							<a href="#tw-tuckschool" role="menuitem">@tuckschool</a>
+						  											  							<a href="#tw-thayerschool" role="menuitem">@thayerschool</a>
+						  											  							<a href="#tw-DartGRAD" role="menuitem">@DartGRAD</a>
+						  											  							<a href="#tw-geiselmed" role="menuitem">@geiselmed</a>
+						  											  											  </nav>
+					</li>
+				  				    <li id="tw-dartmouth" class="tw-account">
+					  <ul class="tweets"><li><article><span class="timestamp">23 hours ago</span><p>Sandhya Subramanian, of @oberlincollege, named Dartmouth’s next general counsel. Learn more: <a href="https://t.co/u49ynldQjl" target="blank">https://t.co/u49ynldQjl</a> <a href="https://t.co/Ozh10N8wir" target="blank">https://t.co/Ozh10N8wir</a></p></article></li></ul  <a href="http://www.twitter.com/dartmouth" target="_blank" class="btn-follow">follow</a>
+					  <div class="twitter-pager" aria-hidden="true"></div>
+					</li>
+				  				    <li id="tw-tuckschool" class="tw-account">
+					  <ul class="tweets"><li><article><span class="timestamp">1 minute ago</span><p>Join us for an International Student Panel with current students from Europe WEDNESDAY at 1pm ET; <a href="https://t.co/PmZt83a1vH" target="blank">https://t.co/PmZt83a1vH</a> #MBA #bschool</p></article></li><li><article><span class="timestamp">1 hour ago</span><p>Catherine T'18 shares how she made this year's Business &amp; Society Conference a minimal waste conference.… <a href="https://t.co/nM5jyeXU7m" target="blank">https://t.co/nM5jyeXU7m</a></p></article></li><li><article><span class="timestamp">20 hours ago</span><p>T’17s @RussKWalker &amp; Ed Warren's startup @zippitycars is bringing convenient car care to @Dartmouth!… <a href="https://t.co/l8vg1DmgJx" target="blank">https://t.co/l8vg1DmgJx</a></p></article></li><li><article><span class="timestamp">22 hours ago</span><p>Tuck students visit 7 Israeli companies during their Global Insight Expedition to #Israel. #Tuck360… <a href="https://t.co/0Mnkp43GKr" target="blank">https://t.co/0Mnkp43GKr</a></p></article></li></ul>					  <a href="http://www.twitter.com/tuckschool" target="_blank" class="btn-follow">follow</a>
+					  <div class="twitter-pager" aria-hidden="true"></div>
+					</li>
+				  				    <li id="tw-thayerschool" class="tw-account">
+					  <ul class="tweets"><li><article><span class="timestamp">1 day ago</span><p>New issue of Dartmouth Engineer mag is up! Thayer's First 150 Years • Looking to the Future • Uber for Energy… <a href="https://t.co/B6fu1ulXIg" target="blank">https://t.co/B6fu1ulXIg</a></p></article></li></ul>					  <a href="http://www.twitter.com/thayerschool" target="_blank" class="btn-follow">follow</a>
+					  <div class="twitter-pager" aria-hidden="true"></div>
+					</li>
+				  				    <li id="tw-DartGRAD" class="tw-account">
+					  <ul class="tweets"><li><article><span class="timestamp">23 minutes ago</span><p>They all check your social media before you are hired #DartGRAD</p></article></li><li><article><span class="timestamp">24 minutes ago</span><p>Wear a suit jacket with nice pants. Tie not necessary.#DartGRAD</p></article></li><li><article><span class="timestamp">29 minutes ago</span><p>Send a thank you note to the people you meet #DartGRAD</p></article></li><li><article><span class="timestamp">32 minutes ago</span><p>During your talk you may get test questions.#DartGRAD</p></article></li></ul>					  <a href="http://www.twitter.com/DartGRAD" target="_blank" class="btn-follow">follow</a>
+					  <div class="twitter-pager" aria-hidden="true"></div>
+					</li>
+				  				    <li id="tw-geiselmed" class="tw-account">
+					  <ul class="tweets"><li><article><span class="timestamp">20 hours ago</span><p>Congrats to Dr. Mark Creager, who has been named the Anna Gundlach Huber Professor in Medicine at Geisel… <a href="https://t.co/etWctuQhHh" target="blank">https://t.co/etWctuQhHh</a></p></article></li></ul>					  <a href="http://www.twitter.com/geiselmed" target="_blank" class="btn-follow">follow</a>
+					  <div class="twitter-pager" aria-hidden="true"></div>
+					</li>
+				  				    <li id="tw-" class="tw-account">
+					  					  <a href="http://www.twitter.com/" target="_blank" class="btn-follow">follow</a>
+					  <div class="twitter-pager" aria-hidden="true"></div>
+					</li>
+				  				  </ul>
+				  <div class="home-spacer"><img src="/sites/default/themes/dartmouth_homesite/img/spacer-homepage.png" alt="" role="presentation"></div>
+				</div>
+
+			  </div><!-- /six -->
+			</div>
+		  </div>
+		</div><!-- /four -->
+	  </div>
+	</div>
+  </div><!-- eight -->
+  <div class="four column">
+    <div class="container">
+	  <div class="row">
+	    <div class="six column">
+	      <div class="field field-name-field-hover-feature-4 field-type-entityreference field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">
+
+
+<div id="node-16051" class="node node-hover-feature clearfix" about="/content/life-after-dartmouth" typeof="sioc:Item foaf:Document">
+
+    <span property="dc:title" content="Life After Dartmouth" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  <div class="home-promo home-module">
+  <a href="http://admissions.dartmouth.edu/learning-living/life-after-dartmouth/careers/?utm_source=dhome&amp;utm_medium=referral&amp;utm_campaign=dhome_promo2&amp;utm_content=ROI">
+      <article>
+	    <header>
+		  <hgroup>
+			<h3>Return on Investment</h3>
+			<h4>Life After Dartmouth</h4>
+		  </hgroup>
+		</header>
+		<div class="image"><div class="field field-name-field-hover-feature-image field-type-image field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><img typeof="foaf:Image" src="http://dartmouth.edu/sites/default/files/styles/hover_feature/public/life_after_dartmouth-1_promo.jpg?itok=KpEmL4KP" width="376" height="286" alt="Life after Dartmouth " title="life_after_dartmouth-1_promo.jpg" /></div>
+      </div>
+</div></div>
+		<div class="description">
+		  <h3>Life After Dartmouth</h3><div class="field field-name-field-hover-feature-blurb field-type-text-long field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><p>One of the many measures of the value of a Dartmouth education is the average return on investment: $822,600. Find out more about how a Dartmouth degree leads to success.</p></div>
+      </div>
+</div></div>
+		<span class="close"><em></em></span>
+	  </article>
+	  </a>  </div><!-- /.promo module --> 
+
+  </div>
+</div>
+      </div>
+</div>		</div><!-- /six -->
+		<div class="six column">
+	      
+  <div class="quicknav-module home-module">
+    <article><ul class="links"><li class="menu-6856 first"><a href="/dartmouth-maps" title="">Campus Map</a></li>
+<li class="menu-3881"><a href="http://news.dartmouth.edu" title="">News from Dartmouth</a></li>
+<li class="menu-6861"><a href="http://admissions.dartmouth.edu" title="">Undergraduate Admissions</a></li>
+<li class="menu-3891"><a href="http://dartmouth.edu/education/graduate-schools" title="">Graduate Schools</a></li>
+<li class="menu-3901 last"><a href="http://www.dartmouth.edu/video" title="">Dartmouth Video</a></li>
+</ul></article>
+    <div class="home-spacer">
+		  <img src="/sites/default/themes/dartmouth_homesite/img/spacer-homepage.png" alt="" role="presentation">
+		</div>
+
+	  </div><!-- /.quicknav-module -->		</div><!-- /six -->
+	  </div>
+	</div>
+  </div><!-- /four -->
+</div>
+
+
+
+</div>
+
+
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>
+    			          		  				</div>
+
+				
+							</div>
+
+		
+		
+		</div>
+
+		<section class="back-to-top">
+			<a class="btn">Back to Top</a>
+		</section>
+
+<!--// START UNIVERSAL FOOTER //-->
+
+<footer class="container" id="footer-container" role="contentinfo"><div class="row"><div class="eight column main-footer"><ul class="row" role="menu"><li class="nav-footer four column" role="menuitem" aria-labelledby="footer-label-my-dartmouth"><h3 id="footer-label-my-dartmouth">My Dartmouth<span></span></h3><ul role="menu"><li role="menuitem"><a href="http://www.dartmouth.edu/quicklinks/students/">Students</a></li><li role="menuitem"><a href="http://www.dartmouth.edu/quicklinks/faculty/">Faculty</a></li><li role="menuitem"><a href="http://www.dartmouth.edu/quicklinks/staff/">Staff</a></li><li role="menuitem"><a href="http://alumni.dartmouth.edu">Alumni</a></li><li role="menuitem"><a href="http://www.dartmouth.edu/quicklinks/families/">Families</a></li></ul></li><li class="nav-footer four column" role="menuitem" aria-labelledby="footer-label-find-fast"><h3 id="footer-label-find-fast">Find it Fast<span></span></h3><ul role="menu"><li role="menuitem"><a href="http://www.dartmouth.edu/~maps">Campus Map</a></li><li role="menuitem"><a href="http://dartmouth.edu/directory">Directory</a></li><li role="menuitem"><a href="http://dartmouth.edu/events">Events</a></li><li role="menuitem"><a href="https://news.dartmouth.edu">News</a></li><li role="menuitem"><a href="http://dartmouth.edu/visit">Visit</a></li></ul></li><li class="nav-footer four column" role="menuitem" aria-labelledby="footer-label-resources"><h3 id="footer-label-resources">Resources<span></span></h3><ul role="menu"><li role="menuitem"><a href="http://dartmouth.edu/dartmouth-glance">Dartmouth at a Glance</a></li><li role="menuitem"><a href="http://dartmouth.edu/accessibility">Accessibility</a></li><li role="menuitem"><a href="http://dartmouth.edu/administrative-offices">Administrative Offices</a></li><li role="menuitem"><a href="http://www.dartmouth.edu/~prepare/">Emergency Preparedness</a></li><li role="menuitem"><a href="http://jobs.dartmouth.edu/">Careers</a></li><li role="menuitem"><a href="http://www.dartmouth.edu/sexualrespect/">Sexual Respect & Title IX</a></li></ul></li></ul></div><div class="four column social-footer"><nav class="nav-footer nav-footer-four" aria-labelledby="footer-label-follow"><h3 id="footer-label-follow">Connect With Us</h3><ul id="footer-social" class="group" role="menu"><li role="menuitem"><a href="http://www.facebook.com/Dartmouth" class="logo-facebook hide-txt">Facebook</a></li><li role="menuitem"><a href="https://www.instagram.com/dartmouthcollege/" class="logo-instagram hide-txt">Instagram</a></li><li role="menuitem"><a href="http://www.twitter.com/dartmouth" class="logo-twitter hide-txt">Twitter</a></li><li role="menuitem"><a href="http://www.youtube.com/Dartmouth" class="logo-youtube hide-txt">YouTube</a></li><li role="menuitem"><a href="http://www.flickr.com/photos/dartmouthflickr" class="logo-flickr hide-txt">flickr</a></li></ul></nav></div></div><div class="row tiny-footer"><div class="twelve column"><ul id="nav-privacy" role="menu"><li role="menuitem"><a href="http://www.dartmouth.edu/copyright/">Copyright © 2017 Trustees of Dartmouth College</a></li><li aria-hidden="true" class="disc" role="menuitem">&#149;</li><li role="menuitem"><a href="http://dartmouth.edu/privacy">Privacy</a></li><li aria-hidden="true" class="disc" role="menuitem">&#149;</li><li role="menuitem"><a href="http://dartmouth.edu/index">A-Z Index</a></li><li aria-hidden="true" class="disc" role="menuitem">&#149;</li><li role="menuitem"><a href="http://dartmouth.edu/contact">Contact</a></li></ul></div></div></footer>
+
+<!--// END UNIVERSAL FOOTER //-->
+
+
+	</div> <!-- /#wrapper -->
+
+  <script type="text/javascript" src="http://dartmouth.edu/sites/all/modules/contrib/jquery_update/replace/jquery/1.10/jquery.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="http://dartmouth.edu/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="http://dartmouth.edu/misc/drupal.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.core.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.widget.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.position.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.menu.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.autocomplete.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/modules/custom/dart_emergency_banner/js/dart_emergency_banner.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/modules/contrib/gss/scripts/autocomplete.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/modules/contrib/jquery_migrate/js/jquery-migrate-1.2.1.min.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/modules/contrib/google_analytics/googleanalytics.js?oopvwp"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create", "UA-17623200-1", {"cookieDomain":".dartmouth.edu"});ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/foundation.min.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/jquery-1.10.2.min.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/jquery.ba-dotimeout.min.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/jquery.debouncedresize.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/jquery.touchSwipe.min.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/jquery.cycle2.min.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/jquery.fittext.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/jquery.mobile.vmouse.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/jquery.throttledresize.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/modernizr.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/vendor/responsive-tables.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/faculty-listing.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/news-events.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/universal.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/all/themes/dartmouth_master/js/scripts.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/default/themes/dartmouth_homesite/js/homepage.js?oopvwp"></script>
+<script type="text/javascript" src="http://dartmouth.edu/sites/default/themes/dartmouth_homesite/js/homepage-slider.js?oopvwp"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"dartmouth_homesite","theme_token":"aWZL3-xmON5wyds5-p89gUaeZ_QJcajKw8PUa5LlYP4","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.core.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.widget.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.position.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.menu.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.autocomplete.min.js":1,"sites\/all\/modules\/custom\/dart_emergency_banner\/js\/dart_emergency_banner.js":1,"sites\/all\/modules\/contrib\/gss\/scripts\/autocomplete.js":1,"sites\/all\/modules\/contrib\/jquery_migrate\/js\/jquery-migrate-1.2.1.min.js":1,"sites\/all\/modules\/contrib\/google_analytics\/googleanalytics.js":1,"0":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/foundation.min.js":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/jquery-1.10.2.min.js":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/jquery.ba-dotimeout.min.js":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/jquery.debouncedresize.js":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/jquery.touchSwipe.min.js":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/jquery.cycle2.min.js":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/jquery.fittext.js":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/jquery.mobile.vmouse.js":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/jquery.throttledresize.js":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/modernizr.js":1,"sites\/all\/themes\/dartmouth_master\/js\/vendor\/responsive-tables.js":1,"sites\/all\/themes\/dartmouth_master\/js\/faculty-listing.js":1,"sites\/all\/themes\/dartmouth_master\/js\/news-events.js":1,"sites\/all\/themes\/dartmouth_master\/js\/universal.js":1,"sites\/all\/themes\/dartmouth_master\/js\/scripts.js":1,"sites\/default\/themes\/dartmouth_homesite\/js\/homepage.js":1,"sites\/default\/themes\/dartmouth_homesite\/js\/homepage-slider.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"misc\/ui\/jquery.ui.core.css":1,"misc\/ui\/jquery.ui.theme.css":1,"misc\/ui\/jquery.ui.menu.css":1,"misc\/ui\/jquery.ui.autocomplete.css":1,"modules\/aggregator\/aggregator.css":1,"modules\/comment\/comment.css":1,"sites\/default\/modules\/custom\/dart_directory\/theme\/dart_directory.css":1,"sites\/all\/modules\/custom\/dart_emergency_banner\/theme\/dart_emergency_banner.css":1,"sites\/all\/modules\/custom\/dart_events\/theme\/dart_events.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/contrib\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"profiles\/acquia\/modules\/mollom\/mollom.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"profiles\/acquia\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/themes\/dartmouth_master\/css\/base.css":1,"sites\/all\/themes\/dartmouth_master\/css\/fonts.css":1,"sites\/all\/themes\/dartmouth_master\/css\/layout.css":1,"sites\/all\/themes\/dartmouth_master\/css\/layout-global.css":1,"sites\/all\/themes\/dartmouth_master\/css\/layout-global-responsive.css":1,"sites\/all\/themes\/dartmouth_master\/css\/layout-universal.css":1,"sites\/all\/themes\/dartmouth_master\/css\/layout-universal-responsive.css":1,"sites\/all\/themes\/dartmouth_master\/css\/content-universal.css":1,"sites\/all\/themes\/dartmouth_master\/css\/content-universal-responsive.css":1,"sites\/all\/themes\/dartmouth_master\/css\/layout-dept.css":1,"sites\/all\/themes\/dartmouth_master\/css\/layout-dept-responsive.css":1,"sites\/all\/themes\/dartmouth_master\/css\/content-dept.css":1,"sites\/all\/themes\/dartmouth_master\/css\/content-dept-responsive.css":1,"sites\/all\/themes\/dartmouth_master\/css\/dartmouth-overrides.css":1,"sites\/default\/themes\/dartmouth_homesite\/css\/dartmouth-homesite-overrides.css":1,"sites\/default\/themes\/dartmouth_homesite\/css\/dartmouth-responsive-overrides.css":1,"sites\/default\/themes\/dartmouth_homesite\/css\/ie.css":1}},"gss":{"key":"017180522165740084141:v1wbqwoih_k"},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackDomainMode":"1"},"urlIsAjaxTrusted":{"\/":true}});
+//--><!]]>
+</script>
+  
+</body>
+</html>
+[cs50@flume ~/demo]$ curl http://dartmouth.edu/ -o index.html
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 54925  100 54925    0     0   500k      0 --:--:-- --:--:-- --:--:--  501k
+[cs50@flume ~/demo]$ 

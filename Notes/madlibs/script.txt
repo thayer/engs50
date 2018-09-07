@@ -1,0 +1,172 @@
+Last login: Thu Apr  6 12:42:24 2017 from 10.31.121.117
+[cs50@flume ~]$ cd demo
+[cs50@flume ~/demo]$ ls
+freadline.c  madlib1.txt  madlib.c    readline.h
+freadline.h  madlib2.txt  readline.c  students.txt
+[cs50@flume ~/demo]$ ls
+freadline.c  madlib1.txt  madlib.c    readline.h
+freadline.h  madlib2.txt  readline.c  students.txt
+[cs50@flume ~/demo]$ more madlib1.txt 
+Dear class,
+
+ Welcome to <subject of study> <course number>, taught by Professor
+ <professor name>.  In this class you will <verb> and learn about the
+ history of <plural noun>.  You will <adverb> enjoy it!  
+
+[cs50@flume ~/demo]$ mygcc madlib.c freadline.c -o madlib
+/tmp/ccBz7HKD.o: In function `fillTemplate':
+/net/class/cs50/demo/madlib.c:123: undefined reference to `readLine'
+collect2: error: ld returned 1 exit status
+[cs50@flume ~/demo]$ mygcc madlib.c readline.c -o madlib
+[cs50@flume ~/demo]$ madlib 
+usage: madlib templateFilename outputFilename
+[cs50@flume ~/demo]$ madlib madlib1.txt output
+subject of study: English
+course number: 1
+professor name: John Kotz
+verb: loving
+plural noun: muffins
+adverb: quickly
+done! read your Mad Lib in 'output'
+[cs50@flume ~/demo]$ more output
+Dear class,
+
+ Welcome to English 1, taught by Professor
+ John Kotz.  In this class you will loving and learn about the
+ history of muffins.  You will quickly enjoy it!  
+
+[cs50@flume ~/demo]$ madlib madlib2.txt output
+noun: tennis
+noun: horse
+noun: cat
+noun: refrigerator
+noun: learning fellow
+noun: elbow
+noun/gerund: loving
+noun/gerund: friend
+noun/gerund: killing
+adjective: dark
+noun: onion
+adjective: tasty
+plural noun: poptarts
+adverb: freshly
+noun: sock
+adverb: swimmingly
+noun: lettuce
+adjective: crunchy
+verb: move
+verb: laugh
+plural noun: buffalos
+noun: pluto
+verb: dance
+noun: sandwich
+adverb: jumpily
+past tense verb: cried
+past tense verb: smiled
+adjective: sad
+noun/gerund: computer
+done! read your Mad Lib in 'output'
+[cs50@flume ~/demo]$ more output 
+To the tennis of the Dartmouth horse,
+
+Welcome back! A year ago, I appointed a cat to study the possibility of a refrig
+erator. For this spring term, we are delighted to announce Dartmouth's new learn
+ing fellow institute. It will offer elbow for faculty and students to elevate lo
+ving, friend and killing. It will provide resources for students, including dark
+ onion opportunities as well as tasty development funds, and create a visible in
+frastructure that will help us secure new poptarts. The institute will help our 
+community soar. This idea was freshly approved by Dartmouth's Board of Trustees 
+on March 15.
+
+We write to express the concern of sock. Although not terribly dangerous, there 
+have been recent incidents, including one in which a '20 was swimmingly apprehen
+ded. We ask everyone to heed caution of the lettuce.
+
+As we work together these last crunchy months of the 2016-2017 academic year, pl
+ease move for one another, laugh to one another and allow the knowledge you have
+ gained here to infuse the buffalos that you will use during your time at Dartmo
+uth.
+
+Remember the pluto of community, how much we dance on the sandwich and goodwill 
+of others and how essential it is for each of us to support our friends and neig
+hbors. I am so jumpily cried and smiled to be a part of such a sad community.
+
+Sincerely,
+
+Phil "computer" Hanlon
+
+----------------------------
+Credit to Andrew Sosanya '20
+"I'm Mad (Lib)", The Dartmouth, 3/29/17
+http://www.thedartmouth.com/article/2017/03/mad-lib
+
+see also https://en.wikipedia.org/wiki/Gerund
+[cs50@flume ~/demo]$ more madlib2.txt 
+To the <noun> of the Dartmouth <noun>,
+
+Welcome back! A year ago, I appointed a <noun> to study the possibility of a <no
+un>. For this spring term, we are delighted to announce Dartmouth's new <noun> i
+nstitute. It will offer <noun> for faculty and students to elevate <noun/gerund>
+, <noun/gerund> and <noun/gerund>. It will provide resources for students, inclu
+ding <adjective> <noun> opportunities as well as <adjective> development funds, 
+and create a visible infrastructure that will help us secure new <plural noun>. 
+The institute will help our community soar. This idea was <adverb> approved by D
+artmouth's Board of Trustees on March 15.
+
+We write to express the concern of <noun>. Although not terribly dangerous, ther
+e have been recent incidents, including one in which a '20 was <adverb> apprehen
+ded. We ask everyone to heed caution of the <noun>.
+
+As we work together these last <adjective> months of the 2016-2017 academic year
+, please <verb> for one another, <verb> to one another and allow the knowledge y
+ou have gained here to infuse the <plural noun> that you will use during your ti
+me at Dartmouth.
+
+Remember the <noun> of community, how much we <verb> on the <noun> and goodwill 
+of others and how essential it is for each of us to support our friends and neig
+hbors. I am so <adverb> <past tense verb> and <past tense verb> to be a part of 
+such a <adjective> community.
+
+Sincerely,
+
+Phil "<noun/gerund>" Hanlon
+
+----------------------------
+[cs50@flume ~/demo]$ madlib madlib2.txt /output
+madlib: cannot open output file 'madlib2.txt'
+[cs50@flume ~/demo]$ ls -l output
+-rw-r--r-- 1 cs50 cs50 1545 Apr  6 13:30 output
+[cs50@flume ~/demo]$ chmod -w output 
+[cs50@flume ~/demo]$ ls -l output
+-r--r--r-- 1 cs50 cs50 1545 Apr  6 13:30 output
+[cs50@flume ~/demo]$ madlib madlib2.txt output
+madlib: cannot open output file 'madlib2.txt'
+[cs50@flume ~/demo]$ madlib madlib2 output
+madlib: cannot open template file 'madlib2'
+[cs50@flume ~/demo]$ l
+-bash: l: command not found
+[cs50@flume ~/demo]$ emacs madlib
+[cs50@flume ~/demo]$ emacs madlib.c
+[cs50@flume ~/demo]$ !myg
+mygcc madlib.c readline.c -o madlib
+[cs50@flume ~/demo]$ madlib madlib1.txt output
+madlib: cannot open output file 'madlib1.txt'
+[cs50@flume ~/demo]$ ls
+freadline.c  madlib*	  madlib2.txt  madlib.c~  readline.c  students.txt
+freadline.h  madlib1.txt  madlib.c     output	  readline.h
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ emacs madlib.c
+[cs50@flume ~/demo]$ !myg
+mygcc madlib.c readline.c -o madlib
+[cs50@flume ~/demo]$ madlib madlib1.txt output
+madlib: cannot open output file 'madlib1.txt'
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ Use "logout" to leave the shell.
+[cs50@flume ~/demo]$ exit
+logout
+Connection to flume.cs.dartmouth.edu closed.
+
+[Process completed]
+

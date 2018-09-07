@@ -1,0 +1,21 @@
+# Makefile for 'names' program
+#  (adding more macros and libraries)
+#
+# David Kotz, April 2016
+
+CC = gcc
+CFLAGS = -Wall -pedantic -std=c11 -ggdb
+PROG = names
+OBJS = names.o readline.o
+LIBS = -lm
+
+$(PROG): $(OBJS)
+	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
+
+names.o: readline.h
+readline.o: readline.h
+
+clean:
+	rm -f *~
+	rm -f *.o
+	rm -f names

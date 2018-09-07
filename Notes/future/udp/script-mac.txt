@@ -1,0 +1,375 @@
+Last login: Wed May 10 14:07:52 on ttys001
+[DFK:~] bash
+[dfk@kotzbook16sep ~]$ cd website/examples/client-server-http-fork/
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ 
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ ls
+Makefile	file.c		httpclient.c
+README.md	file.h		httpserver.c
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ make
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o httpclient.o httpclient.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o file.o file.c
+gcc -Wall -pedantic -std=c11 -ggdb  httpclient.o file.o  -o httpclient
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o httpserver.o httpserver.c
+gcc -Wall -pedantic -std=c11 -ggdb  httpserver.o file.o  -o httpserver
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ ./httpclient 
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ flume 57037 /Makefile
+bash: flume: command not found
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ ./httpclient flume 57037 /Makefile
+HTTP/1.1 200 OK
+Server: CS50/1.0 (Kotz)
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+# Makefile for http client-server example
+#
+# David Kotz, May 2016
+
+PROGS = httpclient httpserver
+LIBS = 
+LLIBS = 
+
+FLAGS = # 
+CFLAGS = -Wall -pedantic -std=c11 -ggdb $(FLAGS)
+CC = gcc
+MAKE = make
+# for memory-leak tests
+VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
+
+all: $(PROGS)
+
+########### httpclient ##################
+httpclient: httpclient.o file.o $(LLIBS)
+	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
+
+httpclient.o: file.h
+
+########### httpserver #################
+httpserver: httpserver.o file.o $(LLIBS)
+	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
+
+httpserver.o: file.h
+
+clean:
+	rm -rf *~ *.o *.dSYM
+	rm -f $(PROGS) 
+
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ 
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ 
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ 
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ 
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ 
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ for i in 0 1 2 3 4 5 6 6 7 
+> do
+> ./httpclient flume 57037 /Makefile > /dev/null &
+> done
+[1] 12020
+[2] 12021
+[3] 12022
+[4] 12023
+[5] 12024
+[6] 12025
+[7] 12026
+[8] 12027
+[9] 12028
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ 
+[1]   Done                    ./httpclient flume 57037 /Makefile > /dev/null
+[2]   Done                    ./httpclient flume 57037 /Makefile > /dev/null
+[3]   Done                    ./httpclient flume 57037 /Makefile > /dev/null
+[4]   Done                    ./httpclient flume 57037 /Makefile > /dev/null
+[5]   Done                    ./httpclient flume 57037 /Makefile > /dev/null
+[6]   Done                    ./httpclient flume 57037 /Makefile > /dev/null
+[7]   Done                    ./httpclient flume 57037 /Makefile > /dev/null
+[8]-  Done                    ./httpclient flume 57037 /Makefile > /dev/null
+[9]+  Done                    ./httpclient flume 57037 /Makefile > /dev/null
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ ps x
+  PID   TT  STAT      TIME COMMAND
+  271   ??  S      0:12.27 /usr/sbin/cfprefsd agent
+  272   ??  S      0:08.50 /usr/libexec/UserEventAgent (Aqua)
+  274   ??  S      0:11.57 /usr/sbin/distnoted agent
+  276   ??  S      0:06.55 /System/Library/Frameworks/CoreTelephony.framework/Support/CommCe
+  278   ??  S      0:24.02 /usr/libexec/trustd --agent
+  279   ??  S      0:02.19 /usr/libexec/lsd
+  281   ??  S      0:18.61 /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock
+  283   ??  S      0:30.64 /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/Sy
+  284   ??  S      0:39.36 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder
+  287   ??  S      0:06.80 /usr/libexec/secd
+  290   ??  S      0:00.32 /usr/libexec/pboard
+  292   ??  S      0:25.21 /usr/libexec/sharingd
+  296   ??  S      0:00.51 /System/Library/PrivateFrameworks/CacheDelete.framework/deleted
+  298   ??  S      0:01.83 /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/Versi
+  299   ??  S      9:09.21 /System/Library/PrivateFrameworks/TelephonyUtilities.framework/ca
+  300   ??  S      0:05.55 /usr/libexec/pkd
+  301   ??  S      0:36.07 /System/Library/PrivateFrameworks/SyncedDefaults.framework/Suppor
+  302   ??  S      2:58.87 /System/Library/Frameworks/Accounts.framework/Versions/A/Support/
+  303   ??  S      0:04.21 /System/Library/PrivateFrameworks/IDS.framework/identityservicesd
+  304   ??  S      0:01.23 /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/Co
+  305   ??  S      0:02.64 /System/Library/PrivateFrameworks/TCC.framework/Resources/tccd
+  308   ??  S      0:00.09 /System/Library/PrivateFrameworks/GeoServices.framework/geodMachS
+  310   ??  S      0:03.77 /System/Library/CoreServices/cloudphotosd.app/Contents/MacOS/clou
+  311   ??  S      0:01.96 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/
+  314   ??  S      0:00.06 /System/Library/PrivateFrameworks/QuickLookThumbnailing.framework
+  319   ??  S      0:01.31 /usr/libexec/secinitd
+  320   ??  S      0:01.28 /System/Library/PrivateFrameworks/IMDPersistence.framework/XPCSer
+  323   ??  S      0:01.23 /System/Library/CoreServices/sharedfilelistd
+  325   ??  S      0:11.84 /usr/libexec/nsurlstoraged
+  326   ??  S      0:11.43 /System/Library/Frameworks/ApplicationServices.framework/Framewor
+  328   ??  S      0:00.50 /System/Library/CoreServices/mapspushd
+  329   ??  S      2:37.02 /System/Library/PrivateFrameworks/CalendarAgent.framework/Executa
+  337   ??  S      2:23.82 /Users/dfk/Applications/CheatSheet.app/Contents/MacOS/CheatSheet
+  338   ??  S      0:00.49 /System/Library/PrivateFrameworks/CloudPhotoServices.framework/Ve
+  340   ??  S      0:04.04 /usr/sbin/usernoted
+  341   ??  Ss     2:52.31 /System/Library/PrivateFrameworks/CalendarNotification.framework/
+  342   ??  S      0:04.42 /Applications/ScanSnap/ScanSnap Manager.app/Contents/MacOS/ScanSn
+  344   ??  S      0:02.36 /Applications/iTunes.app/Contents/MacOS/iTunesHelper.app/Contents
+  345   ??  S      0:04.39 /usr/libexec/nsurlsessiond
+  346   ??  S      0:00.77 /usr/libexec/networkserviceproxy
+  347   ??  S      4:46.73 /Applications/Google Drive.app/Contents/MacOS/Google Drive
+  350   ??  S      4:06.11 /Applications/Dropbox.app/Contents/MacOS/Dropbox
+  351   ??  SN     0:40.99 /Applications/CrashPlan.app/Contents/Helpers/CrashPlan menu bar.a
+  352   ??  S      0:00.56 /System/Library/CoreServices/iconservicesagent
+  354   ??  S      0:04.74 /System/Library/PrivateFrameworks/UserActivity.framework/Agents/u
+  355   ??  S      0:00.65 /usr/libexec/keyboardservicesd
+  356   ??  S      0:20.18 /usr/libexec/SafariCloudHistoryPushAgent
+  358   ??  S      0:02.53 /System/Library/PrivateFrameworks/AuthKit.framework/Versions/A/Su
+  359   ??  S      0:00.22 /System/Library/PrivateFrameworks/CallHistory.framework/Support/C
+  360   ??  S      0:03.50 /System/Library/PrivateFrameworks/GameCenterFoundation.framework/
+  361   ??  S      0:00.09 /System/Library/PrivateFrameworks/AskPermission.framework/Version
+  362   ??  S      0:00.38 /System/Library/CoreServices/AppleIDAuthAgent
+  363   ??  S      0:00.64 /System/Library/PrivateFrameworks/PassKitCore.framework/passd
+  365   ??  S      0:00.78 /usr/libexec/fmfd
+  366   ??  S      0:05.37 /System/Library/CoreServices/Spotlight.app/Contents/MacOS/Spotlig
+  367   ??  Ss     0:03.56 /Applications/Dropbox.app/Contents/PlugIns/garcon.appex/Contents/
+  368   ??  Ss     0:03.54 /System/Library/CoreServices/Dock.app/Contents/XPCServices/com.ap
+  371   ??  S      0:00.07 /System/Library/PrivateFrameworks/CloudFamilyRestrictions.framewo
+  372   ??  S      8:59.21 /System/Library/PrivateFrameworks/MessagesKit.framework/Resources
+  373   ??  S      0:12.93 /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Suppor
+  374   ??  S      0:02.78 /System/Library/PrivateFrameworks/CoreParsec.framework/parsecd
+  375   ??  S      0:00.13 /System/Library/PrivateFrameworks/CallHistory.framework/Support/C
+  378   ??  S      0:04.92 /System/Library/PrivateFrameworks/GeoServices.framework/Versions/
+  379   ??  S      0:02.58 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/
+  380   ??  S      0:09.26 /System/Library/Frameworks/AddressBook.framework/Executables/Cont
+  381   ??  S      0:00.07 /System/Library/Frameworks/LocalAuthentication.framework/Support/
+  382   ??  S      0:00.02 /System/Library/Frameworks/CryptoTokenKit.framework/ctkahp.bundle
+  385   ??  S      0:04.78 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/
+  386   ??  S      0:00.26 /System/Library/CoreServices/pbs
+  388   ??  S      0:00.05 /System/Library/Frameworks/CryptoTokenKit.framework/ctkd -tw
+  389   ??  S      0:02.64 /System/Library/Frameworks/InputMethodKit.framework/Resources/imk
+  391   ??  Ss     0:02.71 /System/Library/Input Methods/PressAndHold.app/Contents/PlugIns/P
+  393   ??  S      0:00.13 /System/Library/PrivateFrameworks/CommunicationsFilter.framework/
+  397   ??  Ss     0:01.09 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/
+  398   ??  Ss     0:02.77 /System/Library/PrivateFrameworks/CoreWLANKit.framework/Versions/
+  403   ??  S      0:00.12 /usr/libexec/swcd
+  404   ??  S      0:00.21 /usr/libexec/videosubscriptionsd
+  405   ??  Ss     0:00.09 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/
+  406   ??  S      0:10.41 /System/Library/PrivateFrameworks/PhotoLibraryPrivate.framework/V
+  407   ??  S      0:00.84 /System/Library/CoreServices/ScopedBookmarkAgent
+  420   ??  S      0:04.63 /System/Library/PrivateFrameworks/AssistantServices.framework/ass
+  421   ??  S      0:02.86 /System/Library/CoreServices/FolderActionsDispatcher.app/Contents
+  423   ??  S      0:00.06 /usr/libexec/spindump_agent
+  425   ??  S      0:00.12 /System/Library/CoreServices/SocialPushAgent.app/Contents/MacOS/S
+  427   ??  S      0:07.21 2BUA8C4S2C.com.agilebits.onepassword-osx-helper
+  429   ??  S      0:14.09 /System/Library/CoreServices/NotificationCenter.app/Contents/MacO
+  430   ??  S      0:19.73 /System/Library/CoreServices/Siri.app/Contents/MacOS/Siri launchd
+  432   ??  S      0:41.10 /System/Library/Image Capture/Support/icdd
+  435   ??  S      0:47.33 /Applications/Alertus Desktop.app/Contents/MacOS/Alertus Desktop 
+  437   ??  S      0:04.08 /System/Library/CoreServices/AirPlayUIAgent.app/Contents/MacOS/Ai
+  438   ??  S      0:02.94 /System/Library/CoreServices/cloudpaird
+  439   ??  S      3:17.35 /Applications/Utilities/Adobe Creative Cloud/ACC/Creative Cloud.a
+  440   ??  S      0:03.17 /System/Library/PrivateFrameworks/Noticeboard.framework/Versions/
+  443   ??  S      0:05.04 /System/Library/CoreServices/WiFiAgent.app/Contents/MacOS/WiFiAge
+  444   ??  S      0:00.95 /System/Library/CoreServices/diagnostics_agent
+  450   ??  S      0:00.26 /System/Library/Frameworks/Security.framework/Versions/A/Resource
+  461   ??  S      0:24.98 /Applications/Utilities/Adobe Application Manager/IPC/AdobeIPCBro
+  462   ??  S      0:00.12 /System/Library/Frameworks/Security.framework/Versions/A/Resource
+  464   ??  S      0:03.20 /System/Library/PrivateFrameworks/ContactsAgent.framework/Executa
+  465   ??  Ss     0:00.06 /System/Library/CoreServices/NotificationCenter.app/Contents/XPCS
+  466   ??  Ss     0:01.28 /System/Library/PrivateFrameworks/WeatherKit.framework/Versions/A
+  469   ??  S      1:37.02 /Applications/Utilities/Adobe Creative Cloud/ACC/Creative Cloud.a
+  478   ??  S      0:00.30 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/
+  479   ??  Ss     0:00.08 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/
+  481   ??  S      1:49.32 /Library/Application Support/Adobe/Adobe Desktop Common/HEX/Adobe
+  482   ??  S      0:00.06 /System/Library/PrivateFrameworks/CoreFollowUp.framework/Versions
+  485   ??  Ss     0:00.04 /System/Library/Frameworks/VideoToolbox.framework/Versions/A/XPCS
+  495   ??  S      0:03.82 /Library/DropboxHelperTools/Dropbox_u501/dbfseventsd
+  496   ??  S      1:03.72 /Library/Application Support/Adobe/Adobe Desktop Common/ADS/Adobe
+  497   ??  S      0:09.88 /Library/DropboxHelperTools/Dropbox_u501/dbfseventsd
+  498   ??  S      8:50.55 /Library/Application Support/Adobe/Adobe Desktop Common/HEX/Adobe
+  502   ??  S      0:07.46 /Library/DropboxHelperTools/Dropbox_u501/dbfseventsd
+  507   ??  R      3:12.39 /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal
+  529   ??  S      1:44.63 /Library/Application Support/Adobe/Adobe Desktop Common/ADS/Adobe
+  532   ??  Ss     0:00.23 /Library/Frameworks/iTunesLibrary.framework/Versions/A/XPCService
+  538   ??  S      0:40.09 /Applications/Utilities/Adobe Creative Cloud/CoreSync/Core Sync.a
+  539   ??  S      0:05.35 /Applications/Utilities/Adobe Creative Cloud/CCXProcess/CCXProces
+  540   ??  S      1:44.16 /Applications/Utilities/Adobe Creative Cloud/CoreSync/Core Sync.a
+  544   ??  Z      0:00.00 (ExManBridgeTalkC)
+  547   ??  S      0:00.05 /System/Library/CoreServices/Software Update.app/Contents/Resourc
+  551   ??  S      0:00.08 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/
+  553   ??  S      0:02.49 /System/Library/PrivateFrameworks/CommerceKit.framework/Resources
+  555   ??  S      0:00.06 /System/Library/PrivateFrameworks/CoreCDP.framework/Versions/A/Re
+  556   ??  Ss     0:00.77 /System/Library/PrivateFrameworks/PhotoLibraryPrivate.framework/V
+  560   ??  S      0:03.56 /System/Library/PrivateFrameworks/AssistantServices.framework/ass
+  565   ??  S      0:01.90 /usr/libexec/WiFiVelocityAgent
+  568   ??  S      0:00.12 /System/Library/PrivateFrameworks/MediaRemote.framework/Support/m
+  572   ??  S      0:04.24 /Applications/Utilities/Adobe Creative Cloud/CCLibrary/CCLibrary.
+  574   ??  S      0:09.62 /System/Library/PrivateFrameworks/CoreRecents.framework/Versions/
+  578   ??  S      3:04.13 /Applications/Safari.app/Contents/MacOS/Safari
+  581   ??  Ss     1:00.21 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCService
+  583   ??  S      0:00.39 /usr/libexec/webinspectord
+  587   ??  S      0:00.26 /usr/libexec/SafariNotificationAgent
+  591   ??  Ss     0:00.23 /Library/Frameworks/iTunesLibrary.framework/Versions/A/XPCService
+  592   ??  S      0:08.81 /System/Library/PrivateFrameworks/SafariSafeBrowsing.framework/co
+  593   ??  S      0:00.32 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+  629   ??  S      0:04.39 /System/Library/Frameworks/ApplicationServices.framework/Versions
+  631   ??  Ss     0:00.44 /System/Library/PrivateFrameworks/SafariShared.framework/Versions
+  634   ??  S      4:04.61 /System/Library/PrivateFrameworks/CoreSuggestions.framework/Versi
+  639   ??  S      0:00.70 /System/Library/PrivateFrameworks/CoreSuggestions.framework/Versi
+  640   ??  S      0:00.05 /usr/libexec/USBAgent
+  644   ??  Ss     0:00.19 /System/Library/PrivateFrameworks/SafariShared.framework/Versions
+  650   ??  S      0:10.58 /System/Library/Services/AppleSpell.service/Contents/MacOS/AppleS
+  685   ??  S      0:01.43 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+  779   ??  Ss     0:02.35 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCService
+  780   ??  S      0:00.09 /System/Library/Frameworks/MediaAccessibility.framework/Versions/
+  803   ??  Ss     0:00.79 /System/Library/PrivateFrameworks/SafariShared.framework/Versions
+  897   ??  S      0:25.16 /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Version
+  902   ??  S      0:00.04 /System/Library/PrivateFrameworks/PrintingPrivate.framework/Versi
+  946   ??  S      0:00.08 /System/Library/PrivateFrameworks/BookKit.framework/Versions/A/XP
+  948   ??  S      0:13.67 /System/Library/PrivateFrameworks/ViewBridge.framework/Versions/A
+  977   ??  S      0:03.22 /System/Library/CoreServices/OSDUIHelper.app/Contents/MacOS/OSDUI
+ 1080   ??  S      0:00.03 /usr/bin/ssh-agent -l
+ 1188   ??  S      0:00.07 /System/Library/CoreServices/EscrowSecurityAlert.app/Contents/Mac
+ 1189   ??  S      0:00.99 /System/Library/PrivateFrameworks/CloudServices.framework/Version
+ 1264   ??  S      0:00.43 /System/Library/PrivateFrameworks/ProtectedCloudStorage.framework
+ 1562   ??  Ss     0:04.64 /System/Library/PrivateFrameworks/AssistantServices.framework/Ver
+ 1577   ??  S      0:04.86 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+ 1596   ??  Ss     0:00.21 /Library/Frameworks/iTunesLibrary.framework/Versions/A/XPCService
+ 3072   ??  S      0:00.04 /System/Library/PrivateFrameworks/KerberosHelper/Helpers/DiskUnmo
+ 3073   ??  S      0:00.06 /System/Library/PrivateFrameworks/StorageManagement.framework/Res
+ 4679   ??  S      0:00.78 /System/Library/Frameworks/ApplicationServices.framework/Framewor
+ 4727   ??  Ss     0:00.21 /Users/dfk/Applications/Blue Jeans.app/Contents/MacOS/BlueJeans /
+ 4757   ??  Ss     0:00.04 /System/Library/Frameworks/SafariServices.framework/Versions/A/XP
+ 4781   ??  Ss     0:01.31 /Applications/Dropbox.app/Contents/PlugIns/garcon.appex/Contents/
+ 4952   ??  Ss     0:00.07 /System/Library/PrivateFrameworks/AXHearingSupport.framework/Vers
+ 4953   ??  Ss     0:00.31 /System/Library/PrivateFrameworks/IMFoundation.framework/XPCServi
+ 4977   ??  S      0:00.04 /System/Library/PrivateFrameworks/ToneLibrary.framework/Versions/
+ 5254   ??  S      0:00.19 /System/Library/PrivateFrameworks/AssetCacheServices.framework/XP
+ 7905   ??  Ss     0:00.85 /System/Library/PrivateFrameworks/SafariShared.framework/Versions
+ 7906   ??  S      0:00.04 /System/Library/Frameworks/CoreServices.framework/Versions/A/Fram
+10799   ??  S      0:00.39 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/
+10801   ??  S      0:00.02 /System/Library/PrivateFrameworks/StoreXPCServices.framework/Vers
+10823   ??  Ss     0:00.04 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/
+10920   ??  S      0:00.44 /System/Library/CoreServices/CoreServicesUIAgent.app/Contents/Mac
+11099   ??  S      0:00.03 /System/Library/PrivateFrameworks/CharacterPicker.framework/Versi
+11516   ??  Ss     0:00.02 /System/Library/PrivateFrameworks/PrintingPrivate.framework/Versi
+11582   ??  S      0:00.05 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11587   ??  S      0:00.49 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11588   ??  S      0:00.49 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11594   ??  Ss     0:00.05 /System/Library/PrivateFrameworks/XprotectFramework.framework/Ver
+11599   ??  S      0:00.13 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11655   ??  S      0:03.20 /Applications/Preview.app/Contents/MacOS/Preview -psn_0_1532278
+11657   ??  Ss     0:00.01 /System/Library/Frameworks/ApplicationServices.framework/Versions
+11663   ??  S      0:00.05 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11686   ??  S      0:00.48 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11687   ??  S      0:00.51 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11731   ??  S      0:00.13 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11741   ??  Ss     0:01.06 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCService
+11857   ??  Ss     0:00.04 /System/Library/SystemConfiguration/EAPOLController.bundle/Conten
+11897   ??  S      0:00.03 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11902   ??  S      0:00.08 /System/Library/Frameworks/QuickLook.framework/Resources/quickloo
+11921   ??  Ss     0:00.04 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices
+11931   ??  S      0:00.04 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11932   ??  S      0:00.07 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+12006   ??  S      0:00.04 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+12007   ??  S      0:00.03 /System/Library/Frameworks/CoreServices.framework/Frameworks/Meta
+11892 s000  Ss     0:00.02 login -pf dfk
+11893 s000  S+     0:00.02 -tcsh
+11903 s001  Ss+    0:00.01 login -pfq dfk /usr/bin/ssh cs50@flume.cs.dartmouth.edu
+11904 s001  S+     0:00.09 -ssh cs50@flume.cs.dartmouth.edu
+11905 s002  Ss     0:00.01 login -pf dfk
+11906 s002  S      0:00.01 -tcsh
+11909 s002  S      0:00.04 bash
+12033 s002  R+     0:00.00 ps x
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ clear
+
+[dfk@kotzbook16sep ~/website/examples/client-server-http-fork]$ cd ../client-server-udp
+[dfk@kotzbook16sep ~/website/examples/client-server-udp]$ make
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o udpclient.o udpclient.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o file.o file.c
+gcc -Wall -pedantic -std=c11 -ggdb  udpclient.o file.o  -o udpclient
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o udpserver.o udpserver.c
+gcc -Wall -pedantic -std=c11 -ggdb  udpserver.o  -o udpserver
+[dfk@kotzbook16sep ~/website/examples/client-server-udp]$ ./udpclient flume 50138
+Ready!
+hello class
+hello class
+what's up
+what's up
+this is cool
+this is cool
+[dfk@kotzbook16sep ~/website/examples/client-server-udp]$ ./udpclient flume 50138
+Ready!
+back!
+back!
+somebody please try...
+somebody please try...
+^C
+[dfk@kotzbook16sep ~/website/examples/client-server-udp]$ cd ..
+[dfk@kotzbook16sep ~/website/examples]$ ls -d client-server-*
+client-server-http/		client-server-udp/
+client-server-http-fork/	client-server-udp-select/
+[dfk@kotzbook16sep ~/website/examples]$ cd client-server-udp-select/
+[dfk@kotzbook16sep ~/website/examples/client-server-udp-select]$ clear
+
+
+
+[dfk@kotzbook16sep ~/website/examples/client-server-udp-select]$ make
+gcc -Wall -Wno-braced-scalar-init -pedantic -std=c11 -ggdb    -c -o chatclient1.o chatclient1.c
+gcc -Wall -Wno-braced-scalar-init -pedantic -std=c11 -ggdb    -c -o file.o file.c
+gcc -Wall -Wno-braced-scalar-init -pedantic -std=c11 -ggdb  chatclient1.o file.o  -o chatclient1
+gcc -Wall -Wno-braced-scalar-init -pedantic -std=c11 -ggdb    -c -o chatserver1.o chatserver1.c
+gcc -Wall -Wno-braced-scalar-init -pedantic -std=c11 -ggdb  chatserver1.o file.o  -o chatserver1
+gcc -Wall -Wno-braced-scalar-init -pedantic -std=c11 -ggdb    -c -o chatclient2.o chatclient2.c
+gcc -Wall -Wno-braced-scalar-init -pedantic -std=c11 -ggdb  chatclient2.o file.o  -o chatclient2
+gcc -Wall -Wno-braced-scalar-init -pedantic -std=c11 -ggdb    -c -o chatserver2.o chatserver2.c
+gcc -Wall -Wno-braced-scalar-init -pedantic -std=c11 -ggdb  chatserver2.o file.o  -o chatserver2
+[dfk@kotzbook16sep ~/website/examples/client-server-udp-select]$ ./chatclient flume 49660
+bash: ./chatclient: No such file or directory
+[dfk@kotzbook16sep ~/website/examples/client-server-udp-select]$ ./chatclient2 flume 49660
+: hello!
+: this works!
+: [129.170.214.115@49660]: and I can respond!
+: 
+: 
+: 
+: ^C
+[dfk@kotzbook16sep ~/website/examples/client-server-udp-select]$ ./chatclient2 flume 53309
+: first!
+: ^C
+[dfk@kotzbook16sep ~/website/examples/client-server-udp-select]$ 

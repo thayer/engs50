@@ -1,0 +1,10 @@
+# Makefile4
+#
+top:    middle
+	@echo "building the top"
+
+middle: whoami
+	@echo "building the middle"
+
+whoami:
+	@echo "make invoked by User "$(USER)" running shell "$(SHELL)" ."

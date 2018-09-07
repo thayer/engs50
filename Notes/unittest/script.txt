@@ -1,0 +1,74 @@
+Last login: Thu Apr 27 06:30:06 2017 from 198.55.237.247
+[cs50@flume ~]$ mkdir class
+[cs50@flume ~]$ cd class
+[cs50@flume ~/class]$ cp ~cs50/examples/treeA.c
+cp: missing destination file operand after '/net/class/cs50/examples/treeA.c'
+Try 'cp --help' for more information.
+[cs50@flume ~/class]$ cp ~cs50/examples/treeA.c .
+cp: cannot stat '/net/class/cs50/examples/treeA.c': No such file or directory
+[cs50@flume ~/class]$ cp -r  ~cs50/examples/trees/treeA/ .
+cd [cs50@flume ~/class]$ cd treeA
+[cs50@flume ~/class/treeA]$ ls
+diff9A	  memory.c@  readlinep.c@  tree.c  treetest*   unittest*
+Makefile  memory.h@  readlinep.h@  tree.h  treetest.c  unittest.h@
+[cs50@flume ~/class/treeA]$ make
+make: *** No rule to make target 'readlinep.h', needed by 'treetest.o'.  Stop.
+[cs50@flume ~/class/treeA]$ rm memory.* readlinep.*
+rm: remove symbolic link 'memory.c'? y
+rm: remove symbolic link 'memory.h'? y
+rm: remove symbolic link 'readlinep.c'? y
+rm: remove symbolic link 'readlinep.h'? y
+[cs50@flume ~/class/treeA]$ cp ~cs50/examples/readlinep.* .
+[cs50@flume ~/class/treeA]$ cp ~cs50/examples/memory.* .
+[cs50@flume ~/class/treeA]$ make
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o treetest.o treetest.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o tree.o tree.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o memory.o memory.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o readlinep.o readlinep.c
+gcc -Wall -pedantic -std=c11 -ggdb  treetest.o tree.o memory.o readlinep.o  -o treetest
+[cs50@flume ~/class/treeA]$ clear
+
+[cs50@flume ~/class/treeA]$ ls
+diff9A	  memory.h     readlinep.h     tree.c  treetest*   unittest*
+Makefile  memory.o     readlinep.html  tree.h  treetest.c  unittest.h@
+memory.c  readlinep.c  readlinep.o     tree.o  treetest.o
+[cs50@flume ~/class/treeA]$ emacs tree.c
+
+[1]+  Stopped                 emacs tree.c
+[cs50@flume ~/class/treeA]$ cp ~cs50/examples/unittest.h .
+cp: not writing through dangling symlink './unittest.h'
+[cs50@flume ~/class/treeA]$ rm unittest.h 
+rm: remove symbolic link 'unittest.h'? y
+[cs50@flume ~/class/treeA]$ cp ~cs50/examples/unittest.h .
+[cs50@flume ~/class/treeA]$ ls
+diff9A	  memory.c  memory.o	 readlinep.h	 readlinep.o  tree.h  treetest*   treetest.o  unittest.h
+Makefile  memory.h  readlinep.c  readlinep.html  tree.c       tree.o  treetest.c  unittest*
+[cs50@flume ~/class/treeA]$ fg
+emacs tree.c
+[cs50@flume ~/class/treeA]$ gcc -DUNIT_TEST -E tree.c |less
+[cs50@flume ~/class/treeA]$ cd ..
+[cs50@flume ~/class]$ ls
+treeA/
+[cs50@flume ~/class]$ cd ../demo/
+[cs50@flume ~/demo]$ ls
+crawler*  crawler-output/  lecture/  libcs50/  listurls.awk  listurls.sh*  seuss/
+[cs50@flume ~/demo]$ cd ../class/
+[cs50@flume ~/class]$ ls
+treeA/
+[cs50@flume ~/class]$ cp -r ~/public_html/Labs/Lab3/starter/hashtable/ .
+[cs50@flume ~/class]$ cd hashtable/
+[cs50@flume ~/class/hashtable]$ ls
+jhash.c  jhash.h
+[cs50@flume ~/class/hashtable]$ emacs jhash.c
+[cs50@flume ~/class/hashtable]$ cd
+[cs50@flume ~]$ cd demo
+[cs50@flume ~/demo]$ ls
+crawler*  crawler-output/  lecture/  libcs50/  listurls.awk  listurls.sh*  seuss/
+[cs50@flume ~/demo]$ exi
+-bash: exi: command not found
+[cs50@flume ~/demo]$ exit
+logout
+Connection to flume.cs.dartmouth.edu closed.
+
+[Process completed]
+

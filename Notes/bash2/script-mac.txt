@@ -1,0 +1,389 @@
+Last login: Thu Mar 30 12:58:44 on ttys000
+[DFK:~] bash
+[MacBook ~]$ cd website/Lectures/
+[MacBook ~/website/Lectures]$ cd 03
+[MacBook ~/website/Lectures/03]$ ls
+Billboard2016-hot100.txt	history-DartmouthAI.jpg
+activity.md			shell.md
+[MacBook ~/website/Lectures/03]$ open activity.md 
+[MacBook ~/website/Lectures/03]$ cd ..
+[MacBook ~/website/Lectures]$ cd ..
+[MacBook ~/website]$ make deploy
+cat _config-{base,cs} > _config.yml
+
+Building for CS...
+jekyll build --destination _site
+Configuration file: /Users/dfk/projects/cs50/website/_config.yml
+            Source: /Users/dfk/projects/cs50/website
+       Destination: _site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+                    done in 3.899 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+rm _config.yml
+
+Fixing permissions...
+chmod -R go-w _site/*
+chmod -R go+rX _site/*
+
+Adding data...
+ln -s ../data _site/data
+
+Deploying...
+rsync -e ssh -alcvz --exclude=/Makefile --exclude=/Comics/future --exclude=/examples/future --exclude=/Labs/future --exclude=/Labs/unused --exclude=/Lectures/future --exclude=/Lectures/unused --exclude=\*-draft\* --exclude=\*~ --exclude=\*.o --exclude=\*.dSYM --delete-excluded --delete  _site/ cs50@green.cs.dartmouth.edu:public_html
+building file list ... done
+./
+Comics/
+Labs/Lab0/
+Labs/Lab1/
+Labs/Lab1/sonnets/
+Lectures/01/
+Lectures/02/
+Lectures/03/
+Lectures/03/activity.html
+Reading/
+Reading/future/
+Reading/unused/
+Resources/
+Resources/XQuartz/
+examples/
+
+sent 6512 bytes  received 258 bytes  4513.33 bytes/sec
+total size is 10135983  speedup is 1497.19
+open http://www.cs.dartmouth.edu/~cs50/
+[MacBook ~/website]$ clear
+
+[MacBook ~/website]$ cd
+[MacBook ~]$ pbpaste > students
+[MacBook ~]$ head students 
+Michael.T.Aaberg.18@Dartmouth.edu;
+Alexander.G.W.Bailey.18@Dartmouth.edu;
+Anders.Bando-Hess.19@Dartmouth.edu;
+James.W.Beane.III.19@Dartmouth.edu;
+Alex.Y.Chan.19@Dartmouth.edu;
+Shaket.Chaudhary.19@Dartmouth.edu;
+Trevor.J.Colby.19@Dartmouth.edu;
+Robert.C.Crawford.19@Dartmouth.edu;
+Alexander.J.Danilowicz.19@Dartmouth.edu;
+Christopher.O.Davis.18@Dartmouth.edu;
+[MacBook ~]$ sed 's/;/,/' students 
+Michael.T.Aaberg.18@Dartmouth.edu,
+Alexander.G.W.Bailey.18@Dartmouth.edu,
+Anders.Bando-Hess.19@Dartmouth.edu,
+James.W.Beane.III.19@Dartmouth.edu,
+Alex.Y.Chan.19@Dartmouth.edu,
+Shaket.Chaudhary.19@Dartmouth.edu,
+Trevor.J.Colby.19@Dartmouth.edu,
+Robert.C.Crawford.19@Dartmouth.edu,
+Alexander.J.Danilowicz.19@Dartmouth.edu,
+Christopher.O.Davis.18@Dartmouth.edu,
+Anthony.F.DiPadova.III.19@Dartmouth.edu,
+Anna.E.Dodson.20@Dartmouth.edu,
+Jack.W.Elder.18@Dartmouth.edu,
+Afnan.Enayet.19@Dartmouth.edu,
+Kathryn.E.Flattum.18@Dartmouth.edu,
+Shoshana.M.Geller.20@Dartmouth.edu,
+Isaac.Gluck.19@Dartmouth.edu,
+Alexander.E.Goss.18@Dartmouth.edu,
+Joshua.B.Gutow.20@Dartmouth.edu,
+Ryan.B.Hall.19@Dartmouth.edu,
+Danah.K.Han.20@Dartmouth.edu,
+Kazuma.Honjo.UG@Dartmouth.edu,
+Kevin.Hu.20@Dartmouth.edu,
+Gregory.E.Hunter.18@Dartmouth.edu,
+Laya.Indukuri.19@Dartmouth.edu,
+Jennifer.Jain.18@Dartmouth.edu,
+Clifton.T.Jeffery.19@Dartmouth.edu,
+Steven.Jiang.19@Dartmouth.edu,
+Liam.S.Jolley.20@Dartmouth.edu,
+Wendy.W.Kangethe.19@Dartmouth.edu,
+Emma.F.Kennelly.19@Dartmouth.edu,
+Chaeyoon.Kim.18@Dartmouth.edu,
+Caitlyn.I.Lee.19@Dartmouth.edu,
+Qirong.Li.20@Dartmouth.edu,
+Stephen.K.Liao.19@Dartmouth.edu,
+Tsz.Ki.Lit.19@Dartmouth.edu,
+Savannah.M.Liu.18@Dartmouth.edu,
+Robert.H.Livaudais.19@Dartmouth.edu,
+[MacBook ~]$ sed 's/;/,/' students | tr A-Z a-z
+michael.t.aaberg.18@dartmouth.edu,
+alexander.g.w.bailey.18@dartmouth.edu,
+anders.bando-hess.19@dartmouth.edu,
+james.w.beane.iii.19@dartmouth.edu,
+alex.y.chan.19@dartmouth.edu,
+shaket.chaudhary.19@dartmouth.edu,
+trevor.j.colby.19@dartmouth.edu,
+robert.c.crawford.19@dartmouth.edu,
+alexander.j.danilowicz.19@dartmouth.edu,
+christopher.o.davis.18@dartmouth.edu,
+anthony.f.dipadova.iii.19@dartmouth.edu,
+anna.e.dodson.20@dartmouth.edu,
+jack.w.elder.18@dartmouth.edu,
+afnan.enayet.19@dartmouth.edu,
+kathryn.e.flattum.18@dartmouth.edu,
+shoshana.m.geller.20@dartmouth.edu,
+isaac.gluck.19@dartmouth.edu,
+alexander.e.goss.18@dartmouth.edu,
+joshua.b.gutow.20@dartmouth.edu,
+ryan.b.hall.19@dartmouth.edu,
+danah.k.han.20@dartmouth.edu,
+kazuma.honjo.ug@dartmouth.edu,
+kevin.hu.20@dartmouth.edu,
+gregory.e.hunter.18@dartmouth.edu,
+laya.indukuri.19@dartmouth.edu,
+jennifer.jain.18@dartmouth.edu,
+clifton.t.jeffery.19@dartmouth.edu,
+steven.jiang.19@dartmouth.edu,
+liam.s.jolley.20@dartmouth.edu,
+wendy.w.kangethe.19@dartmouth.edu,
+emma.f.kennelly.19@dartmouth.edu,
+chaeyoon.kim.18@dartmouth.edu,
+caitlyn.i.lee.19@dartmouth.edu,
+qirong.li.20@dartmouth.edu,
+stephen.k.liao.19@dartmouth.edu,
+tsz.ki.lit.19@dartmouth.edu,
+savannah.m.liu.18@dartmouth.edu,
+robert.h.livaudais.19@dartmouth.edu,
+[MacBook ~]$ sed 's/;/,/' students | tr A-Z a-z | tr -d '\n'  
+michael.t.aaberg.18@dartmouth.edu,alexander.g.w.bailey.18@dartmouth.edu,anders.bando-hess.19@dartmouth.edu,james.w.beane.iii.19@dartmouth.edu,alex.y.chan.19@dartmouth.edu,shaket.chaudhary.19@dartmouth.edu,trevor.j.colby.19@dartmouth.edu,robert.c.crawford.19@dartmouth.edu,alexander.j.danilowicz.19@dartmouth.edu,christopher.o.davis.18@dartmouth[Mac[Mac[Mac[MacBook ~]$[Mac[Mac[Mac[Mac[Mac[Mac[Mac[Mac[Mac[Mac[Mac[MacBook ~]$ sed 's/;/,/' students | tr A-Z a-z | tr -d '\n' | sed 's/@.*//'
+michael.t.aaberg.18
+[MacBook ~]$ sed 's/;/,/' students | tr A-Z a-z |  sed 's/@.*//'
+michael.t.aaberg.18
+alexander.g.w.bailey.18
+anders.bando-hess.19
+james.w.beane.iii.19
+alex.y.chan.19
+shaket.chaudhary.19
+trevor.j.colby.19
+robert.c.crawford.19
+alexander.j.danilowicz.19
+christopher.o.davis.18
+anthony.f.dipadova.iii.19
+anna.e.dodson.20
+jack.w.elder.18
+afnan.enayet.19
+kathryn.e.flattum.18
+shoshana.m.geller.20
+isaac.gluck.19
+alexander.e.goss.18
+joshua.b.gutow.20
+ryan.b.hall.19
+danah.k.han.20
+kazuma.honjo.ug
+kevin.hu.20
+gregory.e.hunter.18
+laya.indukuri.19
+jennifer.jain.18
+clifton.t.jeffery.19
+steven.jiang.19
+liam.s.jolley.20
+wendy.w.kangethe.19
+emma.f.kennelly.19
+chaeyoon.kim.18
+caitlyn.i.lee.19
+qirong.li.20
+stephen.k.liao.19
+tsz.ki.lit.19
+savannah.m.liu.18
+robert.h.livaudais.19
+[MacBook ~]$ sed 's/;/,/' students | tr A-Z a-z |  sed 's/@.*//' | sed 's/\./ /g'
+michael t aaberg 18
+alexander g w bailey 18
+anders bando-hess 19
+james w beane iii 19
+alex y chan 19
+shaket chaudhary 19
+trevor j colby 19
+robert c crawford 19
+alexander j danilowicz 19
+christopher o davis 18
+anthony f dipadova iii 19
+anna e dodson 20
+jack w elder 18
+afnan enayet 19
+kathryn e flattum 18
+shoshana m geller 20
+isaac gluck 19
+alexander e goss 18
+joshua b gutow 20
+ryan b hall 19
+danah k han 20
+kazuma honjo ug
+kevin hu 20
+gregory e hunter 18
+laya indukuri 19
+jennifer jain 18
+clifton t jeffery 19
+steven jiang 19
+liam s jolley 20
+wendy w kangethe 19
+emma f kennelly 19
+chaeyoon kim 18
+caitlyn i lee 19
+qirong li 20
+stephen k liao 19
+tsz ki lit 19
+savannah m liu 18
+robert h livaudais 19
+[MacBook ~]$ sed 's/;/,/' students |  sed 's/@.*//' | sed 's/\./ /g'
+Michael T Aaberg 18
+Alexander G W Bailey 18
+Anders Bando-Hess 19
+James W Beane III 19
+Alex Y Chan 19
+Shaket Chaudhary 19
+Trevor J Colby 19
+Robert C Crawford 19
+Alexander J Danilowicz 19
+Christopher O Davis 18
+Anthony F DiPadova III 19
+Anna E Dodson 20
+Jack W Elder 18
+Afnan Enayet 19
+Kathryn E Flattum 18
+Shoshana M Geller 20
+Isaac Gluck 19
+Alexander E Goss 18
+Joshua B Gutow 20
+Ryan B Hall 19
+Danah K Han 20
+Kazuma Honjo UG
+Kevin Hu 20
+Gregory E Hunter 18
+Laya Indukuri 19
+Jennifer Jain 18
+Clifton T Jeffery 19
+Steven Jiang 19
+Liam S Jolley 20
+Wendy W Kangethe 19
+Emma F Kennelly 19
+Chaeyoon Kim 18
+Caitlyn I Lee 19
+Qirong Li 20
+Stephen K Liao 19
+Tsz Ki Lit 19
+Savannah M Liu 18
+Robert H Livaudais 19
+[MacBook ~]$ sed 's/;/,/' students |  sed 's/@.*//' | sed 's/.*1/1/g' 
+18
+18
+19
+19
+19
+19
+19
+19
+19
+18
+19
+Anna.E.Dodson.20
+18
+19
+18
+Shoshana.M.Geller.20
+19
+18
+Joshua.B.Gutow.20
+19
+Danah.K.Han.20
+Kazuma.Honjo.UG
+Kevin.Hu.20
+18
+19
+18
+19
+19
+Liam.S.Jolley.20
+19
+19
+18
+19
+Qirong.Li.20
+19
+19
+18
+19
+[MacBook ~]$ sed 's/;/,/' students |  sed 's/@.*//' | sed 's/.*1/1/g'  | sed 's/.*2/2/g'
+18
+18
+19
+19
+19
+19
+19
+19
+19
+18
+19
+20
+18
+19
+18
+20
+19
+18
+20
+19
+20
+Kazuma.Honjo.UG
+20
+18
+19
+18
+19
+19
+20
+19
+19
+18
+19
+20
+19
+19
+18
+19
+[MacBook ~]$ sed 's/;/,/' students |  sed 's/@.*//' | sed 's/.*1/1/g'  | sed 's/.*2/2/g' | sed 's/.*UG/UG/'
+18
+18
+19
+19
+19
+19
+19
+19
+19
+18
+19
+20
+18
+19
+18
+20
+19
+18
+20
+19
+20
+UG
+20
+18
+19
+18
+19
+19
+20
+19
+19
+18
+19
+20
+19
+19
+18
+19
+[MacBook ~]$ sed 's/;/,/' students |  sed 's/@.*//' | sed 's/.*1/1/g'  | sed 's/.*2/2/g' | sed 's/.*UG/UG/'  | sort -n | uniq -c 
+   1 UG
+  10 18
+  20 19
+   7 20
+[MacBook ~]$ 

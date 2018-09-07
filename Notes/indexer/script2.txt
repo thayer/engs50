@@ -1,0 +1,93 @@
+Last login: Sun Apr 30 16:55:47 on ttys000
+You have new mail.
+[DFK:~] ssh cs50@flu
+ssh: Could not resolve hostname flu: nodename nor servname provided, or not known
+[DFK:~] ssh cs50@flume
+Last login: Sat Apr 29 16:12:39 2017 from 198.55.237.247
+[cs50@flume ~]$ cd private/tse/
+[cs50@flume ~/private/tse]$ ls
+common/   export-starter4*  libcs50/  playground/    README.md
+crawler/  export-starter5*  Makefile  push-to-flume  README-starter.md
+data/	  indexer/	    notes.md  querier/
+[cs50@flume ~/private/tse]$ make
+make -C libcs50
+make[1]: Entering directory '/net/class/cs50/private/tse/libcs50'
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o bag.o bag.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o counters.o counters.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o file.o file.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o hashtable.o hashtable.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o jhash.o jhash.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o memory.o memory.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o set.o set.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o webpage.o webpage.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o webpage_fetch.o webpage_fetch.c
+ar cr libcs50.a bag.o counters.o file.o hashtable.o jhash.o memory.o set.o webpage.o webpage_fetch.o
+make[1]: Leaving directory '/net/class/cs50/private/tse/libcs50'
+make -C common
+make[1]: Entering directory '/net/class/cs50/private/tse/common'
+gcc -Wall -pedantic -std=c11 -ggdb  -I../libcs50   -c -o index.o index.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../libcs50   -c -o pagedir.o pagedir.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../libcs50   -c -o word.o word.c
+ar cr common.a index.o pagedir.o word.o
+make[1]: Leaving directory '/net/class/cs50/private/tse/common'
+make -C crawler
+make[1]: Entering directory '/net/class/cs50/private/tse/crawler'
+gcc -Wall -pedantic -std=c11 -ggdb -DAPPTEST  -I../libcs50 -I../common   -c -o crawler.o crawler.c
+gcc -Wall -pedantic -std=c11 -ggdb -DAPPTEST  -I../libcs50 -I../common crawler.o ../common/common.a ../libcs50/libcs50.a -lcurl -o crawler
+make[1]: Leaving directory '/net/class/cs50/private/tse/crawler'
+make -C indexer
+make[1]: Entering directory '/net/class/cs50/private/tse/indexer'
+gcc -Wall -pedantic -std=c11 -ggdb  -I../common -I../libcs50   -c -o indexer.o indexer.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../common -I../libcs50 indexer.o ../common/common.a ../libcs50/libcs50.a  -o indexer
+gcc -Wall -pedantic -std=c11 -ggdb  -I../common -I../libcs50   -c -o indextest.o indextest.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../common -I../libcs50 indextest.o ../common/common.a ../libcs50/libcs50.a  -o indextest
+make[1]: Leaving directory '/net/class/cs50/private/tse/indexer'
+make -C querier
+make[1]: Entering directory '/net/class/cs50/private/tse/querier'
+gcc -Wall -pedantic -std=gnu11 -ggdb  -I../common -I../libcs50   -c -o querier.o querier.c
+gcc -Wall -pedantic -std=gnu11 -ggdb  -I../common -I../libcs50 querier.o ../common/common.a ../libcs50/libcs50.a  -o querier
+gcc -Wall -pedantic -std=gnu11 -ggdb  -I../common -I../libcs50   -c -o fuzzquery.o fuzzquery.c
+gcc -Wall -pedantic -std=gnu11 -ggdb  -I../common -I../libcs50 fuzzquery.o ../common/common.a ../libcs50/libcs50.a  -o fuzzquery
+make[1]: Leaving directory '/net/class/cs50/private/tse/querier'
+[cs50@flume ~/private/tse]$ 
+[cs50@flume ~/private/tse]$ cd indexer/
+[cs50@flume ~/private/tse/indexer]$ ls
+DESIGN.md	   indexer.c	   indextest*	indextest.sh*  TESTING.md
+IMPLEMENTATION.md  indexer.o	   indextest.c	Makefile
+indexer*	   indexsort.awk*  indextest.o	README.md
+[cs50@flume ~/private/tse/indexer]$ ./indextest.sh
+usage: ./indextest.sh PageDirectory IndexFileName
+[cs50@flume ~/private/tse/indexer]$ ./indextest.sh ../data/data2 ../data/index2
+rm -rf *~ *.o *.dSYM
+rm -f ../data/index1
+rm -f indexer indextest
+gcc -Wall -pedantic -std=c11 -ggdb  -I../common -I../libcs50   -c -o indexer.o indexer.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../common -I../libcs50 indexer.o ../common/common.a ../libcs50/libcs50.a  -o indexer
+gcc -Wall -pedantic -std=c11 -ggdb  -I../common -I../libcs50   -c -o indextest.o indextest.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../common -I../libcs50 indextest.o ../common/common.a ../libcs50/libcs50.a  -o indextest
+indexer built successfully! now run it...
+index file ../data/index2 has been built.
+running indextest to load ../data/index2 and create ../data/index2.tmp...
+indextest completed successfully.
+sort ../data/index2 to create ../data/index2.sorted...
+sort ../data/index2.tmp to create ../data/index2.tmp.sorted...
+comparing the two index files...
+nice! passed index test!
+[cs50@flume ~/private/tse/indexer]$ more ../data/index2
+playground 2 1
+page 2 1
+this 2 1
+home 2 2 3 1
+the 1 1 2 1
+for 2 1 3 1
+tse 2 1
+permanently 1 2
+has 1 1
+moved 1 3
+here 1 1
+algorithm 3 1
+document 1 1
+[cs50@flume ~/private/tse/indexer]$ exit
+logout
+Connection to flume closed.
+[DFK:~] 

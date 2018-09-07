@@ -1,0 +1,6 @@
+Dear class,
+
+ Welcome to <subject of study> <course number>, taught by Professor
+ <professor name>.  In this class you will <verb> and learn about the
+ history of <plural noun>.  You will <adverb> enjoy it!  
+

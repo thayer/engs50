@@ -1,0 +1,400 @@
+      1 /sbin/shutdown
+      1 /usr/bin/zsh
+      1 /usr/sbin/nologin
+[cs50@flume ~/demo]$ cut -d : -f 7 /etc/passwd | sort | uniq -c | sort -n
+      1 /bin/sync
+      1 /bin/zsh
+      1 /sbin/halt
+      1 /sbin/shutdown
+      1 /usr/bin/zsh
+      1 /usr/sbin/nologin
+      2 /bin/sh
+      3 
+      4 /bin/false
+     11 /bin/csh
+     86 /sbin/nologin
+    105 /bin/tcsh
+    890 /bin/bash
+[cs50@flume ~/demo]$ cut -d : -f 7 /etc/passwd | sort | uniq -c | sort -nr
+    890 /bin/bash
+    105 /bin/tcsh
+     86 /sbin/nologin
+     11 /bin/csh
+      4 /bin/false
+      3 
+      2 /bin/sh
+      1 /usr/sbin/nologin
+      1 /usr/bin/zsh
+      1 /sbin/shutdown
+      1 /sbin/halt
+      1 /bin/zsh
+      1 /bin/sync
+[cs50@flume ~/demo]$ cut -d : -f 7 /etc/passwd | sort | uniq -c | sort -nr | head -5
+    890 /bin/bash
+    105 /bin/tcsh
+     86 /sbin/nologin
+     11 /bin/csh
+      4 /bin/false
+[cs50@flume ~/demo]$ clear
+
+[cs50@flume ~/demo]$ BB=~cs50/public_html/Lectures/03/Billboard2016-hot100.txt
+[cs50@flume ~/demo]$ less $BB
+[cs50@flume ~/demo]$ cut -d : -f 3 $BB | less
+[cs50@flume ~/demo]$ cut -d : -f 3 $BB | wc -l
+100
+[cs50@flume ~/demo]$ sort -nr $BB
+100:PERFECT:One Direction
+99:SEE YOU AGAIN:Wiz Khalifa Featuring Charlie Puth
+98:TIIMMY TURNER:Desiigner
+97:WICKED:Future
+96:HUMBLE AND KIND:Tim McGraw
+95:ADVENTURE OF A LIFETIME:Coldplay
+94:STARVING:Hailee Steinfeld & Grey Featuring Zedd
+93:ALL IN MY HEAD (FLEX):Fifth Harmony Featuring Fetty Wap
+92:REALLY REALLY:Kevin Gates
+91:CUT IT:O.T. Genasis Featuring Young Dolph
+90:NO LIMIT:Usher Featuring Young Thug
+89:BACK TO SLEEP:Chris Brown
+88:WATCH ME:Silento
+87:ALL THE WAY UP:Fat Joe, Rem
+86:I KNOW WHAT YOU DID LAST SUMMER:Shawn Mendes & Camila Cabello
+85:LEAN ON:Major Lazer & DJ Snake Featuring MO
+84:HIDE AWAY:Daya
+83:WHEN WE WERE YOUNG:Adele
+82:POP STYLE:Drake Featuring The Throne
+81:ON MY MIND:Ellie Goulding
+80:MIDDLE:DJ Snake Featuring Bipolar Sunshine
+79:WILDEST DREAMS:Taylor Swift
+78:SIT STILL, LOOK PRETTY:Daya
+77:SIDE TO SIDE:Ariana Grande Featuring Nicki Minaj
+76:LOST BOY:Ruth B
+75:ANTIDOTE:Travis Scott
+74:SAY IT:Tory Lanez
+73:HYMN FOR THE WEEKEND:Coldplay
+72:CAN'T FEEL MY FACE:The Weeknd
+71:SORRY:Beyonce
+70:LUV:Tory Lanez
+69:DOWN IN THE DM:Yo Gotti Featuring Nicki Minaj
+68:SUCKER FOR PAIN:Lil Wayne, Wi
+67:UNSTEADY:X Ambassadors
+66:CLOSE:Nick Jonas Featuring Tove Lo
+65:WHITE IVERSON:Post Malone
+64:DIE A HAPPY MAN:Thomas Rhett
+63:EX'S & OH'S:Elle King
+62:ME TOO:Meghan Trainor
+61:IN THE NIGHT:The Weeknd
+60:NEVER BE LIKE YOU:Flume Featuring Kai
+59:FOR FREE:DJ Khaled Featuring Drake
+58:STARBOY:The Weeknd Featuring Daft Punk
+57:2 PHONES:Kevin Gates
+56:HANDS TO MYSELF:Selena Gomez
+55:OUI:Jeremih
+54:679:Fetty Wap Featuring Remy Boyz
+53:EXCHANGE:Bryson Tiller
+52:GOLD:Kiiara
+51:INTO YOU:Ariana Grande
+50:WE DON'T TALK ANYMORE:Charlie Puth Featuring Selena Gomez
+49:H.O.L.Y.:Florida Georgia Line
+48:DON'T MIND:Kent Jones
+47:LET ME LOVE YOU:DJ Snake Featuring Justin Bieber
+46:NEVER FORGET YOU:Zara Larsson & MNEK
+45:NO:Meghan Trainor
+44:LET IT GO:James Bay
+43:ONE CALL AWAY:Charlie Puth
+42:LIKE I'M GONNA LOSE YOU:Meghan Trainor Featuring John Legend
+41:CONTROLLA:Drake
+40:SAME OLD LOVE:Selena Gomez
+39:HERE:Alessia Cara
+38:I HATE U I LOVE U:gnash Featuring Olivia O'Brien
+37:JUMPMAN:Drake & Future
+36:DANGEROUS WOMAN:Ariana Grande
+35:DON'T:Bryson Tiller
+34:BROCCOLI:D.R.A.M. Featuring Lil Yachty
+33:JUST LIKE FIRE:P!nk
+32:THE HILLS:The Weeknd
+31:WHAT DO YOU MEAN?:Justin Bieber
+30:LOW LIFE:Future Featuring The Weeknd
+29:TOO GOOD:Drake Featuring Rihanna
+28:TREAT YOU BETTER:Shawn Mendes
+27:ROSES:The Chainsmokers Featuring Rozes
+26:SEND MY LOVE (TO YOUR NEW LOVER):Adele
+25:COLD WATER:Major Lazer Featuring Justin Bieber & MO
+24:HOTLINE BLING:Drake
+23:STITCHES:Shawn Mendes
+22:PILLOWTALK:Zayn
+21:HEATHENS:twenty one pilots
+20:RIDE:twenty one pilots
+19:ME, MYSELF & I:G-Eazy x Bebe Rexha
+18:CAKE BY THE OCEAN:DNCE
+17:THIS IS WHAT YOU CAME FOR:Calvin Harris Featuring Rihanna
+16:WORK FROM HOME:Fifth Harmony Featuring Ty Dolla $ign
+15:I TOOK A PILL IN IBIZA:Mike Posner
+14:MY HOUSE:Flo Rida
+13:NEEDED ME:Rihanna
+12:7 YEARS:Lukas Graham
+11:CHEAP THRILLS:Sia Featuring Sean Paul
+10:CLOSER:The Chainsmokers Featuring Halsey
+9:CAN'T STOP THE FEELING!:Justin Timberlake
+8:DON'T LET ME DOWN:The Chainsmokers Featuring Daya
+7:HELLO:Adele
+6:PANDA:Desiigner
+5:STRESSED OUT:twenty one pilots
+4:WORK:Rihanna Featuring Drake
+3:ONE DANCE:Drake Featuring WizKid & Kyla
+2:SORRY:Justin Bieber
+1:LOVE YOURSELF:Justin Bieber
+[cs50@flume ~/demo]$ sort -nr $BB | less
+[cs50@flume ~/demo]$ cut -d : -f 2 $BB | grep love
+[cs50@flume ~/demo]$ cut -d : -f 2 $BB | head 
+LOVE YOURSELF
+SORRY
+ONE DANCE
+WORK
+STRESSED OUT
+PANDA
+HELLO
+DON'T LET ME DOWN
+CAN'T STOP THE FEELING!
+CLOSER
+[cs50@flume ~/demo]$ cut -d : -f 2 $BB | grep LOVE
+LOVE YOURSELF
+SEND MY LOVE (TO YOUR NEW LOVER)
+I HATE U I LOVE U
+SAME OLD LOVE
+LET ME LOVE YOU
+[cs50@flume ~/demo]$ cut -d : -f 2 $BB | grep -i love
+LOVE YOURSELF
+SEND MY LOVE (TO YOUR NEW LOVER)
+I HATE U I LOVE U
+SAME OLD LOVE
+LET ME LOVE YOU
+[cs50@flume ~/demo]$ cut -d : -f 3 $BB | sort  |uniq 
+Adele
+Alessia Cara
+Ariana Grande
+Ariana Grande Featuring Nicki Minaj
+Beyonce
+Bryson Tiller
+Calvin Harris Featuring Rihanna
+Charlie Puth
+Charlie Puth Featuring Selena Gomez
+Chris Brown
+Coldplay
+Daya
+Desiigner
+DJ Khaled Featuring Drake
+DJ Snake Featuring Bipolar Sunshine
+DJ Snake Featuring Justin Bieber
+DNCE
+Drake
+Drake Featuring Rihanna
+Drake Featuring The Throne
+Drake Featuring WizKid & Kyla
+Drake & Future
+D.R.A.M. Featuring Lil Yachty
+Elle King
+Ellie Goulding
+Fat Joe, Rem
+Fetty Wap Featuring Remy Boyz
+Fifth Harmony Featuring Fetty Wap
+Fifth Harmony Featuring Ty Dolla $ign
+Flo Rida
+Florida Georgia Line
+Flume Featuring Kai
+Future
+Future Featuring The Weeknd
+G-Eazy x Bebe Rexha
+gnash Featuring Olivia O'Brien
+Hailee Steinfeld & Grey Featuring Zedd
+James Bay
+Jeremih
+Justin Bieber
+Justin Timberlake
+Kent Jones
+Kevin Gates
+Kiiara
+Lil Wayne, Wi
+Lukas Graham
+Major Lazer & DJ Snake Featuring MO
+Major Lazer Featuring Justin Bieber & MO
+Meghan Trainor
+Meghan Trainor Featuring John Legend
+Mike Posner
+Nick Jonas Featuring Tove Lo
+One Direction
+O.T. Genasis Featuring Young Dolph
+P!nk
+Post Malone
+Rihanna
+Rihanna Featuring Drake
+Ruth B
+Selena Gomez
+Shawn Mendes
+Shawn Mendes & Camila Cabello
+Sia Featuring Sean Paul
+Silento
+Taylor Swift
+The Chainsmokers Featuring Daya
+The Chainsmokers Featuring Halsey
+The Chainsmokers Featuring Rozes
+The Weeknd
+The Weeknd Featuring Daft Punk
+Thomas Rhett
+Tim McGraw
+Tory Lanez
+Travis Scott
+twenty one pilots
+Usher Featuring Young Thug
+Wiz Khalifa Featuring Charlie Puth
+X Ambassadors
+Yo Gotti Featuring Nicki Minaj
+Zara Larsson & MNEK
+Zayn
+[cs50@flume ~/demo]$ cut -d : -f 3 $BB | sort  |uniq  | wc -l
+81
+[cs50@flume ~/demo]$ cut -d : -f 3 $BB | sort  |uniq -c | sort -nr
+      3 twenty one pilots
+      3 The Weeknd
+      3 Justin Bieber
+      3 Adele
+      2 Tory Lanez
+      2 Shawn Mendes
+      2 Selena Gomez
+      2 Meghan Trainor
+      2 Kevin Gates
+      2 Drake
+      2 Desiigner
+      2 Daya
+      2 Coldplay
+      2 Bryson Tiller
+      2 Ariana Grande
+      1 Zayn
+      1 Zara Larsson & MNEK
+      1 Yo Gotti Featuring Nicki Minaj
+      1 X Ambassadors
+      1 Wiz Khalifa Featuring Charlie Puth
+      1 Usher Featuring Young Thug
+      1 Travis Scott
+      1 Tim McGraw
+      1 Thomas Rhett
+      1 The Weeknd Featuring Daft Punk
+      1 The Chainsmokers Featuring Rozes
+      1 The Chainsmokers Featuring Halsey
+      1 The Chainsmokers Featuring Daya
+      1 Taylor Swift
+      1 Silento
+      1 Sia Featuring Sean Paul
+      1 Shawn Mendes & Camila Cabello
+      1 Ruth B
+      1 Rihanna Featuring Drake
+      1 Rihanna
+      1 Post Malone
+      1 P!nk
+      1 O.T. Genasis Featuring Young Dolph
+      1 One Direction
+      1 Nick Jonas Featuring Tove Lo
+      1 Mike Posner
+      1 Meghan Trainor Featuring John Legend
+      1 Major Lazer Featuring Justin Bieber & MO
+      1 Major Lazer & DJ Snake Featuring MO
+      1 Lukas Graham
+      1 Lil Wayne, Wi
+      1 Kiiara
+      1 Kent Jones
+      1 Justin Timberlake
+      1 Jeremih
+      1 James Bay
+      1 Hailee Steinfeld & Grey Featuring Zedd
+      1 gnash Featuring Olivia O'Brien
+      1 G-Eazy x Bebe Rexha
+      1 Future Featuring The Weeknd
+      1 Future
+      1 Flume Featuring Kai
+      1 Florida Georgia Line
+      1 Flo Rida
+      1 Fifth Harmony Featuring Ty Dolla $ign
+      1 Fifth Harmony Featuring Fetty Wap
+      1 Fetty Wap Featuring Remy Boyz
+      1 Fat Joe, Rem
+      1 Ellie Goulding
+      1 Elle King
+      1 D.R.A.M. Featuring Lil Yachty
+      1 Drake & Future
+      1 Drake Featuring WizKid & Kyla
+      1 Drake Featuring The Throne
+      1 Drake Featuring Rihanna
+      1 DNCE
+      1 DJ Snake Featuring Justin Bieber
+      1 DJ Snake Featuring Bipolar Sunshine
+      1 DJ Khaled Featuring Drake
+      1 Chris Brown
+      1 Charlie Puth Featuring Selena Gomez
+      1 Charlie Puth
+      1 Calvin Harris Featuring Rihanna
+      1 Beyonce
+      1 Ariana Grande Featuring Nicki Minaj
+      1 Alessia Cara
+[cs50@flume ~/demo]$ cut -d : -f 3 $BB | sort  |uniq -c | sort -nr | head
+      3 twenty one pilots
+      3 The Weeknd
+      3 Justin Bieber
+      3 Adele
+      2 Tory Lanez
+      2 Shawn Mendes
+      2 Selena Gomez
+      2 Meghan Trainor
+      2 Kevin Gates
+      2 Drake
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ find ~dfk -name paper.pdf > papers
+find: ‘/net/nusers/dfk’: Permission denied
+[cs50@flume ~/demo]$ head papers
+[cs50@flume ~/demo]$ find ~dfk -name paper.pdf > papers 2> errors
+[cs50@flume ~/demo]$ find ~dfk -name paper.pdf 1> papers 2> errors
+[cs50@flume ~/demo]$ find ~dfk -name paper.pdf 1> papers 2> /dev/null
+[cs50@flume ~/demo]$ ls
+errors	harvard.txt  listing  papers  primes  students.txt
+[cs50@flume ~/demo]$ ls students.txt 
+students.txt
+[cs50@flume ~/demo]$ more students.txt 
+Michael.T.Aaberg.18@Dartmouth.edu;
+Alexander.G.W.Bailey.18@Dartmouth.edu;
+Anders.Bando-Hess.19@Dartmouth.edu;
+James.W.Beane.III.19@Dartmouth.edu;
+Alex.Y.Chan.19@Dartmouth.edu;
+Shaket.Chaudhary.19@Dartmouth.edu;
+Trevor.J.Colby.19@Dartmouth.edu;
+Robert.C.Crawford.19@Dartmouth.edu;
+Alexander.J.Danilowicz.19@Dartmouth.edu;
+Christopher.O.Davis.18@Dartmouth.edu;
+Anthony.F.DiPadova.III.19@Dartmouth.edu;
+Anna.E.Dodson.20@Dartmouth.edu;
+Jack.W.Elder.18@Dartmouth.edu;
+Afnan.Enayet.19@Dartmouth.edu;
+Kathryn.E.Flattum.18@Dartmouth.edu;
+Shoshana.M.Geller.20@Dartmouth.edu;
+Isaac.Gluck.19@Dartmouth.edu;
+Alexander.E.Goss.18@Dartmouth.edu;
+Joshua.B.Gutow.20@Dartmouth.edu;
+Ryan.B.Hall.19@Dartmouth.edu;
+Danah.K.Han.20@Dartmouth.edu;
+Kazuma.Honjo.UG@Dartmouth.edu;
+Kevin.Hu.20@Dartmouth.edu;
+Gregory.E.Hunter.18@Dartmouth.edu;
+Laya.Indukuri.19@Dartmouth.edu;
+Jennifer.Jain.18@Dartmouth.edu;
+Clifton.T.Jeffery.19@Dartmouth.edu;
+Steven.Jiang.19@Dartmouth.edu;
+Liam.S.Jolley.20@Dartmouth.edu;
+Wendy.W.Kangethe.19@Dartmouth.edu;
+Emma.F.Kennelly.19@Dartmouth.edu;
+Chaeyoon.Kim.18@Dartmouth.edu;
+Caitlyn.I.Lee.19@Dartmouth.edu;
+Qirong.Li.20@Dartmouth.edu;
+Stephen.K.Liao.19@Dartmouth.edu;
+Tsz.Ki.Lit.19@Dartmouth.edu;
+Savannah.M.Liu.18@Dartmouth.edu;
+Robert.H.Livaudais.19@Dartmouth.edu;
+[cs50@flume ~/demo]$ 

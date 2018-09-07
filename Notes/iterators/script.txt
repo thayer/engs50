@@ -1,0 +1,290 @@
+Last login: Mon May  1 09:38:15 2017 from 198.0.135.11
+[cs50@flume ~]$ cd demo/iterators/
+[cs50@flume ~/demo/iterators]$ ls
+libcs50@  Makefile  set_iterate1.c  set_iterate2.c
+[cs50@flume ~/demo/iterators]$ emacs set_iterate1.c 
+
+
+
+
+[cs50@flume ~/demo/iterators]$ cat set_iterate1.c
+/* 
+ * set_iterate1.c - test program for simple set module
+ *
+ * David Kotz - April 2016, updated May 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "set.h"
+#include "memory.h"
+
+static void set_merge(set_t *setA, set_t *setB);
+static void set_merge_helper(void *arg, const char *key, void *item);
+static void itemprint(FILE *fp, const char *key, void *item);
+
+int main() 
+{
+  set_t *setA, *setB, *result;     // three sets
+
+  setA = assertp(set_new(), "setA");
+  setB = assertp(set_new(), "setB");
+  result = assertp(set_new(), "result");
+
+  printf("Empty result set: ");
+  set_print(result, stdout, itemprint);
+  putchar('\n');
+  
+  printf("Building set A: ");
+  set_insert(setA, "Brown", "http://www.brown.edu");
+  set_insert(setA, "Dartmouth", "http://www.dartmouth.edu");
+  set_insert(setA, "Yale", "http://www.yale.edu");
+  set_insert(setA, "Harvard", "http://www.harvard.edu");
+  set_insert(setA, "Princeton", "http://www.princeton.edu");
+  set_insert(setA, "Columbia", "http://www.columbia.edu");
+  set_print(setA, stdout, itemprint);
+  putchar('\n');
+  
+  printf("Building set B: ");
+  set_insert(setB, "Penn", "http://www.upenn.edu");
+  set_insert(setB, "Dartmouth", "http://www.dartmouth.edu");
+  set_insert(setB, "Cornell", "http://www.cornell.edu");
+  set_insert(setB, "Stanford", "http://www.stanford.edu");
+  set_insert(setB, "Princeton", "http://www.princeton.edu");
+  set_insert(setB, "Duke", "http://www.duke.edu");
+  set_print(setB, stdout, itemprint);
+  putchar('\n');
+  
+  printf("\nMerge of setA into result: \n");
+  set_merge(result, setA);
+  set_print(result, stdout, itemprint);
+  putchar('\n');
+
+  printf("\nMerge of setB into result: \n");
+  set_merge(result, setB);
+  set_print(result, stdout, itemprint);
+  putchar('\n');
+
+  printf("\nDelete the sets...\n");
+  set_delete(setA, NULL);
+  set_delete(setB, NULL);
+  set_delete(result, NULL);
+}
+
+/* Merge the second set into the first set;
+ * the second set is unchanged.
+ */
+static void 
+set_merge(set_t *setA, set_t *setB)
+{
+  set_iterate(setB, setA, set_merge_helper);
+}
+
+/* Consider one item for insertion into the other set.
+ */
+static void 
+set_merge_helper(void *arg, const char *key, void *item)
+{
+  set_t *setA = arg;
+
+  if (set_insert(setA, key, item))
+    printf("\t%s added\n", key);
+  else
+    printf("\t%s exists\n", key);
+
+}
+
+/* Print the given item to the given file.
+ * We just print the key; item is unused.
+ */
+static void 
+itemprint(FILE *fp, const char *key, void *item)
+{
+  if (key == NULL)
+    fprintf(fp, "(null), ");
+  else 
+    fprintf(fp, "%s, ", key);
+}
+[cs50@flume ~/demo/iterators]$ cat set_iterate2.c
+/* 
+ * set_iterate2.c - test program for simple set module
+ *
+ * David Kotz - April 2016, updated May 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "set.h"
+#include "memory.h"
+
+static void set_merge(set_t *setA, set_t *setB);
+static void set_merge_helper(void *arg, const char *key, void *item);
+static void itemprint(FILE *fp, const char *key, void *item);
+static void itemdelete(void *item);
+static int *intsave(int item);
+
+int main() 
+{
+  set_t *setA, *setB, *result;     // three sets
+
+  setA = assertp(set_new(), "setA");
+  setB = assertp(set_new(), "setB");
+  result = assertp(set_new(), "result");
+
+  printf("Empty result set: ");
+  set_print(result, stdout, itemprint);
+  putchar('\n');
+  
+  printf("Building set A: ");
+  set_insert(setA, "Brown", intsave(10));
+  set_insert(setA, "Dartmouth", intsave(20));
+  set_insert(setA, "Yale", intsave(15));
+  set_insert(setA, "Harvard", intsave(8));
+  set_insert(setA, "Princeton", intsave(5));
+  set_insert(setA, "Columbia", intsave(1));
+  set_print(setA, stdout, itemprint);
+  putchar('\n');
+  
+  printf("Building set B: ");
+  set_insert(setB, "Penn", intsave(7));
+  set_insert(setB, "Dartmouth", intsave(11));
+  set_insert(setB, "Cornell", intsave(9));
+  set_insert(setB, "Stanford", intsave(6));
+  set_insert(setB, "Princeton", intsave(3));
+  set_insert(setB, "Duke", intsave(12));
+  set_print(setB, stdout, itemprint);
+  putchar('\n');
+  
+  printf("\nMerge of setA into result: \n");
+  set_merge(result, setA);
+  set_print(result, stdout, itemprint);
+  putchar('\n');
+
+  printf("\nMerge of setB into result: \n");
+  set_merge(result, setB);
+  set_print(result, stdout, itemprint);
+  putchar('\n');
+
+  printf("\nDelete the sets...\n");
+  set_delete(setA, itemdelete);
+  set_delete(setB, itemdelete);
+  set_delete(result, itemdelete);
+}
+
+/* Merge the second set into the first set;
+ * the second set is unchanged.
+ */
+static void 
+set_merge(set_t *setA, set_t *setB)
+{
+  set_iterate(setB, setA, set_merge_helper);
+}
+
+/* Consider one item for insertion into the other set.
+ * If the other set does not contain the item, insert it;
+ * otherwise, update the other set's item with sum of item values.
+ */
+static void 
+set_merge_helper(void *arg, const char *key, void *item)
+{
+  set_t *setA = arg;
+  int *itemB = item;
+  
+  // find the same key in setA
+  int *itemA = set_find(setA, key);
+  if (itemA == NULL) {
+    // not found: insert it
+    set_insert(setA, key, intsave(*itemB));
+    printf("\t%s added\n", key);
+  } else {
+    // add to the existing value
+    *itemA += *itemB;
+    printf("\t%s exists\n", key);
+  }
+}
+
+/* print the given item to the given file.
+ */
+static void 
+itemprint(FILE *fp, const char *key, void *item)
+{
+  int *countp = item;
+  int count = *countp;
+
+  if (key == NULL)
+    fprintf(fp, "(null), ");
+  else 
+    fprintf(fp, "%s=%d, ", key, count);
+}
+
+static int *
+intsave(int item)
+{
+  int *saved = assertp(malloc(sizeof(int)), "intsave");
+  *saved = item;
+  return saved;
+}
+
+static void 
+itemdelete(void *item)
+{
+  if (item != NULL)
+    free(item);
+}
+[cs50@flume ~/demo/iterators]$ make test
+./set_iterate1
+Empty result set: {}
+Building set A: {Columbia, Princeton, Harvard, Yale, Dartmouth, Brown, }
+Building set B: {Duke, Princeton, Stanford, Cornell, Dartmouth, Penn, }
+
+Merge of setA into result: 
+	Columbia added
+	Princeton added
+	Harvard added
+	Yale added
+	Dartmouth added
+	Brown added
+{Brown, Dartmouth, Yale, Harvard, Princeton, Columbia, }
+
+Merge of setB into result: 
+	Duke added
+	Princeton exists
+	Stanford added
+	Cornell added
+	Dartmouth exists
+	Penn added
+{Penn, Cornell, Stanford, Duke, Brown, Dartmouth, Yale, Harvard, Princeton, Columbia, }
+
+Delete the sets...
+./set_iterate2
+Empty result set: {}
+Building set A: {Columbia=1, Princeton=5, Harvard=8, Yale=15, Dartmouth=20, Brown=10, }
+Building set B: {Duke=12, Princeton=3, Stanford=6, Cornell=9, Dartmouth=11, Penn=7, }
+
+Merge of setA into result: 
+	Columbia added
+	Princeton added
+	Harvard added
+	Yale added
+	Dartmouth added
+	Brown added
+{Brown=10, Dartmouth=20, Yale=15, Harvard=8, Princeton=5, Columbia=1, }
+
+Merge of setB into result: 
+	Duke added
+	Princeton exists
+	Stanford added
+	Cornell added
+	Dartmouth exists
+	Penn added
+{Penn=7, Cornell=9, Stanford=6, Duke=12, Brown=10, Dartmouth=31, Yale=15, Harvard=8, Princeton=8, Columbia=1, }
+
+Delete the sets...
+[cs50@flume ~/demo/iterators]$ exit
+logout
+Connection to flume.cs.dartmouth.edu closed.
+
+[Process completed]
+

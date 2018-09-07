@@ -1,0 +1,353 @@
+Last login: Wed Apr 19 12:22:13 2017 from 76.119.231.190
+[cs50@flume ~]$ cd demo
+[cs50@flume ~/demo]$ ls
+bag/
+[cs50@flume ~/demo]$ ls
+bag/
+[cs50@flume ~/demo]$ cd bag
+[cs50@flume ~/demo/bag]$ ls
+bag.c  bag.h  bagtest.c  bagtest.out  Makefile	README.md  TESTING.md
+[cs50@flume ~/demo/bag]$ git 
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   branch     List, create, or delete branches
+   checkout   Switch branches or restore working tree files
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   merge      Join two or more development histories together
+   rebase     Forward-port local commits to the updated upstream head
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+[cs50@flume ~/demo/bag]$ 
+[cs50@flume ~/demo/bag]$ 
+[cs50@flume ~/demo/bag]$ git init
+Initialized empty Git repository in /net/class/cs50/demo/bag/.git/
+[cs50@flume ~/demo/bag]$ ls
+bag.c  bag.h  bagtest.c  bagtest.out  Makefile	README.md  TESTING.md
+[cs50@flume ~/demo/bag]$ ls -a
+./  ../  bag.c	bag.h  bagtest.c  bagtest.out  .git/  Makefile	README.md  TESTING.md
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	Makefile
+	README.md
+	TESTING.md
+	bag.c
+	bag.h
+	bagtest.c
+	bagtest.out
+
+nothing added to commit but untracked files present (use "git add" to track)
+[cs50@flume ~/demo/bag]$ git add Makefile README.md TESTING.md *.c *.h 
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   Makefile
+	new file:   README.md
+	new file:   TESTING.md
+	new file:   bag.c
+	new file:   bag.h
+	new file:   bagtest.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	bagtest.out
+
+[cs50@flume ~/demo/bag]$ make
+make: *** No rule to make target '../common/readlinep.h', needed by 'bagtest.o'.  Stop.
+[cs50@flume ~/demo/bag]$ make bag.o
+gcc -Wall -pedantic -std=c11 -ggdb  -I../common   -c -o bag.o bag.c
+bag.c: In function ‘bag_new’:
+bag.c:41:16: warning: implicit declaration of function ‘count_malloc’ [-Wimplicit-function-declaration]
+   bag_t *bag = count_malloc(sizeof(bag_t));
+                ^~~~~~~~~~~~
+bag.c:41:16: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+bag.c: In function ‘bagnode_new’:
+bag.c:77:21: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+   bagnode_t *node = count_malloc(sizeof(bagnode_t));
+                     ^~~~~~~~~~~~
+bag.c: In function ‘bag_extract’:
+bag.c:101:5: warning: implicit declaration of function ‘count_free’ [-Wimplicit-function-declaration]
+     count_free(out);
+     ^~~~~~~~~~
+[cs50@flume ~/demo/bag]$ ls
+bag.c  bag.h  bag.o  bagtest.c	bagtest.out  Makefile  README.md  TESTING.md
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   Makefile
+	new file:   README.md
+	new file:   TESTING.md
+	new file:   bag.c
+	new file:   bag.h
+	new file:   bagtest.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	bag.o
+	bagtest.out
+
+[cs50@flume ~/demo/bag]$ git commit
+[master (root-commit) 3f1aba7] This is the first commit of the bag module. y
+ Committer: cs 50 <cs50@flume.cs.dartmouth.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 508 insertions(+)
+ create mode 100644 Makefile
+ create mode 100644 README.md
+ create mode 100644 TESTING.md
+ create mode 100644 bag.c
+ create mode 100644 bag.h
+ create mode 100644 bagtest.c
+[cs50@flume ~/demo/bag]$ git config --global user.name "CS50 David Kotz"
+[cs50@flume ~/demo/bag]$    git config --global user.email kotz@cs.dartmouth.edu
+[cs50@flume ~/demo/bag]$ git commit --amend --reset-author
+[master 2996705] This is the first commit of the bag module.
+ 6 files changed, 508 insertions(+)
+ create mode 100644 Makefile
+ create mode 100644 README.md
+ create mode 100644 TESTING.md
+ create mode 100644 bag.c
+ create mode 100644 bag.h
+ create mode 100644 bagtest.c
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	bag.o
+	bagtest.out
+
+nothing added to commit but untracked files present (use "git add" to track)
+[cs50@flume ~/demo/bag]$ emacs README.md 
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	bag.o
+	bagtest.out
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[cs50@flume ~/demo/bag]$ git diff
+diff --git a/README.md b/README.md
+index 76f53e4..4731926 100644
+--- a/README.md
++++ b/README.md
+@@ -1,6 +1,8 @@
+ # CS50 Lab 3
+ ## David Kotz, April 2017
+ 
++This is a change in the README that is used to demonstrate git.
++
+ ### bag
+ 
+ A *bag* is an unordered collection of (items).  The bag starts empty, grows as the caller adds one item at a time, and shrinks as the caller extracts one item at a time. It could be empty, or could contain hundreds of items. Items are indistinguishable, so the *extract* function is free to return any item from the bag.
+[cs50@flume ~/demo/bag]$ git diff README.md
+diff --git a/README.md b/README.md
+index 76f53e4..4731926 100644
+--- a/README.md
++++ b/README.md
+@@ -1,6 +1,8 @@
+ # CS50 Lab 3
+ ## David Kotz, April 2017
+ 
++This is a change in the README that is used to demonstrate git.
++
+ ### bag
+ 
+ A *bag* is an unordered collection of (items).  The bag starts empty, grows as the caller adds one item at a time, and shrinks as the caller extracts one item at a time. It could be empty, or could contain hundreds of items. Items are indistinguishable, so the *extract* function is free to return any item from the bag.
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	bag.o
+	bagtest.out
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[cs50@flume ~/demo/bag]$ git commit
+On branch master
+Changes not staged for commit:
+	modified:   README.md
+
+Untracked files:
+	bag.o
+	bagtest.out
+
+no changes added to commit
+[cs50@flume ~/demo/bag]$ git add README.md 
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	bag.o
+	bagtest.out
+
+[cs50@flume ~/demo/bag]$ git commit
+[master eb7cca0] I added a line to the README
+ 1 file changed, 2 insertions(+)
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	bag.o
+	bagtest.out
+
+nothing added to commit but untracked files present (use "git add" to track)
+[cs50@flume ~/demo/bag]$ cat > .gitignore
+*.o
+bagtest.out
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+[cs50@flume ~/demo/bag]$ git add .gitignore 
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   .gitignore
+
+[cs50@flume ~/demo/bag]$ git commit
+[master ef70eb9] ignore some files
+ 1 file changed, 2 insertions(+)
+ create mode 100644 .gitignore
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+nothing to commit, working directory clean
+[cs50@flume ~/demo/bag]$ git remote add origin https://dfkotz@gitlab.cs.dartmouth.edu/dfkotz/bag.git
+[cs50@flume ~/demo/bag]$ git status
+On branch master
+nothing to commit, working directory clean
+[cs50@flume ~/demo/bag]$ git push
+warning: push.default is unset; its implicit value has changed in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the traditional behavior, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+Since Git 2.0, Git defaults to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+[cs50@flume ~/demo/bag]$ 
+[cs50@flume ~/demo/bag]$   git config --global push.default simple
+[cs50@flume ~/demo/bag]$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+[cs50@flume ~/demo/bag]$     git push --set-upstream origin master
+
+(gnome-ssh-askpass:31128): Gtk-WARNING **: cannot open display: 
+error: unable to read askpass response from '/usr/libexec/openssh/gnome-ssh-askpass'
+Password for 'https://dfkotz@gitlab.cs.dartmouth.edu': 
+Counting objects: 14, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (14/14), 6.53 KiB | 0 bytes/s, done.
+Total 14 (delta 4), reused 0 (delta 0)
+To https://dfkotz@gitlab.cs.dartmouth.edu/dfkotz/bag.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+[cs50@flume ~/demo/bag]$ 

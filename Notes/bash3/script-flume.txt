@@ -1,0 +1,65 @@
+
+[cs50@flume ~/demo]$ echo hello > hello.c
+[cs50@flume ~/demo]$ emacs hash.c
+[cs50@flume ~/demo]$ ./backup-diff.sh 
+hash.c differences:
+2c2
+<  * hash.c - will be a hash module
+---
+>  * hash.c - will be a hash module (someday!)
+3a4,5
+> 
+> #include <stdio.h>
+
+hello.c - no backup
+
+queue.c unchanged
+
+sort.c unchanged
+
+[cs50@flume ~/demo]$ 
+[cs50@flume ~/demo]$ 
+(arg: -1) ^C
+[cs50@flume ~/demo]$ ^C
+[cs50@flume ~/demo]$ clear
+
+[cs50@flume ~/demo]$ cp ~/examples/backup-diff-exit.sh .
+[cs50@flume ~/demo]$ emacs backup-diff-exit.sh 
+[cs50@flume ~/demo]$ ls
+backup/		      backup.sh*  hash.c~     labs/    queue.c.bak  students.bak
+backup-diff-exit.sh*  backup.sh~  hash.c.bak  LFlist   sort.c	    students.txt
+backup-diff.sh*       hash.c	  hello.c     queue.c  sort.c.bak
+[cs50@flume ~/demo]$ cp ~/examples/guessprime.sh
+cp: missing destination file operand after '/net/class/cs50/examples/guessprime.sh'
+Try 'cp --help' for more information.
+[cs50@flume ~/demo]$ cp ~/examples/guessprime.sh .
+[cs50@flume ~/demo]$ emacs guessprime.sh 
+[cs50@flume ~/demo]$ ./guessprime.sh 
+Enter a prime between 1-100: 2
+Wrong! try again
+Enter a prime between 1-100: 7
+Wrong! try again
+Enter a prime between 1-100: 64
+Wrong! try again
+Enter a prime between 1-100: 99999
+Wrong! try again
+Enter a prime between 1-100: ekrjhgdkfhdkf
+Wrong! try again
+Enter a prime between 1-100: whatever you type
+./guessprime.sh: line 22: [: too many arguments
+[cs50@flume ~/demo]$ emacs guessprime.sh 
+[cs50@flume ~/demo]$ ./guessprime.sh 
+Enter a prime between 1-100: whatever you type
+Wrong! try again
+Enter a prime between 1-100: 031
+Wrong! try again
+Enter a prime between 1-100: ^C
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ emacs guessprime.sh 
+[cs50@flume ~/demo]$ ./guessprime.sh 
+Enter a prime between 1-100: 031
+[cs50@flume ~/demo]$ ./guessprime.sh 
+Enter a prime between 1-100: whatever
+./guessprime.sh: line 22: [: whatever: integer expression expected
+[cs50@flume ~/demo]$ 

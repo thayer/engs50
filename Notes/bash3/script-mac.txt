@@ -1,0 +1,31 @@
+Last login: Fri Mar 31 14:06:12 on ttys000
+[DFK:~] bash
+[MacBook ~]$ ssh kotz@flume
+Last failed login: Wed Mar 29 16:14:10 EDT 2017 from 10.31.33.169 on ssh:notty
+There were 2 failed login attempts since the last successful login.
+Last login: Wed Mar 29 13:19:36 2017 from 64.223.200.124
+[kotz@flume ~]$ echo ~cs50
+/net/class/cs50
+[kotz@flume ~]$ echo ~/cs50
+/net/nusers/kotz/cs50
+[kotz@flume ~]$ echo ~
+/net/nusers/kotz
+[kotz@flume ~]$ echo ~/public_html/
+/net/nusers/kotz/public_html/
+[kotz@flume ~]$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+# DO NOT EDIT _config.yml directly; see _config-base
+
+# This config file is meant for settings that affect your whole blog,
+# values which you are expected to set up once and rarely need to edit
+# after that.  For technical reasons, this file is *NOT* reloaded
+# automatically when you use 'jekyll serve'. If you change this file,
+# please restart the server process.
+
+# We use 'kramdown' Markdown engine, because that is the default for
+# Jekyll and (as of 5/1/2016) the only engine supported by GitHub
+# (which renders Markdown when you visit a Markdown file in the
+# browser). Similarly, GitHub supports the Rouge syntax highlighter,
+# so we use it here too.  Note: "GitHub Pages will only support
+# kramdown, Jekyll's default Markdown engine"
+# https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+# Of course, CS50 uses Gitlab, not GitHub; see Gitlab's Markdown
+# documentation: https://gitlab.cs.dartmouth.edu/help/user/markdown.md
+
+# Build settings about kramdown:
+# https://kramdown.gettalong.org/converter/html.html#toc markdown:
+# kramdown kramdown: input: GFM # Enable GitHub Flavored Markdown
+# (fenced code blocks) hard_wrap: false highlighter: rouge
+
+# Prof settings
+professor: Stephen Taylor
+profhome: <a href="https://engineering.dartmouth.edu/people/faculty/stephen-taylor/">Stephen Taylor</a>
+
+# Site settings
+title: Engs50
+term: 
+description: > # this means to ignore newlines until next tag
+  In Engs 50 you will learn how to design & build large, reliable,
+  maintainable, and understandable software systems.  In the process
+  you will learn to program in C with Unix development tools.
+
+# must append either _config-cs or _config-local here
+# append these lines to _config_yml for local testing with 'jekyll serve'
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://127.0.0.1:4000" # the base hostname & protocol for your site
+labs: http://127.0.0.1:4000/Labs
+notes: http://127.0.0.1:4000/Notes
+reading: http://127.0.0.1:4000/Reading
+resources: http://127.0.0.1:4000/Resources
+examples: http://127.0.0.1:4000/Examples

@@ -1,0 +1,142 @@
+Last login: Mon May  8 14:11:26 on ttys000
+[DFK:~] bash
+[dfk@kotzbook16sep ~]$ cd website
+[dfk@kotzbook16sep ~/website]$ cd examples
+[dfk@kotzbook16sep ~/website/examples]$ cd client-server
+[dfk@kotzbook16sep ~/website/examples/client-server]$ ls
+Makefile	inclient.c	inserver.c
+[dfk@kotzbook16sep ~/website/examples/client-server]$ make
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o inclient.o inclient.c
+gcc -Wall -pedantic -std=c11 -ggdb  inclient.o  -o inclient
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o inserver.o inserver.c
+gcc -Wall -pedantic -std=c11 -ggdb  inserver.o  -o inserver
+[dfk@kotzbook16sep ~/website/examples/client-server]$ ifconfig | grep 'inet '
+	inet 127.0.0.1 netmask 0xff000000 
+	inet 10.31.127.137 netmask 0xfffff000 broadcast 10.31.127.255
+[dfk@kotzbook16sep ~/website/examples/client-server]$ ./inclient 
+usage: ./inclient hostname port
+[dfk@kotzbook16sep ~/website/examples/client-server]$ ./inclient flume.cs.dartmouth.edu 57417
+Connected!
+hello class!
+see, it works!
+really interesting, eh?
+
+
+
+[dfk@kotzbook16sep ~/website/examples/client-server]$ ./inclient flume.cs.dartmouth.edu 57417
+Connected!
+another client!
+[dfk@kotzbook16sep ~/website/examples/client-server]$ cd ../client-server-http
+[dfk@kotzbook16sep ~/website/examples/client-server-http]$ make
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o httpclient.o httpclient.c
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o file.o file.c
+gcc -Wall -pedantic -std=c11 -ggdb  httpclient.o file.o  -o httpclient
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o httpserver.o httpserver.c
+gcc -Wall -pedantic -std=c11 -ggdb  httpserver.o file.o  -o httpserver
+[dfk@kotzbook16sep ~/website/examples/client-server-http]$ ./httpclient 
+usage: ./httpclient hostname port filename
+[dfk@kotzbook16sep ~/website/examples/client-server-http]$ ./httpclient  flume.cs.dartmouth.edu 36305 index.html
+[dfk@kotzbook16sep ~/website/examples/client-server-http]$ ./httpclient  flume.cs.dartmouth.edu 36305 /index.html
+HTTP/1.1 404 Not Found
+Server: CS50/1.0 (Kotz)
+Connection: close
+
+
+[dfk@kotzbook16sep ~/website/examples/client-server-http]$ ./httpclient  flume.cs.dartmouth.edu 50705 /index.html
+HTTP/1.1 200 OK
+Server: CS50/1.0 (Kotz)
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CS50 Overview</title>
+  <meta name="description" content="In Computer Science 50 you will learn how to design & build large,  reliable, maintainable, and understandable software systems.  In the process you will learn to program in C with Unix development tools.
+">
+
+  <link rel="shortcut icon" href="/~cs50/50.png" />
+  <link rel="stylesheet" href="/~cs50/css/main.css">
+  <link rel="canonical" href="http://www.cs.dartmouth.edu/~cs50/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+    <a class="site-title" href="/~cs50/">
+      <img width=48 align=center src="/~cs50/50.png" alt="icon">
+      CS50 Spring 2017
+    </a>
+
+    <nav class="site-nav">
+
+      [<a href="https://canvas.dartmouth.edu/courses/14815">Canvas</a>]
+      [<a href="https://piazza.com/dartmouth/spring2017/cosc050sp17/home">Piazza</a>]
+      [<a href="https://gitlab.cs.dartmouth.edu">Gitlab</a>]
+      [<a href="/~cs50/Schedule.pdf">Schedule</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Logistics/">Logistics</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Lectures/">Lectures</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Reading/">Reading</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/examples/">Examples</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Sections/">Sections</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Labs/">Labs</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Resources/">Resources</a>]
+      [<a href="http://www.cs.dartmouth.edu/~cs50/Comics/">Comics</a>]
+   </nav>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <h1 id="overview">Overview</h1>
+
+<p>In Computer Science 50 you will learn how to design &amp; build large,  reliable, maintainable, and understandable software systems.  In the process you will learn to program in C with Unix development tools.</p>
+
+<p>Let’s break that down. The objectives of this course are for you to learn</p>
+
+<ul>
+  <li>software design principles</li>
+  <li>good coding style, and documentation</li>
+  <li>debugging and testing</li>
+  <li>design and coding with a team</li>
+  <li>programming in C</li>
+  <li>programming on Unix</li>
+  <li>use of git for source-code management</li>
+</ul>
+
+<p>The first few weeks of this course are a crash course in Unix and C.  After that, you’ll build your very own Search Engine application.  Finally, you’ll join a team of other students to design, build, document, and test a large software project.</p>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">CS50 Spring 2017 -- Dartmouth College</h2>
+
+    <p> <font size=-1> 
+    	This version of the course is based upon those designed by 
+    	Professors Palmer, Zhou, Campbell, and Balkcom. 
+	I am deeply indebted to these outstanding educators.
+    -- <a href="/~dfk/">David Kotz</a>
+       </font> 
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
+
+[dfk@kotzbook16sep ~/website/examples/client-server-http]$ 

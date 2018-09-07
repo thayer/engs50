@@ -1,0 +1,118 @@
+Last login: Fri Apr 21 11:43:11 2017 from 23.25.213.190
+[cs50@flume ~]$ cd demo
+[cs50@flume ~/demo]$ ls
+crawler*
+[cs50@flume ~/demo]$ ./crawler
+usage: ./crawler: seedURL pageDirectory maxDepth
+[cs50@flume ~/demo]$ ./crawler http://old-www.cs.dartmouth.edu/~cs50/ crawled 1
+usage: ./crawler: invalid or unwritable directory 'crawled'
+[cs50@flume ~/demo]$ mkdir crawled
+[cs50@flume ~/demo]$ ./crawler http://old-www.cs.dartmouth.edu/~cs50/ crawled 1
+ 0   Fetched: http://old-www.cs.dartmouth.edu/~cs50/
+ 0     Saved: http://old-www.cs.dartmouth.edu/~cs50/
+ 0  Scanning: http://old-www.cs.dartmouth.edu/~cs50/
+ 0     Found: http://old-www.cs.dartmouth.edu/~cs50/
+ 0   IgnDupl: http://old-www.cs.dartmouth.edu/~cs50/
+ 0     Found: https://canvas.dartmouth.edu/courses/14815
+ 0  IgnExtrn: https://canvas.dartmouth.edu/courses/14815
+ 0     Found: https://piazza.com/dartmouth/spring2017/cosc050sp17/home
+ 0  IgnExtrn: https://piazza.com/dartmouth/spring2017/cosc050sp17/home
+ 0     Found: http://old-www.cs.dartmouth.edu/~cs50/Schedule.pdf
+ 0  IgnExtrn: http://old-www.cs.dartmouth.edu/~cs50/Schedule.pdf
+ 0     Found: http://www.cs.dartmouth.edu/~cs50/Logistics/
+ 0  IgnExtrn: http://www.cs.dartmouth.edu/~cs50/Logistics/
+ 0     Found: http://www.cs.dartmouth.edu/~cs50/Lectures/
+ 0  IgnExtrn: http://www.cs.dartmouth.edu/~cs50/Lectures/
+ 0     Found: http://www.cs.dartmouth.edu/~cs50/Reading/
+ 0  IgnExtrn: http://www.cs.dartmouth.edu/~cs50/Reading/
+ 0     Found: http://www.cs.dartmouth.edu/~cs50/examples/
+ 0  IgnExtrn: http://www.cs.dartmouth.edu/~cs50/examples/
+ 0     Found: http://www.cs.dartmouth.edu/~cs50/Sections/
+ 0  IgnExtrn: http://www.cs.dartmouth.edu/~cs50/Sections/
+ 0     Found: http://www.cs.dartmouth.edu/~cs50/Labs/
+ 0  IgnExtrn: http://www.cs.dartmouth.edu/~cs50/Labs/
+ 0     Found: http://www.cs.dartmouth.edu/~cs50/Labs/Project/
+ 0  IgnExtrn: http://www.cs.dartmouth.edu/~cs50/Labs/Project/
+ 0     Found: https://gitlab.cs.dartmouth.edu
+ 0  IgnExtrn: https://gitlab.cs.dartmouth.edu
+ 0     Found: http://www.cs.dartmouth.edu/~cs50/Resources/
+ 0  IgnExtrn: http://www.cs.dartmouth.edu/~cs50/Resources/
+ 0     Found: http://old-www.cs.dartmouth.edu/~dfk/
+ 0     Added: http://old-www.cs.dartmouth.edu/~dfk/
+ 1    Fetched: http://old-www.cs.dartmouth.edu/~dfk/
+ 1      Saved: http://old-www.cs.dartmouth.edu/~dfk/
+[cs50@flume ~/demo]$ ls crawle
+ls: cannot access 'crawle': No such file or directory
+[cs50@flume ~/demo]$ ls crawled
+1  2
+[cs50@flume ~/demo]$ more crawled/1
+http://old-www.cs.dartmouth.edu/~cs50/
+0
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CS50 Overview</title>
+  <meta name="description" content="In Computer Science 50 you will learn how to design & build large,  reliable, maintainable, an
+d understandable software systems.  In the process you will learn to program in C with Unix development tools.
+">
+
+  <link rel="shortcut icon" href="/~cs50/50.png" />
+  <link rel="stylesheet" href="/~cs50/css/main.css">
+  <link rel="canonical" href="http://www.cs.dartmouth.edu/~cs50/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+    <a class="site-title" href="/~cs50/">
+      <img width=48 align=center src="/~cs50/50.png" alt="icon">
+      CS50 Spring 2017
+    </a>
+
+    <nav class="site-nav">
+
+      [<a href="https://canvas.dartmouth.edu/courses/14815">Canvas</a>]
+      [<a href="https://piazza.com/dartmouth/spring2017/cosc050sp17/home">Piazza</a>]
+[cs50@flume ~/demo]$ more crawled/2
+http://old-www.cs.dartmouth.edu/~dfk/
+1
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD><TITLE>David Kotz</TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1>David Kotz, Champion International Professor
+    <font size=-1>[<a href="ChampionInternationalProfessor.html">about</a>]</font></H1>
+<H2>Department of <a href="/">Computer Science</a>, <a href="http://www.dartmouth.edu/">Dartmouth College</a></H2>
+
+<!-- 
+<td align=td>
+    <a href=papers/wordle.html><img alt="wordle" src=papers/wordle-thumb.png></a><br>
+    <font size=-1>(a <a href="http://www.wordle.net/">wordle</a> of my
+    paper titles; click on the wordle to zoom in)</font>
+  </p>
+</td>
+ -->
+
+<table>
+
+<tr><!-- Header row -->
+<td valign=middle bgcolor=lightgreen width="50%">
+<font size="+1"><b>Professional</b></font>
+</td>
+<td valign=middle bgcolor=lightblue width="50%">
+<font size="+1"><b>Personal (Kilimanjaro 2016)</b></font>
+</td>
+</tr>
+
+<tr valign=top><!-- Photo row -->
+<td align=center> <!-- professional photo -->
+    <IMG width=600 height=400 align=top alt="photo" src="photos/Kotz2013/Kotz-20130624-DSC03615.jpg">
+</td>
+[cs50@flume ~/demo]$ 

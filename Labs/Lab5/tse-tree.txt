@@ -1,0 +1,55 @@
+.
+├── Makefile
+├── README.md
+├── common
+│   ├── Makefile
+│   ├── index.c
+│   ├── index.h
+│   ├── pagedir.c
+│   ├── pagedir.h
+│   ├── word.c
+│   └── word.h
+├── crawler
+│   ├── IMPLEMENTATION.md
+│   ├── Makefile
+│   ├── README.md
+│   ├── TESTING.md
+│   ├── crawler.c
+│   └── crawlertest.sh
+├── indexer
+│   ├── DESIGN.md
+│   ├── IMPLEMENTATION.md
+│   ├── Makefile
+│   ├── README.md
+│   ├── TESTING.md
+│   ├── indexer.c
+│   ├── indexsort.awk
+│   ├── indextest.c
+│   └── indextest.sh
+├── libcs50
+│   ├── Makefile
+│   ├── README.md
+│   ├── bag.c
+│   ├── bag.h
+│   ├── counters.c
+│   ├── counters.h
+│   ├── file.c
+│   ├── file.h
+│   ├── file.md
+│   ├── hashtable.c
+│   ├── hashtable.h
+│   ├── jhash.c
+│   ├── jhash.h
+│   ├── memory.c
+│   ├── memory.h
+│   ├── memory.md
+│   ├── set.c
+│   ├── set.h
+│   ├── webpage.c
+│   ├── webpage.h
+│   ├── webpage.md
+│   ├── webpage_fetch.c
+│   └── webpage_internal.h
+└── querier
+...
+

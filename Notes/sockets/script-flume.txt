@@ -1,0 +1,170 @@
+Last login: Mon May  8 14:10:56 2017 from 10.31.127.137
+[cs50@flume ~]$ cd demo
+[cs50@flume ~/demo]$ cd client-server
+[cs50@flume ~/demo/client-server]$ ls
+inclient*  inclient.c  inclient.o  inserver*  inserver.c  inserver.o  Makefile
+[cs50@flume ~/demo/client-server]$ make
+make: Nothing to be done for 'all'.
+[cs50@flume ~/demo/client-server]$ ls
+inclient*  inclient.c  inclient.o  inserver*  inserver.c  inserver.o  Makefile
+[cs50@flume ~/demo/client-server]$ ./inserver 
+Listening at port 57417
+To find your MacOS IP address, ifconfig | grep 'inet '
+Connection started
+	hello class!
+	see, it works!
+	really interesting, eh?
+	
+	
+	
+Ending connection
+Connection ended
+Connection started
+	another client!
+Ending connection
+Connection ended
+^C
+[cs50@flume ~/demo/client-server]$ emacs inclient.c
+[cs50@flume ~/demo/client-server]$ cd ../client-server-http
+[cs50@flume ~/demo/client-server-http]$ ls
+file.c	file.h	file.o	httpclient*  httpclient.c  httpclient.o  httpserver*  httpserver.c  httpserver.o  Makefile  README.md
+[cs50@flume ~/demo/client-server-http]$ make
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o httpclient.o httpclient.c
+gcc -Wall -pedantic -std=c11 -ggdb  httpclient.o file.o  -o httpclient
+gcc -Wall -pedantic -std=c11 -ggdb    -c -o httpserver.o httpserver.c
+gcc -Wall -pedantic -std=c11 -ggdb  httpserver.o file.o  -o httpserver
+[cs50@flume ~/demo/client-server-http]$ ./httpserver 
+Listening at port 36305
+To find your MacOS IP address, ifconfig | grep 'inet '
+Connection started
+Bad http command: GET index.html HTTP/1.1
+Connection ended
+Connection started
+Cannot open file: index.html
+Connection ended
+^C
+[cs50@flume ~/demo/client-server-http]$ cd
+[cs50@flume ~]$ cd public_html/
+[cs50@flume ~/public_html]$ ~/demo/client-server-http/httpserver 
+Listening at port 50705
+To find your MacOS IP address, ifconfig | grep 'inet '
+Connection started
+Copying file: index.html
+Connection ended
+^C
+[cs50@flume ~/public_html]$ cd
+[cs50@flume ~]$ cd demo/client-server-http
+[cs50@flume ~/demo/client-server-http]$ emacs httpclient.c
+[cs50@flume ~/demo/client-server-http]$ cd
+[cs50@flume ~]$ cd public_html/
+[cs50@flume ~/public_html]$ ~/demo/client-server-http/httpserver 
+Listening at port 40109
+To find your MacOS IP address, ifconfig | grep 'inet '
+Connection started
+Copying file: index.html
+Connection ended
+Connection started
+Cannot open file: favicon.ico
+Connection ended
+Connection started
+Copying file: index.html
+Connection ended
+Connection started
+Cannot open file: u
+Connection ended
+Connection started
+Cannot open file: file
+Connection ended
+Connection started
+Copying file: index.html
+Connection ended
+Connection started
+Cannot open file: favicon.ico
+Connection ended
+Connection started
+Cannot open file: HTTP/1.1
+Connection ended
+Connection started
+Cannot open file: mom_get_the_camera
+Connection ended
+Connection started
+Bad http commands
+Connection ended
+Connection started
+Bad http command: GET hi HTTP/1.1
+Connection ended
+Connection started
+Cannot open file: file
+Connection ended
+Connection started
+Cannot open file: hey
+Connection ended
+Connection started
+Cannot open file: maybe
+Connection ended
+Connection started
+Bad http command: GET hello HTTP/1.1
+Connection ended
+Connection started
+Cannot open file: heyDers
+Connection ended
+Connection started
+Cannot open file: robertt
+Connection ended
+Connection started
+Cannot open file: I%20miss%20the%20old%20Harambe.%20Straight%20from%20the%20zoo%20Harambe.%20Eating%20his%20food%20Harambe.%20No%20attitude%20Harambe.%20I%20hate%20the%20new%20Harambe.%20Shot%20by%20a%20dude%20Harambe.%20The%20Youtube%20views%20Harambe.%20Up%20in%20the%20news%20Harambe.%20I%20miss%20the%20sweet%20Harambe.%20Playing%20with%20kids%20Harambe.%20I%20gotta%20say%20at%20that%20time%20I'd%20like%20to%20meet%20Harambe.%20See%20I%20invented%20Harambe.%20It%20wasnt%20any%20Harambes.%20And%20now%20i%20look%20and%20look%20around%20and%20there's%20no%20more%20Harambes.%20I%20used%20to%20love%20Harambe.%20I%20used%20to%20love%20Harambe.%20I%20even%20had%20the%20silverback%20I%20thought%20I%20was%20Harambe.%20What%20if%20Harambe%20made%20a%20song%20about%20Harambe.%20Called%20%22I%20miss%20the%20old%20Harambe%22,%20man%20that%20would%20be%20so%20Harambe.%20That's%20all%20it%20was%20Harambe.%20We%20still%20love%20Harambe.%20And%20I%20love%20you%20like%20Harambe%20loves%20toddlers.
+Connection ended
+Connection started
+Bad http commands
+Connection ended
+Connection started
+Cannot open file: HTTP/1.1
+Connection ended
+Connection started
+Cannot open file: favicon.ico
+Connection ended
+Connection started
+Cannot open file: HTTP/1.1
+Connection ended
+Connection started
+Cannot open file: sac
+Connection ended
+Connection started
+Cannot open file: sac
+Connection ended
+Connection started
+Cannot open file: HTTP/1.1
+Connection ended
+Connection started
+Cannot open file: HTTP/1.1
+Connection ended
+Connection started
+Cannot open file: HTTP/1.1
+Connection ended
+^C
+[cs50@flume ~/public_html]$ pushd ../demo/client-server-http
+~/demo/client-server-http ~/public_html
+[cs50@flume ~/demo/client-server-http]$ ls
+file.c	file.h	file.o	httpclient*  httpclient.c  httpclient.o  httpserver*  httpserver.c  httpserver.o  Makefile  README.md
+[cs50@flume ~/demo/client-server-http]$ emacs httpserver.c
+[cs50@flume ~/demo/client-server-http]$ cd ../client-server
+[cs50@flume ~/demo/client-server]$ ./inclient 
+usage: ./inclient hostname port
+[cs50@flume ~/demo/client-server]$ ./inserver 
+Listening at port 48333
+To find your MacOS IP address, ifconfig | grep 'inet '
+^C
+[cs50@flume ~/demo/client-server]$ ifconfig | grep 'inet '
+        inet 129.170.214.115  netmask 255.255.252.0  broadcast 129.170.215.255
+        inet 127.0.0.1  netmask 255.0.0.0
+[cs50@flume ~/demo/client-server]$ ./inserver 
+Listening at port 51999
+To find your MacOS IP address, ifconfig | grep 'inet '
+^C  
+[cs50@flume ~/demo/client-server]$ emacs inserver.c
+[cs50@flume ~/demo/client-server]$ exit
+logout
+Connection to flume.cs.dartmouth.edu closed.
+
+[Process completed]
+

@@ -1,0 +1,657 @@
+Last login: Mon Apr  3 14:29:49 2017 from 10.31.117.148
+[cs50@flume ~]$ cd demo
+[cs50@flume ~/demo]$ cp ~cs50/examples/names0.c .
+[cs50@flume ~/demo]$ emacs names0.c m
+[cs50@flume ~/demo]$ mygcc names0.c -o names
+[cs50@flume ~/demo]$ ,.name
+-bash: ,.name: command not found
+[cs50@flume ~/demo]$ ./names
+david
+kaya
+kyle
+john
+thomas
+trevor
+maggie
+7 names
+0: david
+1: kaya
+2: kyle
+3: john
+4: thomas
+5: trevor
+6: maggie
+[cs50@flume ~/demo]$ emacs names0.c 
+
+[1]+  Stopped                 emacs names0.c
+[cs50@flume ~/demo]$ mygcc names0.c -o names
+[cs50@flume ~/demo]$ ./names
+david 
+jay
+2 names
+0: david 
+1: jay
+[cs50@flume ~/demo]$ fg
+emacs names0.c
+[cs50@flume ~/demo]$ ls
+guessprime*   guessprime.c~  names0.c	students.txt
+guessprime.c  names*	     names0.c~
+[cs50@flume ~/demo]$ more students.txt 
+Michael.T.Aaberg.18@Dartmouth.edu;
+Alexander.G.W.Bailey.18@Dartmouth.edu;
+Anders.Bando-Hess.19@Dartmouth.edu;
+James.W.Beane.III.19@Dartmouth.edu;
+Ryan.W.Blankemeier.20@Dartmouth.edu;
+Alex.Y.Chan.19@Dartmouth.edu;
+Shaket.Chaudhary.19@Dartmouth.edu;
+Trevor.J.Colby.19@Dartmouth.edu;
+Robert.C.Crawford.19@Dartmouth.edu;
+Alexander.J.Danilowicz.19@Dartmouth.edu;
+Christopher.O.Davis.18@Dartmouth.edu;
+Anthony.F.DiPadova.III.19@Dartmouth.edu;
+Anna.E.Dodson.20@Dartmouth.edu;
+Afnan.Enayet.19@Dartmouth.edu;
+Kathryn.E.Flattum.18@Dartmouth.edu;
+Shoshana.M.Geller.20@Dartmouth.edu;
+Isaac.Gluck.19@Dartmouth.edu;
+Alexander.E.Goss.18@Dartmouth.edu;
+Joshua.B.Gutow.20@Dartmouth.edu;
+Ryan.B.Hall.19@Dartmouth.edu;
+Danah.K.Han.20@Dartmouth.edu;
+Kazuma.Honjo.UG@Dartmouth.edu;
+Kevin.Hu.20@Dartmouth.edu;
+Gregory.E.Hunter.18@Dartmouth.edu;
+Laya.Indukuri.19@Dartmouth.edu;
+Jennifer.Jain.18@Dartmouth.edu;
+Clifton.T.Jeffery.19@Dartmouth.edu;
+Steven.Jiang.19@Dartmouth.edu;
+Vivian.Z.Jiang.18@Dartmouth.edu;
+Liam.S.Jolley.20@Dartmouth.edu;
+[cs50@flume ~/demo]$ sed 's/\..*//' students.txt 
+Michael
+Alexander
+Anders
+James
+Ryan
+Alex
+Shaket
+Trevor
+Robert
+Alexander
+Christopher
+Anthony
+Anna
+Afnan
+Kathryn
+Shoshana
+Isaac
+Alexander
+Joshua
+Ryan
+Danah
+Kazuma
+Kevin
+Gregory
+Laya
+Jennifer
+Clifton
+Steven
+Vivian
+Liam
+Wendy
+Emma
+Daniel
+Annika
+Caitlyn
+Stephen
+Savannah
+Robert
+Scott
+Robert
+Ally
+Jasmine
+Breonna
+Himadri
+Arista
+Teddy
+Moyosore
+Noah
+Marshall
+Michael
+Alexander
+Emily
+Magdalene
+Naren
+Jay
+Tanya
+Samuel
+Ellen
+Morgan
+Paolo
+Neerja
+Wesley
+Sara
+Nicholas
+Peter
+Jeremy
+Linda
+Yi
+Edward
+Michelle
+Michael
+Ran
+[cs50@flume ~/demo]$ sed 's/\..*//' students.txt  | names
+72 names
+0: Michael
+1: Alexander
+2: Anders
+3: James
+4: Ryan
+5: Alex
+6: Shaket
+7: Trevor
+8: Robert
+9: Alexander
+10: Christopher
+11: Anthony
+12: Anna
+13: Afnan
+14: Kathryn
+15: Shoshana
+16: Isaac
+17: Alexander
+18: Joshua
+19: Ryan
+20: Danah
+21: Kazuma
+22: Kevin
+23: Gregory
+24: Laya
+25: Jennifer
+26: Clifton
+27: Steven
+28: Vivian
+29: Liam
+30: Wendy
+31: Emma
+32: Daniel
+33: Annika
+34: Caitlyn
+35: Stephen
+36: Savannah
+37: Robert
+38: Scott
+39: Robert
+40: Ally
+41: Jasmine
+42: Breonna
+43: Himadri
+44: Arista
+45: Teddy
+46: Moyosore
+47: Noah
+48: Marshall
+49: Michael
+50: Alexander
+51: Emily
+52: Magdalene
+53: Naren
+54: Jay
+55: Tanya
+56: Samuel
+57: Ellen
+58: Morgan
+59: Paolo
+60: Neerja
+61: Wesley
+62: Sara
+63: Nicholas
+64: Peter
+65: Jeremy
+66: Linda
+67: Yi
+68: Edward
+69: Michelle
+70: Michael
+71: Ran
+[cs50@flume ~/demo]$ sed 's/\..*//' students.txt  | sort  | names
+72 names
+0: Afnan
+1: Alex
+2: Alexander
+3: Alexander
+4: Alexander
+5: Alexander
+6: Ally
+7: Anders
+8: Anna
+9: Annika
+10: Anthony
+11: Arista
+12: Breonna
+13: Caitlyn
+14: Christopher
+15: Clifton
+16: Danah
+17: Daniel
+18: Edward
+19: Ellen
+20: Emily
+21: Emma
+22: Gregory
+23: Himadri
+24: Isaac
+25: James
+26: Jasmine
+27: Jay
+28: Jennifer
+29: Jeremy
+30: Joshua
+31: Kathryn
+32: Kazuma
+33: Kevin
+34: Laya
+35: Liam
+36: Linda
+37: Magdalene
+38: Marshall
+39: Michael
+40: Michael
+41: Michael
+42: Michelle
+43: Morgan
+44: Moyosore
+45: Naren
+46: Neerja
+47: Nicholas
+48: Noah
+49: Paolo
+50: Peter
+51: Ran
+52: Robert
+53: Robert
+54: Robert
+55: Ryan
+56: Ryan
+57: Samuel
+58: Sara
+59: Savannah
+60: Scott
+61: Shaket
+62: Shoshana
+63: Stephen
+64: Steven
+65: Tanya
+66: Teddy
+67: Trevor
+68: Vivian
+69: Wendy
+70: Wesley
+71: Yi
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ emacs names0.c 
+[cs50@flume ~/demo]$ mygcc names0.c -o names
+[cs50@flume ~/demo]$ ./names
+this is a really log name. who has a name this long?  dunno.
+0 names
+[cs50@flume ~/demo]$ ./names
+this is a really log name. who has a name this long?  dunno.
+joe
+jay
+mary
+3 names
+0: joe
+1: jay
+2: mary
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ !em
+emacs names0.c 
+[cs50@flume ~/demo]$ ls
+guessprime*   guessprime.c~  names0.c	students.txt
+guessprime.c  names*	     names0.c~
+[cs50@flume ~/demo]$ !cp
+cp ~cs50/examples/names0.c .
+cp: overwrite './names0.c'? n
+[cs50@flume ~/demo]$ cp ~cs50/examples/names1.c .
+[cs50@flume ~/demo]$ emacs names1.c 
+
+[1]+  Stopped                 emacs names1.c
+[cs50@flume ~/demo]$ cp ~cs50/examples/readline.[ch] .
+[cs50@flume ~/demo]$ fg
+emacs names1.c
+[cs50@flume ~/demo]$ mygcc names1.c readline.c -o names
+[cs50@flume ~/demo]$ mygcc names1.c  -o names
+/tmp/ccBKz4ju.o: In function `main':
+/net/class/cs50/demo/names1.c:25: undefined reference to `readLine'
+collect2: error: ld returned 1 exit status
+[cs50@flume ~/demo]$ mygcc names1.c readline.c -o names
+[cs50@flume ~/demo]$ ls
+guessprime*   guessprime.c~  names0.c	names1.c    readline.h
+guessprime.c  names*	     names0.c~	readline.c  students.txt
+[cs50@flume ~/demo]$ cp ~cs50/examples/names2.c .
+[cs50@flume ~/demo]$ fg
+-bash: fg: current: no such job
+[cs50@flume ~/demo]$ emacs names2.c 
+
+[1]+  Stopped                 emacs names2.c
+[cs50@flume ~/demo]$ cp ~cs50/examples/freadline.[ch] .
+[cs50@flume ~/demo]$ fg
+emacs names2.c
+[cs50@flume ~/demo]$ cat names0.c
+/* 
+ * names0.c - read in a list of names from stdin
+ *   (two-dimensional array; each row is still a pointer)
+ *
+ * usage: names < infile
+ * stdin: list of names, one per line
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+/* function prototypes */
+bool readLine(char *buf, const int len);
+
+/* main */
+int main()
+{
+  const int maxNames = 100;  // maximum number of names
+  const int maxLength = 50;  // maximum length of a name (minus 2)
+  char names[maxNames][maxLength];
+  int n = 0;		     // number of names read
+
+  // read the list of names
+  n = 0;
+  while (n < maxNames && !feof(stdin)) {
+    if (readLine(names[n], maxLength)) {
+      n++; // only increment if no error
+    }
+  }
+
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+
+/* readLine - Safely read a line of input into `buf`.
+ *
+ * Caller provides buffer `buf` with room for `len` characters.
+ * We fill `buf` by reading characters from stdin,
+ * guaranteeing we won't over-run the end of the buffer,
+ * guaranteeing a newline-terminated, null-terminated string in the buffer;
+ * returning true if success and false if EOF or any error.
+ * If the user enters more than len-2 characters, that is considered an error.
+ * If end-of-file is reached before newline, that is considered an error.
+ * If an error occurs, buf may have been written but should be untrusted.
+ */
+bool readLine(char *buf, const int len) 
+{
+  int pos = 0;		      // where in the buffer do we place next char?
+
+  // fill the buffer from stdin until buf is full, until EOF, or until newline
+  while ( !feof(stdin) && pos < len-1 ) {
+    // read and store a character
+    char c = getchar();
+    buf[pos++] = c;
+
+    if (c == '\n') {
+      // end of line: terminate buf and return
+      buf[pos++] = '\0';
+      return true;
+    }
+  }
+  // terminate buffer
+  buf[pos++] = '\0';
+
+  // error: file ended or buffer filled before newline discovered.
+
+  // strip characters until end of file or newline is finally reached
+  while ( !feof(stdin) && getchar() != '\n' ) {
+    ; // discard the rest of characters on input line
+  }
+
+  return false;
+}
+[cs50@flume ~/demo]$ cat names1.c
+/* 
+ * names1.c - read in a list of names from stdin
+ *   (separate readLine() to a separate file)
+ *
+ * usage: names < infile
+ * stdin: list of names, one per line
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "readline.h"
+
+int main()
+{
+  const int maxNames = 100;  // maximum number of names
+  const int maxLength = 50;  // maximum length of a name (minus 2)
+  char names[maxNames][maxLength];
+  int n = 0;		     // number of names read
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(stdin); ) {
+    if (readLine(names[n], maxLength)) {
+      n++; // only increment if no error
+    }
+  }
+
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+[cs50@flume ~/demo]$ cat readline.h
+/* 
+ * readline.h - a utility function to safely read one line of input
+ * Safely read a line of input into `buf` (with room for `len` chars).
+ *
+ * David Kotz, April 2016, 2017
+ */
+
+#ifndef __READLINE_H__
+#define __READLINE_H__
+
+#include <stdbool.h>
+
+/* readLine - Safely read a line of input into `buf`.
+ *
+ * Caller provides buffer `buf` with room for `len` characters.
+ * We fill `buf` by reading characters from stdin,
+ * guaranteeing we won't over-run the end of the buffer,
+ * guaranteeing a newline-terminated, null-terminated string in the buffer;
+ * returning true if success and false if EOF or any error.
+ * If the user enters more than len-2 characters, that is considered an error.
+ * If end-of-file is reached before newline, that is considered an error.
+ * If an error occurs, buf may have been written but should be untrusted.
+ */
+extern bool readLine(char *buf, const int len);
+
+#endif //  __READLINE_H__
+[cs50@flume ~/demo]$ cat readline.c
+/* 
+ * readline.c - a utility function to safely read one line of input
+ * See readline.h for documentation.
+ *
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include "readline.h"
+
+bool readLine(char *buf, const int len) 
+{
+  int pos = 0;		      // where in the buffer do we place next char?
+
+  // fill the buffer from stdin until buf is full, until EOF, or until newline
+  while ( !feof(stdin) && pos < len-1 ) {
+    // read and store a character
+    char c = getchar();
+    buf[pos++] = c;
+
+    if (c == '\n') {
+      // end of line: terminate buf and return
+      buf[pos++] = '\0';
+      return true;
+    }
+  }
+  // terminate buffer
+  buf[pos++] = '\0';
+
+  // error: file ended or buffer filled before newline discovered.
+
+  // strip characters until end of file or newline is finally reached
+  while ( !feof(stdin) && getchar() != '\n' ) {
+    ; // discard the rest of characters on input line
+  }
+
+  return false;
+}
+[cs50@flume ~/demo]$ cat names2.c
+/* 
+ * names2.c - read in a list of names from stdin
+ *   (read from a file named in argument)
+ *
+ * usage: names [filename]
+ * filename: includes list of names, one per line
+ * stdin: used if filename not specified
+ * stdout: numbered list of names, one per line
+ * 
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "freadline.h"
+
+int main(const int argc, char *argv[])
+{
+  const int maxNames = 100;  // maximum number of names
+  const int maxLength = 50;  // maximum length of a name (minus 2)
+  char names[maxNames][maxLength];
+  FILE *fp;		      // input file
+  int n = 0;		      // number of names read
+
+  // validate arguments and open input file
+  if (argc == 1) {
+    fp = stdin;
+  } else if (argc == 2) {
+    fp = fopen(argv[1], "r");
+    if (fp == NULL) {
+      fprintf(stderr, "%s cannot open file '%s'\n", argv[0], argv[1]);
+      exit (2);
+    } 
+  } else {
+    fprintf(stderr, "usage: %s [filename]\n", argv[0]);
+    exit (1);
+  }
+
+  // read the list of names
+  for (n = 0; n < maxNames && !feof(fp); ) {
+    if (freadLine(fp, names[n], maxLength)) {
+      n++; // only increment if no error
+    }
+  }
+
+  fclose(fp);
+
+  printf("%d names\n", n);
+  // print the list of names; note each name ends in newline.
+  for (int i = 0; i < n; i++) {
+    printf("%d: %s", i, names[i]);
+  }
+}
+[cs50@flume ~/demo]$ cat freadline.h
+/* 
+ * freadline.h - a utility function to safely read one line of input
+ * Safely read a line of input into `buf` (with room for `len` chars).
+ *
+ * David Kotz, April 2016, 2017
+ */
+
+#ifndef __READLINE_H__
+#define __READLINE_H__
+
+#include <stdbool.h>
+
+/* freadLine - Safely read a line of input into `buf`.
+ *
+ * Caller provides buffer `buf` with room for `len` characters.
+ * Caller provides open file `fp`.
+ * We fill `buf` by reading characters from file `fp`,
+ * guaranteeing we won't over-run the end of the buffer,
+ * guaranteeing a newline-terminated, null-terminated string in the buffer;
+ * returning true if success and false if EOF or any error.
+ * If the user enters more than len-2 characters, that is considered an error.
+ * If end-of-file is reached before newline, that is considered an error.
+ * If an error occurs, buf may have been written but should be untrusted.
+ */
+extern bool freadLine(FILE *fp, char *buf, const int len);
+
+#endif //  __READLINE_H__
+[cs50@flume ~/demo]$ cat freadline.c
+/* 
+ * freadline.c - a utility function to safely read one line of input
+ * See freadline.h for documentation.
+ *
+ * David Kotz, April 2016, 2017
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include "freadline.h"
+
+bool freadLine(FILE *fp, char *buf, const int len) 
+{
+  int pos = 0;		      // where in the buffer do we place next char?
+
+  // fill the buffer from fp until buf is full, until EOF, or until newline
+  while ( !feof(fp) && pos < len-1 ) {
+    // read and store a character
+    char c = getc(fp);
+    buf[pos++] = c;
+
+    if (c == '\n') {
+      // end of line: terminate buf and return
+      buf[pos++] = '\0';
+      return true;
+    }
+  }
+  // terminate buffer
+  buf[pos++] = '\0';
+
+  // error: file ended or buffer filled before newline discovered.
+
+  // strip characters until end of file or newline is finally reached
+  while ( !feof(fp) && getc(fp) != '\n' ) {
+    ; // discard the rest of characters on input line
+  }
+
+  return false;
+}
+[cs50@flume ~/demo]$ eit
+-bash: eit: command not found
+[cs50@flume ~/demo]$ exit
+logout
+Connection to flume.cs.dartmouth.edu closed.
+
+[Process completed]
+

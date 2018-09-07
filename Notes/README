@@ -1,0 +1,5 @@
+Regarding */activity.md
+- some need solutions written up. students asked to see solutions.
+- some have solutions commented-out; those could be uncommented after class.
+- I preferred to strip the Liquid header so the activity.html file does not appear before class; I added the Liquid header just before class; I `make deploy` right before the activity so students can see it; after class, uncomment the solution and `make deploy` again.
+- Learning Fellows can see the activity.md file before class, via Gitlab.

@@ -1,0 +1,10 @@
+#
+#
+#
+# find all the c files
+target:
+	LIST=$(shell find . -name '*.c')
+	echo "HI!"
+	echo $(LIST)
+	echo "BYE!"
+#

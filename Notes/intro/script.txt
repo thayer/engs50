@@ -1,0 +1,59 @@
+[MacBook ~]$ mail kotz@cs
+Subject: hello from class!
+mail message here.
+yes, not much going on.
+wish people would ask questions.
+bye!
+EOT
+[MacBook ~]$ ssh kotz@flume.cs.dartmouth.edu
+Last login: Sun Mar 26 22:04:56 2017 from 198.55.237.247
+[kotz@flume ~]$ ls
+2  cs50/  old/	public_html/
+[kotz@flume ~]$ ls cs50
+labs/
+[kotz@flume ~]$ cd cs50
+[kotz@flume ~/cs50]$ ls
+labs/
+[kotz@flume ~/cs50]$ ls labs
+lab1/
+[kotz@flume ~/cs50]$ ls labs/lab1
+dir/  foo
+[kotz@flume ~/cs50]$ ls -l labs/lab1
+total 8
+drwxr-xr-x 2 kotz root 4096 Mar 27 11:14 dir/
+-rw-r--r-- 1 kotz root    1 Mar 27 11:14 foo
+[kotz@flume ~/cs50]$ man ls
+[kotz@flume ~/cs50]$ cd labs
+[kotz@flume ~/cs50/labs]$ ls lab1
+dir/  foo
+[kotz@flume ~/cs50/labs]$ ls /u/kotz/cs50/labs/lab1
+dir/  foo
+[kotz@flume ~/cs50/labs]$ man ls
+[kotz@flume ~/cs50/labs]$ cd 
+[kotz@flume ~]$ cd hsdkjfhskjdhkg
+-bash: cd: hsdkjfhskjdhkg: No such file or directory
+[kotz@flume ~]$ ls
+2  cs50/  old/	public_html/
+[kotz@flume ~]$ cd 2
+-bash: cd: 2: Not a directory
+[kotz@flume ~]$ logout
+Connection to flume.cs.dartmouth.edu closed.
+[MacBook ~]$ l
+bash: l: command not found
+[MacBook ~]$ 
+[MacBook ~]$ 
+[MacBook ~]$ 
+[MacBook ~]$ 
+[MacBook ~]$ 
+[MacBook ~]$ 
+[MacBook ~]$ cd cs50
+[MacBook ~/cs50]$ cd website/
+[MacBook ~/cs50/website]$ ls
+50.png		Makefile	Schedule.pdf	_includes/	examples/
+Comics/		Makefile~	Schedule.xlsx	_layouts/	index.md
+Labs/		README.md	_config-base	_sass/
+Lectures/	Reading/	_config-cs	_site/
+Logistics/	Resources/	_config-local	css/
+[MacBook ~/cs50/website]$ open Schedule.pdf
+[MacBook ~/cs50/website]$ open css
+[MacBook ~/cs50/website]$ 

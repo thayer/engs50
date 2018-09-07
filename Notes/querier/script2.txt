@@ -1,0 +1,137 @@
+Lectures/20/
+Lectures/21/
+Lectures/23/
+Reading/
+Resources/
+Resources/XQuartz/
+Sections/02/
+Sections/03/
+Sections/04/neglected-names/
+examples/
+examples/seuss/
+examples/trees/
+examples/trees/tree1/
+examples/trees/tree2/
+examples/trees/tree3/
+examples/trees/tree4/
+examples/trees/tree5/
+examples/trees/tree6/
+examples/trees/tree7/
+examples/trees/tree8/
+examples/trees/tree9/
+examples/trees/treeA/
+
+sent 69057 bytes  received 988 bytes  140090.00 bytes/sec
+total size is 22289858  speedup is 318.22
+open http://www.cs.dartmouth.edu/~cs50/
+[dfk@kotzbook16sep ~/website]$ open Comics/thats-where-the-bugs-are.pdf 
+[dfk@kotzbook16sep ~/website]$ ssh cs50@flume
+Last login: Wed May  3 14:05:10 2017 from 10.31.117.1
+[cs50@flume ~]$ clear
+
+[cs50@flume ~]$ cd private/tse
+[cs50@flume ~/private/tse]$ ls
+common/   export-starter4*  indexer/  notes.md	     querier/
+crawler/  export-starter5*  libcs50/  playground/    README.md
+data@	  export-starter6*  Makefile  push-to-flume  README-starter.md
+[cs50@flume ~/private/tse]$ cd querier/
+[cs50@flume ~/private/tse/querier]$ ./querier ../data/data2 ../data/index2 < testqueries 
+KEY WORDs:> Query: dartmouth 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth college 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth college 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth and college 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth and college 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth college and computer science 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth college or computer science 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth and college and computer and science 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth and college or computer and science 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth or computer science or programming or unix or doug mcilroy 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: harvard 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth and harvard 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: dartmouth or harvard 
+No documents match.
+-----------------------------------------------
+KEY WORDs:> Query: and 
+Error: 'and' cannot be first
+KEY WORDs:> Query: or 
+Error: 'or' cannot be first
+KEY WORDs:> Query: and dartmouth 
+Error: 'and' cannot be first
+KEY WORDs:> Query: or dartmouth 
+Error: 'or' cannot be first
+KEY WORDs:> Query: dartmouth college or 
+Error: 'or' cannot be last
+KEY WORDs:> Query: dartmouth college and 
+Error: 'and' cannot be last
+KEY WORDs:> Query: dartmouth college and or computer 
+Error: 'and' and 'or' cannot be adjacent
+KEY WORDs:> Query: dartmouth college and and computer 
+Error: 'and' and 'and' cannot be adjacent
+KEY WORDs:> Query: dartmouth college or and computer 
+Error: 'or' and 'and' cannot be adjacent
+KEY WORDs:> Error: bad character '5' in query.
+KEY WORDs:> Error: bad character '!' in query.
+KEY WORDs:> Error: bad character '-' in query.
+KEY WORDs:> [cs50@flume ~/private/tse/querier]$ more testqueries 
+ Dartmouth
+ dartmouth
+     dartmouth     
+ Dartmouth College
+ dartmouth college
+ dartmouth and college
+    dartmouth    AND    College
+Dartmouth College AND computer science
+Dartmouth College or computer science
+Dartmouth AND College AND computer AND science
+Dartmouth AND College or computer AND science
+Dartmouth or computer science or programming or Unix or Doug McIlroy
+Harvard
+Dartmouth and Harvard
+Dartmouth or Harvard
+and
+or
+and dartmouth
+or dartmouth
+dartmouth college or
+dartmouth college and
+dartmouth college and or computer 
+dartmouth college and and computer
+dartmouth college or and computer
+computer science 50
+Dartmouth!
+Backus-Naur Form
+[cs50@flume ~/private/tse/querier]$ cd
+[cs50@flume ~]$ exit
+logout
+Connection to flume closed.
+[dfk@kotzbook16sep ~/website]$ 

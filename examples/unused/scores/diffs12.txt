@@ -1,0 +1,40 @@
+25c25
+<   struct game game;	      // this game
+---
+>   struct game *game;	      // this game
+29,30c29,30
+< // array of games, and the number of games
+< struct game *games;
+---
+> // array of game pointers, and the number of games
+> struct game **games;
+45,48c45,49
+<     node->game.team1 = readstring();
+<     node->game.team2 = readstring();
+<     node->game.score1 = readint();
+<     node->game.score2 = readint();
+---
+>     node->game = malloc(sizeof(struct game));
+>     node->game->team1 = readstring();
+>     node->game->team2 = readstring();
+>     node->game->score1 = readint();
+>     node->game->score2 = readint();
+55c56
+<   games = calloc(gamecount, sizeof(struct game));
+---
+>   games = calloc(gamecount, sizeof(struct game*));
+58c59
+<     games[--i] = node->game; // yes you can copy a struct!
+---
+>     games[--i] = node->game; // here we copy a game pointer
+64c65
+< 	   games[i].team1, games[i].score1, games[i].team2, games[i].score2);
+---
+> 	   games[i]->team1, games[i]->score1, games[i]->team2, games[i]->score2);
+70,71c71,73
+<     free(node->game.team1);
+<     free(node->game.team2);
+---
+>     free(node->game->team1);
+>     free(node->game->team2);
+>     free(node->game);
