@@ -23,6 +23,8 @@
 
 timezone: America/New_York
 
+incremental: true
+
 # Prof settings
 professor: Stephen Taylor
 profhome: <a href="https://engineering.dartmouth.edu/people/faculty/stephen-taylor/">Stephen Taylor</a>
