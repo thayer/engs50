@@ -21,6 +21,8 @@
 # kramdown kramdown: input: GFM # Enable GitHub Flavored Markdown
 # (fenced code blocks) hard_wrap: false highlighter: rouge
 
+timezone: America/New_York
+
 # Prof settings
 professor: Stephen Taylor
 profhome: <a href="https://engineering.dartmouth.edu/people/faculty/stephen-taylor/">Stephen Taylor</a>
