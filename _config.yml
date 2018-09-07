@@ -27,7 +27,7 @@ profhome: <a href="https://engineering.dartmouth.edu/people/faculty/stephen-tayl
 
 # Site settings
 title: Engs50
-term: 
+term:
 description: > # this means to ignore newlines until next tag
   In Engs 50 you will learn how to design & build large, reliable,
   maintainable, and understandable software systems.  In the process
@@ -35,10 +35,10 @@ description: > # this means to ignore newlines until next tag
 
 # must append either _config-cs or _config-local here
 # append these lines to _config_yml for local testing with 'jekyll serve'
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://127.0.0.1:4000" # the base hostname & protocol for your site
-labs: http://127.0.0.1:4000/Labs
-notes: http://127.0.0.1:4000/Notes
-reading: http://127.0.0.1:4000/Reading
-resources: http://127.0.0.1:4000/Resources
-examples: http://127.0.0.1:4000/Examples
+baseurl: "/engs50" # the subpath of your site, e.g. /blog
+url: "https://thayer.github.io/engs50/" # the base hostname & protocol for your site
+labs: https://thayer.github.io/engs50/Labs
+notes: https://thayer.github.io/engs50/Notes
+reading: https://thayer.github.io/engs50/Reading
+resources: https://thayer.github.io/engs50/Resources
+examples: https://thayer.github.io/engs50/Examples
