@@ -3,7 +3,7 @@ layout: page
 title: Labs
 ---
 
-# Labs
+# Click to view
 
  * [Lab 1 - Bash](Lab1/).
  * [Lab 2 - C](Lab2/).
