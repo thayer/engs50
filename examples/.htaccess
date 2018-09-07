@@ -1,2 +1,0 @@
-# allow .sh files to be viewed, and show them as txt files
-AddType text/plain .sh
