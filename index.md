@@ -21,6 +21,6 @@ The objectives of this course are for you to learn
 
 The first few weeks of this course are a crash course in Unix and C.
 
-After that, you'll build your very own Search Engine application.
+After that, you'll build your very own Search Engine application!!
 
 Finally, you'll join a team of other students to design, build, document, and test a large software project.
