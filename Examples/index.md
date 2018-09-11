@@ -14,4 +14,3 @@ title: Examples
     {% endif %}
 {% endfor %}
 </ul>
-s
