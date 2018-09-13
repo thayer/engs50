@@ -24,10 +24,10 @@ Use these guidelines when writing unit tests (from Jeff Canna, *[Testing, Fun, R
 
 Today's Terminal [script](script.txt) is available.
 
-Recall the example [tree9]({{site.examples}}/trees/tree9/), which demonstrated a binary-tree data structure.
-Here we enhance it to become [treeA]({{site.examples}}/trees/treeA/) (to a computer scientist, `A` comes next after `9`).
+Unzip the [tree examples file]({{site.examples}}/trees.zip). The tree9 example
+demonstrated a binary-tree data structure. Here we enhance it to become treeA (to a computer scientist, `A` comes next after `9`).
 
-Look at [treeA/tree.c]({{site.examples}}/trees/treeA/tree.c) and its [Makefile]({{site.examples}}/trees/treeA/Makefile), and you'll notice three things:
+Look at treeA/tree.c and its Makefile and you'll notice three things:
 
  * The code now has a `main()` function at the bottom of the file.
 It is protected inside `#ifdef UNIT_TEST ... #endif` so it is only compiled-in when we want to compile a unit test.

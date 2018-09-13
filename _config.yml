@@ -23,14 +23,14 @@
 
 timezone: America/New_York
 
-incremental: true
+#incremental: true
 
 # Prof settings
 professor: Stephen Taylor
 profhome: <a href="https://engineering.dartmouth.edu/people/faculty/stephen-taylor/">Stephen Taylor</a>
 
 # Site settings
-title: Engs50
+title: Engs50 (CS50)
 term:
 description: > # this means to ignore newlines until next tag
   In Engs 50 you will learn how to design & build large, reliable,
@@ -40,10 +40,16 @@ description: > # this means to ignore newlines until next tag
 # must append either _config-cs or _config-local here
 # append these lines to _config_yml for local testing with 'jekyll serve'
 baseurl: "/engs50" # the subpath of your site, e.g. /blog
-url: "https://thayer.github.io/engs50" # the base hostname & protocol for your site
-labs: https://thayer.github.io/engs50/Labs
-notes: https://thayer.github.io/engs50/Notes
-reading: https://thayer.github.io/engs50/Reading
-resources: https://thayer.github.io/engs50/Resources
-examples: https://thayer.github.io/engs50/Examples
+#url: "https://thayer.github.io/engs50" # the base hostname & protocol for your site
+#labs: https://thayer.github.io/engs50/Labs
+#notes: https://thayer.github.io/engs50/Notes
+#reading: https://thayer.github.io/engs50/Reading
+#resources: https://thayer.github.io/engs50/Resources
+#examples: https://thayer.github.io/engs50/Examples
 
+# make all links relative
+labs: /engs50/Labs
+notes: /engs50/Notes
+reading: /engs50/Reading
+resources: /engs50/Resources
+examples: /engs50/Examples

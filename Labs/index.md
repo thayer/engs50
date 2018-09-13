@@ -3,7 +3,9 @@ layout: page
 title: Labs
 ---
 
-# Click to view
+# This is a legacy page and not used. Please refer to Canvas Modules for assignments.
+
+## Click to view!
 
  * [Lab 1 - Bash](Lab1/).
  * [Lab 2 - C](Lab2/).
@@ -12,4 +14,5 @@ title: Labs
  * [Lab 5 - TSE Indexer](Lab5/).
  * [Lab 6 - TSE Querier](Lab6/).
 
-Please follow the [CS50 coding style]({{site.resources}}/CodingStyle.html) in C assignments.
+Please follow the [CS50 coding style]({{site.resources}}/CodingStyle.html)
+in C assignments.
