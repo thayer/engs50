@@ -1,0 +1,23 @@
+
+studnets use the entry point thayer.github.io/engs50
+
+the website is called engs50
+
+
+BE IN THE ENGS50 DIRECTORY
+
+git status
+git add *
+git commit -m "silly msg"
+git push
+
+go to commits -- look for last change and green check box
+(indicates that the site has been rebuilt with no errors)
+
+
+To build/change locally:
+
+jekyll build (just build it)
+or
+jekyll serve (interactive update)
+look at the "Server Address" in the browers
