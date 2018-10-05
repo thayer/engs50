@@ -48,8 +48,10 @@ baseurl: "/engs50" # the subpath of your site, e.g. /blog
 #examples: https://thayer.github.io/engs50/Examples
 
 # make all links relative
-labs: /engs50/Labs
-notes: /engs50/Notes
-reading: /engs50/Reading
-resources: /engs50/Resources
-examples: /engs50/Examples
+labs: /engs50/Labs/index.html
+notes: /engs50/Notes/index.html
+reading: /engs50/Reading/index.html
+resources: /engs50/Resources/index.html
+examples: /engs50/Examples/index.html
+
+
