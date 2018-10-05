@@ -14,5 +14,5 @@ title: Labs
  * [Lab 5 - TSE Indexer](Lab5/).
  * [Lab 6 - TSE Querier](Lab6/).
 
-Please follow the [CS50 coding style]({{site.resources}}/CodingStyle.html)
+Please follow the [CS50 coding style]({{site.resources}}CodingStyle.html)
 in C assignments.
