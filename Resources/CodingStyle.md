@@ -1,24 +1,40 @@
 ---
 layout: page
-title: CS50 programming style
+title: Programming Style
 ---
 
 Coding style
 -------------
 
-A computer program is meant for two audiences: the computer that compiles and runs it, and the people who must read, modify, maintain and test it.
-Think about writing a program the same way you think about writing a paper: structure, organization, word choice and formatting are just as important as content.
-A program that works but has a terrible style is unreadable, and therefore useless.
+A computer program is meant for two audiences: the computer that
+compiles and runs it, and the people who must read, modify, maintain
+and test it.  Think about writing a program the same way you think
+about writing a paper: structure, organization, word choice and
+formatting are just as important as content.  A program that works but
+has a terrible style is unreadable, and therefore useless.
 
-Real-world software development teams use common programming style guides.
-For example, if you are working on the Linux kernel, you would use [Linus' Coding Style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
-If you are working on a gnu project, you would closely follow the instructions in Chapter 5 "Making the best use of C" of their [GNU Coding Standards](http://www.gnu.org/prep/standards/standards.html#Writing-C) document.
-Other organizations might adopt other long-respected coding standards like the [NetBSD source code style guide](http://cvsweb.netbsd.org/bsdweb.cgi/src/share/misc/style?rev=HEAD&content-type=text/x-cvsweb-markup), or they might produce their own guidelines based on several others.
+Real-world software development teams use common programming style
+guides.  For example, if you are working on the Linux kernel, you
+would use [Linus' Coding
+Style](https://www.kernel.org/doc/Documentation/process/coding-style.rst).
+If you are working on a gnu project, you would closely follow the
+instructions in Chapter 5 "Making the best use of C" of their [GNU
+Coding
+Standards](http://www.gnu.org/prep/standards/standards.html#Writing-C)
+document.  Other organizations might adopt other long-respected coding
+standards like the [NetBSD source code style
+guide](http://cvsweb.netbsd.org/bsdweb.cgi/src/share/misc/style?rev=HEAD&content-type=text/x-cvsweb-markup),
+or they might produce their own guidelines based on several others.
 Your company will most likely have one they prefer.
 
-Style guides include things like formatting your source code, comment requirements, how certain C constructs should (or shouldn't) be used, variable naming conventions, cross-platform compatibility requirements, and more.
+Style guides include things like formatting your source code, comment
+requirements, how certain C constructs should (or shouldn't) be used,
+variable naming conventions, cross-platform compatibility
+requirements, and more.
 
-We realize that coding style can be a very personal choice, but in the professional world you will seldom have the privilege of choosing your own style.
+We realize that coding style can be a very personal choice, but in the
+professional world you will seldom have the privilege of choosing your
+own style.
 
 ### CS50 style
 
@@ -29,7 +45,6 @@ We realize that coding style can be a very personal choice, but in the professio
 * Indent appropriately; emacs and other C-savvy text editors can indent automatically. See below.
 * Use braces `{ }` for every nested block - it can save you from accidental nesting bugs.
 * Place the opening brace at the end of the line, e.g., in `if` and `for` statements.
-* Exception: for functions, place the opening brace at the beginning of the next line.
 * Use spaces around binary operators, except struct and pointer references.
 Do not use spaces between a unary operator and its operand.
 See below.
@@ -40,10 +55,12 @@ Unwind back to `main` using error-return values and exit cleanly.
 * Exception: in CS50 we recommend use of a function called `parse_args()`, and it's often cleanest for that function to exit when there are problems with command-line arguments.
 * Always initialize variables, either when they are created, or soon thereafter.
 Initialize pointers to NULL if target not yet known.
+* Use `typedef` to designate abstract data types and use a name that ends in `_t` e.g. person_t, car_t, queue_t, hashtable_t, bag_t etc.
+* When using pointers, use names that are suggestive of pointers: spacep, linep, endp, etc.
 * Declare function prototypes with type and name of formal parameters.
 * Avoid using global variables.
 If they are absolutely necessary, restrict their use to a single source file using the `static` keyword.
-* Avoid using `goto` unless absolutely necessary - you must have a *really* good reason for using a `goto`, in very exceptional cases.
+* Do not use using `goto` unless absolutely necessary - you must have a *really* good reason for using a `goto`, in very exceptional cases.
 * Avoid preprocessor macros; `#define` macros tend to be a source of difficult bugs.
 Instead, use `const` for constants and use real functions (or inline functions if you must).
 * Don't use "magic" numbers in your code.
@@ -271,26 +288,32 @@ For example, check all memory allocations (`malloc`) to detect out-of-memory con
  * Check limit conditions on loops and arrays.
 For example, what happens if you try to access a value that is out of bounds?
 
-When you detect an error condition, first consider ways to modify the code to prevent the error from happening in the first place.
-If that is not possible, ask if there is a way the code can recover from the error.
-If there is no reasonable way of recovering, print an error message and exit the program.
+When you detect an error condition, first consider ways to modify the
+code to prevent the error from happening in the first place.  If that
+is not possible, ask if there is a way the code can recover from the
+error.  If there is no reasonable way of recovering, print an error
+message and exit the program.
 
-In short, if someone can crash your program, you lose points, whether in this class or in a future job.
+In short, if someone can crash your program, you lose points, whether
+in this class or in a future job.
+
 
 Required compiler options
 -------------------------
 
-For **all** C programming assignments in this class, you must use (at a minimum) the following `gcc` compile options:
+For **all** C programming assignments in this class, you must use (at
+a minimum) the following `gcc` compile options:
 
 ```bash
     gcc -std=c11 -Wall -pedantic ... program.c ...
 ```
 
-These instruct the compiler to compile for the C11 language standard, display all possible warnings, and to issue warnings if any non-ISO standard C features proided by `gcc` are used, respectively.
-You will likely need to add other options to these; for example, if you use mathematics functions, you need to `#include <math.h>` in your C program and add `-lm` to the command line.
+All programs **must** compile without errors or warnings.
 
-Recall that our standard `.bashrc` defines an alias `mygcc` to make it easy to apply these options every time:
+These instruct the compiler to compile for the C11 language standard,
+display all possible warnings, and to issue warnings if any non-ISO
+standard C features proided by `gcc` are used, respectively.  You will
+likely need to add other options to these; for example, if you use
+mathematics functions, you need to `#include <math.h>` in your C
+program and add `-lm` to the command line.
 
-```bash
-alias mygcc='gcc -Wall -pedantic -std=c11 -ggdb'
-```
